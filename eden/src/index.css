@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply bg-black;
+  font-family: 'Poppins';
+}
+
+.navTool {
+  @apply text-white
+}
+
+.navTool-hover {
+  @apply hover:bg-white hover:text-black hover:px-4 hover:py-2 hover:rounded-xl transition-all duration-300 cursor-pointer;
+}
+
+.button {
+  @apply w-[10vw] h-[5vh] bg-[#4aaf82] rounded-4xl text-white;
+}
+
+.button-hover {
+  @apply hover:bg-white hover:text-[#4aaf82] transition-all duration-300 cursor-pointer;
+}
