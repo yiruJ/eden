@@ -1,30 +1,31 @@
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import aboutImg from '../assets/about.jpg';
 
 const team = [
   {
-    name: 'Sophie Lawson',
-    role: 'Founder & Piano Teacher',
-    bio: 'A graduate of the Melbourne Conservatorium, Sophie has over 15 years of teaching and performance experience. She founded Eden with a vision to create music education that feels as nurturing as it is excellent.',
-    initials: 'SL',
+    name: 'Yiru Jang',
+    role: 'Co-Founder & Director',
+    bio: 'Yiru oversees all administration and business operations at Eden, ensuring every student benefits from a high-quality environment and a well-crafted curriculum. His leadership keeps Eden running with purpose and care.',
+    initials: 'YJ',
   },
   {
-    name: 'Marcus Chen',
-    role: 'Guitar & Theory',
-    bio: 'Marcus brings a deep love of jazz, classical, and contemporary guitar to every lesson. His patient, methodical approach helps students of all ages find their own musical voice.',
-    initials: 'MC',
+    name: 'Dylan Lee',
+    role: 'Co-Founder & Violin / Viola Teacher',
+    bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
+    initials: 'D',
   },
   {
-    name: 'Priya Anand',
-    role: 'Vocals & Songwriting',
-    bio: 'With a background in musical theatre and contemporary vocal coaching, Priya specialises in breath technique, performance confidence, and original songwriting.',
-    initials: 'PA',
+    name: 'Jimin Park',
+    role: 'Violin Teacher',
+    bio: 'A passionate violinist with a deep commitment to nurturing each student\'s individual voice and musical confidence.',
+    initials: 'J',
   },
   {
-    name: 'Tom Ellery',
-    role: 'Drums & Percussion',
-    bio: 'Tom has toured nationally and brings real-world performance experience into his teaching. He works across all styles from jazz to rock, with a focus on groove and feel.',
-    initials: 'TE',
+    name: 'Hana Lee',
+    role: 'Violin Teacher',
+    bio: 'Hana brings warmth and precision to every lesson, guiding students from their very first notes through to advanced classical repertoire.',
+    initials: 'H',
   },
 ];
 
@@ -71,8 +72,8 @@ export function AboutPage() {
             <div className="absolute inset-0 bg-primary/8 rounded-3xl translate-x-5 translate-y-5" />
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
               <img
-                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80"
-                alt="The Eden Music Academy studio — a warm, plant-filled teaching space"
+                src={aboutImg}
+                alt="The Eden Music Academy studio"
                 className="w-full h-full object-cover"
               />
             </div>

@@ -4,11 +4,11 @@ import { Button } from '../components/ui/Button';
 const faqs = [
   {
     q: 'What age can my child start lessons?',
-    a: 'We welcome students from age 4. For very young children we recommend piano or ukulele as starting instruments. Our teachers are experienced in age-appropriate teaching methods.',
+    a: 'We welcome students from age 4. For very young children we recommend piano or violin as starting instruments. Our teachers are experienced in age-appropriate teaching methods.',
   },
   {
     q: 'How long are lessons?',
-    a: 'Lessons are available in 30-minute or 60-minute sessions. For beginners and younger students, 30 minutes is usually ideal. As students progress, 60-minute lessons allow for deeper work.',
+    a: 'Lessons are available in 30-minute, 45-minute, and 60-minute sessions. For beginners and younger students, 30 minutes is usually ideal. As students progress, 60-minute lessons allow for deeper work.',
   },
   {
     q: 'Do I need my own instrument?',
@@ -20,11 +20,11 @@ const faqs = [
   },
   {
     q: 'What happens if we need to cancel?',
-    a: 'We require 24 hours notice to reschedule a lesson. Late cancellations and no-shows are charged at the full lesson rate. Please see our full terms for details.',
+    a: 'We require at least 24 hours notice to reschedule a lesson. Late cancellations and no-shows are charged at the full lesson rate. Please see our full terms for details.',
   },
   {
     q: 'Do you offer group lessons?',
-    a: 'Currently we offer private one-on-one lessons only. We do run occasional group workshops and ensemble sessions — sign up to our newsletter to be notified.',
+    a: 'We have ensemble programs suitable for groups of 2 or more. The student can bring their own ensemble member or we can assign members from the academy.',
   },
 ];
 
@@ -34,7 +34,7 @@ export function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    subject: '',
+
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -72,10 +72,10 @@ export function ContactPage() {
 
             <div className="space-y-5">
               {[
-                { icon: MailIcon, label: 'Email', value: 'hello@edenmusic.edu.au', href: 'mailto:hello@edenmusic.edu.au' },
-                { icon: PhoneIcon, label: 'Phone', value: '(03) 5900 1234', href: 'tel:0359001234' },
-                { icon: LocationIcon, label: 'Location', value: 'Mornington Peninsula, VIC\n(Exact address on enrolment)', href: null },
-                { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 9am – 7pm\nSat: 9am – 2pm', href: null },
+                { icon: MailIcon, label: 'Email', value: 'emacademyinfo@gmail.com', href: 'mailto:emacademyinfo@gmail.com' },
+                { icon: PhoneIcon, label: 'Phone', value: '+61 410 385 227', href: 'tel:+61410385227' },
+                { icon: LocationIcon, label: 'Location', value: '136a Wellbank St\nNorth Strathfield', href: null },
+                { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 8:00pm\nSat: 9:30am – 5:00pm', href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
@@ -105,17 +105,19 @@ export function ContactPage() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold text-primary hover:text-primary/75 transition-colors"
+                  aria-label="Eden Music Academy on Instagram"
+                  className="w-9 h-9 rounded-full bg-background flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200"
                 >
-                  Instagram →
+                  <InstagramIcon />
                 </a>
                 <a
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold text-primary hover:text-primary/75 transition-colors"
+                  aria-label="Eden Music Academy on Facebook"
+                  className="w-9 h-9 rounded-full bg-background flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200"
                 >
-                  Facebook →
+                  <FacebookIcon />
                 </a>
               </div>
             </div>
@@ -168,40 +170,19 @@ export function ContactPage() {
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="phone" className="block text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
-                      Phone
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-primary/15 bg-background text-charcoal text-sm
-                                 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all"
-                      placeholder="(04) 0000 0000"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="subject" className="block text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
-                      Subject
-                    </label>
-                    <select
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-primary/15 bg-background text-charcoal text-sm
-                                 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all cursor-pointer"
-                    >
-                      <option value="">Select a topic</option>
-                      <option>Enrolment enquiry</option>
-                      <option>Program information</option>
-                      <option>Pricing & fees</option>
-                      <option>Teaching opportunities</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
+                <div>
+                  <label htmlFor="phone" className="block text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
+                    Phone
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-primary/15 bg-background text-charcoal text-sm
+                               focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all"
+                    placeholder="(04) 0000 0000"
+                  />
                 </div>
 
                 <div>
@@ -303,6 +284,22 @@ function CheckIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
     </svg>
   );
 }

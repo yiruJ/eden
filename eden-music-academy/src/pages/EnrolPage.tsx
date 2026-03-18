@@ -1,23 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../components/ui/Button';
 
-const instruments = [
-  'Piano & Keyboard',
-  'Guitar',
-  'Ukulele',
-  'Vocals',
-  'Songwriting',
-  'Drums & Percussion',
-  'Violin',
-  'Flute',
-  'Clarinet',
-  'Saxophone',
-];
+const instruments = ['Piano', 'Cello', 'Viola', 'Violin'];
+const programs = ['Private Studio (one-on-one)', 'Ensemble', 'Music Theory'];
 
-const lessonDurations = ['30 minutes', '60 minutes'];
-const preferredDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const preferredTimes = ['Morning (9am–12pm)', 'Afternoon (12pm–4pm)', 'Evening (4pm–7pm)'];
-const experienceLevels = ['Complete beginner', 'Some experience', 'Intermediate', 'Advanced'];
+const lessonDurations = ['30 minutes', '45 minutes', '60 minutes'];
+const experienceLevels = ['Beginner to Grade 4', 'Grade 5 to Grade 7', 'Grade 8 and above', "I'm not sure"];
 
 interface FormState {
   // Student
@@ -29,10 +17,10 @@ interface FormState {
   phone: string;
   // Lesson details
   instrument: string;
+  program: string;
   duration: string;
   experience: string;
-  preferredDay: string;
-  preferredTime: string;
+
   goals: string;
   // Terms
   agreedToTerms: boolean;
@@ -45,10 +33,10 @@ const initialForm: FormState = {
   email: '',
   phone: '',
   instrument: '',
+  program: '',
   duration: '',
   experience: '',
-  preferredDay: '',
-  preferredTime: '',
+
   goals: '',
   agreedToTerms: false,
 };
@@ -217,15 +205,27 @@ export function EnrolPage() {
                   </select>
                 </Field>
 
+                <Field label="Program" required>
+                  <select
+                    required
+                    value={form.program}
+                    onChange={(e) => set('program', e.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="">Select a program</option>
+                    {programs.map((p) => <option key={p}>{p}</option>)}
+                  </select>
+                </Field>
+
                 <Field label="Lesson duration" required>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-3 gap-2">
                     {lessonDurations.map((d) => (
                       <button
                         key={d}
                         type="button"
                         onClick={() => set('duration', d)}
-                        className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all cursor-pointer text-left
-                          ${form.duration === d ? 'border-primary bg-primary/8 text-primary' : 'border-primary/15 text-charcoal/60 hover:border-primary/30'}`}
+                        className={`py-4 px-2 rounded-xl border-2 text-sm font-semibold transition-all cursor-pointer text-center
+                          ${form.duration === d ? 'border-primary bg-primary text-white' : 'border-primary/15 text-charcoal/60 hover:bg-primary hover:border-primary hover:text-white'}`}
                       >
                         {d}
                       </button>
@@ -233,15 +233,15 @@ export function EnrolPage() {
                   </div>
                 </Field>
 
-                <Field label="Experience level">
-                  <div className="grid grid-cols-2 gap-3">
+                <Field label="Experience level" required>
+                  <div className="grid grid-cols-4 gap-2">
                     {experienceLevels.map((lvl) => (
                       <button
                         key={lvl}
                         type="button"
                         onClick={() => set('experience', lvl)}
-                        className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all cursor-pointer text-left
-                          ${form.experience === lvl ? 'border-primary bg-primary/8 text-primary' : 'border-primary/15 text-charcoal/60 hover:border-primary/30'}`}
+                        className={`py-4 px-2 rounded-xl border-2 text-xs font-semibold transition-all cursor-pointer text-center leading-tight
+                          ${form.experience === lvl ? 'border-primary bg-primary text-white' : 'border-primary/15 text-charcoal/60 hover:bg-primary hover:border-primary hover:text-white'}`}
                       >
                         {lvl}
                       </button>
@@ -249,20 +249,6 @@ export function EnrolPage() {
                   </div>
                 </Field>
 
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <Field label="Preferred day">
-                    <select value={form.preferredDay} onChange={(e) => set('preferredDay', e.target.value)} className={inputClass}>
-                      <option value="">Any day</option>
-                      {preferredDays.map((d) => <option key={d}>{d}</option>)}
-                    </select>
-                  </Field>
-                  <Field label="Preferred time">
-                    <select value={form.preferredTime} onChange={(e) => set('preferredTime', e.target.value)} className={inputClass}>
-                      <option value="">Any time</option>
-                      {preferredTimes.map((t) => <option key={t}>{t}</option>)}
-                    </select>
-                  </Field>
-                </div>
 
                 <Field label="Goals or anything else we should know">
                   <textarea
@@ -284,7 +270,7 @@ export function EnrolPage() {
                     size="lg"
                     className="flex-[2] justify-center"
                     onClick={() => setStep(3)}
-                    disabled={!form.instrument || !form.duration}
+                    disabled={!form.instrument || !form.program || !form.duration || !form.experience}
                   >
                     Review & Submit
                   </Button>
@@ -304,10 +290,10 @@ export function EnrolPage() {
                     ['Email', form.email],
                     ['Phone', form.phone || '—'],
                     ['Instrument', form.instrument],
+                    ['Program', form.program],
                     ['Lesson length', form.duration],
                     ['Experience', form.experience || '—'],
-                    ['Day preference', form.preferredDay || 'Flexible'],
-                    ['Time preference', form.preferredTime || 'Flexible'],
+
                     ['Goals', form.goals || '—'],
                   ].map(([label, value]) => (
                     <div key={label} className="flex gap-4 px-5 py-3.5">
@@ -328,7 +314,7 @@ export function EnrolPage() {
                   <span className="text-sm text-charcoal/65 leading-relaxed">
                     I agree to Eden Music Academy's{' '}
                     <a href="/terms" className="text-primary underline hover:text-primary/75">Terms & Conditions</a>
-                    {' '}and understand that lessons are billed per term with 24-hour cancellation notice required.
+                    {' '}and understand that 24-hour cancellation notice is required for rescheduling lessons.
                   </span>
                 </label>
 

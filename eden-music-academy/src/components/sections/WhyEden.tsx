@@ -1,4 +1,4 @@
-import { SectionHeading } from '../ui/SectionHeading';
+import whyEdenImg from '../../assets/why_choose_eden_music_academy.png';
 
 const values = [
   {
@@ -30,12 +30,19 @@ export function WhyEden() {
 
         {/* Text side */}
         <div className="space-y-10">
-          <SectionHeading
-            tag="Why Eden"
-            title={'Why Choose\nEden Music Academy?'}
-            subtitle="We believe music education should feel as good as it sounds — expert guidance in a space that inspires."
-            align="left"
-          />
+          <div className="flex flex-col gap-4 items-start text-left">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
+              Why Eden
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-charcoal leading-tight">
+              Why Choose<br />
+              <span className="underline underline-offset-4">Eden Music Academy</span>?
+            </h2>
+            <p className="text-lg text-charcoal/65 max-w-2xl leading-relaxed font-light">
+              We believe music education should feel as good as it sounds — expert guidance in a space that inspires.
+            </p>
+            <div className="w-16 h-1 bg-accent/40 rounded-full" />
+          </div>
 
           <div className="grid grid-cols-2 gap-8">
             {values.map(({ icon: Icon, title, description }) => (
@@ -55,7 +62,7 @@ export function WhyEden() {
           <div className="absolute inset-0 bg-primary/8 rounded-3xl translate-x-5 translate-y-5" />
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square bg-primary/5">
             <img
-              src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=800&q=80"
+              src={whyEdenImg}
               alt="Teacher guiding a young student through a piano lesson in a sunlit room"
               className="w-full h-full object-cover"
               loading="lazy"

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const academyLinks = [
   { label: 'About Us', to: '/about' },
@@ -21,10 +22,12 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="space-y-5">
-            <Link to="/" className="flex items-center gap-2" aria-label="Eden Music Academy home">
-              <LeafIcon className="text-primary w-7 h-7" />
-              <span className="text-2xl font-display font-black tracking-tight text-charcoal">Eden</span>
+            <Link to="/" className="flex items-center" aria-label="Eden Music Academy home">
+              <img src={logo} alt="Eden Music Academy" className="h-10 w-auto" />
             </Link>
+            <p className="font-display font-bold text-charcoal text-lg tracking-tight">
+              Eden Music Academy
+            </p>
             <p className="text-charcoal/50 text-sm leading-relaxed">
               Nurturing the next generation of musical talent across the Mornington Peninsula with a focus on artistry and wellbeing.
             </p>
@@ -90,25 +93,25 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:hello@edenmusic.edu.au"
+                  href="mailto:emacademyinfo@gmail.com"
                   className="flex items-start gap-3 text-sm text-charcoal/60 hover:text-primary transition-colors duration-200"
                 >
                   <MailIcon className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                  hello@edenmusic.edu.au
+                  emacademyinfo@gmail.com
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:0359001234"
+                  href="tel:+61410385227"
                   className="flex items-start gap-3 text-sm text-charcoal/60 hover:text-primary transition-colors duration-200"
                 >
                   <PhoneIcon className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                  (03) 5900 1234
+                  +61 410 385 227
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-charcoal/60">
                 <LocationIcon className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                Mornington Peninsula, VIC
+                136a Wellbank St, North Strathfield
               </li>
             </ul>
           </div>
@@ -122,14 +125,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function LeafIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c9 0 14-8 14-8a25.53 25.53 0 00-5-4z" />
-    </svg>
   );
 }
 

@@ -1,7 +1,7 @@
 import { type ButtonHTMLAttributes, type ReactNode } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'accent' | 'ghost';
+  variant?: 'primary' | 'accent' | 'ghost' | 'enrol';
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
 }
@@ -13,6 +13,8 @@ const variantClasses: Record<NonNullable<ButtonProps['variant']>, string> = {
     'bg-accent hover:bg-accent/90 text-white shadow-sm focus:ring-accent',
   ghost:
     'border-2 border-primary/25 hover:border-primary/50 text-charcoal bg-transparent focus:ring-primary',
+  enrol:
+    'bg-rose-700 hover:bg-rose-800 text-white shadow-sm focus:ring-rose-700',
 };
 
 const sizeClasses: Record<NonNullable<ButtonProps['size']>, string> = {

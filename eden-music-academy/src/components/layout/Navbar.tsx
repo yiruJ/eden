@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import logo from '../../assets/logo.png';
 
 const navLinks = [
   { label: 'About', to: '/about' },
@@ -23,13 +24,14 @@ export function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 group"
+          className="flex items-center group"
           aria-label="Eden Music Academy home"
         >
-          <LeafIcon className="text-primary w-8 h-8 group-hover:scale-110 transition-transform duration-200" />
-          <span className="text-2xl font-display font-black tracking-tight text-charcoal">
-            Eden
-          </span>
+          <img
+            src={logo}
+            alt="Eden Music Academy"
+            className="h-12 w-auto group-hover:scale-105 transition-transform duration-200"
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -51,7 +53,7 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:block">
-          <Button variant="accent" size="sm" onClick={() => window.location.href='/enrol'}>
+          <Button variant="enrol" size="sm" onClick={() => window.location.href='/enrol'}>
             Enrol Now
           </Button>
         </div>
@@ -83,25 +85,12 @@ export function Navbar() {
             </Link>
           ))}
           <div className="pt-2">
-            <Button variant="accent" className="w-full justify-center">
+            <Button variant="enrol" className="w-full justify-center" onClick={() => { setMobileOpen(false); window.location.href = '/enrol'; }}>
               Enrol Now
             </Button>
           </div>
         </div>
       )}
     </nav>
-  );
-}
-
-function LeafIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c9 0 14-8 14-8a25.53 25.53 0 00-5-4z" />
-    </svg>
   );
 }

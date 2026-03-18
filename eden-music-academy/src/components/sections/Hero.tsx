@@ -3,15 +3,11 @@ import { Button } from '../ui/Button';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-16 pb-24 lg:pt-28 lg:pb-36 px-6 bg-background">
+    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 px-6 bg-background">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
         {/* Text content */}
-        <div className="relative z-10 space-y-8">
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
-            Mornington Peninsula's Premier Music School
-          </span>
-
+        <div className="relative z-10 space-y-8 -mt-4">
           <h1 className="text-5xl lg:text-7xl font-display font-black leading-[1.08] text-charcoal">
             Where Music{' '}
             <span className="block">Becomes a</span>
@@ -77,7 +73,7 @@ export function Hero() {
             </div>
             <div>
               <p className="text-xs text-charcoal/50 font-medium">Programs available</p>
-              <p className="text-lg font-display font-bold text-charcoal">8 Instruments</p>
+              <p className="text-lg font-display font-bold text-charcoal">4 Instruments</p>
             </div>
           </div>
         </div>

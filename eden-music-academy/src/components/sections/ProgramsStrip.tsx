@@ -3,52 +3,29 @@ import { SectionHeading } from '../ui/SectionHeading';
 
 const programs = [
   {
-    id: 'piano',
-    icon: PianoIcon,
-    title: 'Piano & Keyboard',
+    id: 'private-studio',
+    icon: PersonIcon,
+    title: 'Private Studio',
     description:
-      'From classical foundations to contemporary improvisation — find your unique voice on the keys. Suitable for all ages and experience levels.',
-    to: '/instruments/piano',
+      'One-on-one lessons fully tailored to each student\'s goals, pace, and personality. The foundation of musical growth at Eden.',
+    to: '/programs',
   },
   {
-    id: 'guitar',
-    icon: GuitarIcon,
-    title: 'Guitar & Ukulele',
+    id: 'ensemble',
+    icon: PeopleIcon,
+    title: 'Ensemble',
     description:
-      'Master the strings in an environment that encourages exploration across acoustic, electric, and all genres and styles.',
-    to: '/instruments/guitar',
+      'Play alongside friends or meet new ones through music. We strongly recommend ensemble for every student — it\'s where music truly comes alive.',
+    to: '/programs',
+    featured: true,
   },
   {
-    id: 'vocals',
-    icon: MicIcon,
-    title: 'Vocals & Songwriting',
+    id: 'music-theory',
+    icon: NoteIcon,
+    title: 'Music Theory',
     description:
-      'Discover the power of your voice and the art of storytelling through melody, harmony, and original songwriting.',
-    to: '/instruments/vocals',
-  },
-  {
-    id: 'drums',
-    icon: DrumsIcon,
-    title: 'Drums & Percussion',
-    description:
-      'Build rhythm, timing, and feel across a wide variety of styles — from jazz brushwork to rock performance.',
-    to: '/instruments/drums',
-  },
-  {
-    id: 'violin',
-    icon: ViolinIcon,
-    title: 'Violin & Strings',
-    description:
-      'A nurturing approach to classical strings technique with a focus on tone, posture, and musical expression.',
-    to: '/instruments/violin',
-  },
-  {
-    id: 'woodwind',
-    icon: WoodwindIcon,
-    title: 'Flute & Woodwind',
-    description:
-      'Develop breath control, tone quality, and musicianship across flute, clarinet, saxophone, and more.',
-    to: '/instruments/flute',
+      'Understand the language of music. From note reading and rhythm to harmony and form — theory makes every student a more complete musician.',
+    to: '/programs',
   },
 ];
 
@@ -57,29 +34,42 @@ export function ProgramsStrip() {
     <section className="py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          tag="What We Teach"
+          tag="What We Offer"
           title="Our Programs"
-          subtitle="Expertly crafted lessons for every instrument, age, and skill level."
+          subtitle="A complete musical education — private instruction, ensemble playing, and music theory, all rooted in community."
           className="mb-16"
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {programs.map(({ id, icon: Icon, title, description, to }) => (
+        <div className="grid sm:grid-cols-3 gap-6">
+          {programs.map(({ id, icon: Icon, title, description, to, featured }) => (
             <Link
               key={id}
               to={to}
-              className="group p-8 rounded-2xl bg-background border border-primary/8
-                         hover:border-primary/20 hover:shadow-xl hover:-translate-y-1
-                         transition-all duration-300 cursor-pointer block"
+              className={`group p-8 rounded-2xl border transition-all duration-300 cursor-pointer block
+                         hover:shadow-xl hover:-translate-y-1 ${
+                           featured
+                             ? 'bg-primary text-white border-primary'
+                             : 'bg-background border-primary/8 hover:border-primary/20'
+                         }`}
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6
-                              group-hover:bg-primary/20 transition-colors duration-200">
-                <Icon className="w-7 h-7 text-primary" />
+              {featured && (
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white font-semibold text-xs uppercase tracking-widest mb-4">
+                  Highly Recommended
+                </span>
+              )}
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-200 ${
+                featured ? 'bg-white/20 group-hover:bg-white/30' : 'bg-primary/10 group-hover:bg-primary/20'
+              }`}>
+                <Icon className={`w-7 h-7 ${featured ? 'text-white' : 'text-primary'}`} />
               </div>
-              <h3 className="text-xl font-display font-bold text-charcoal mb-3">{title}</h3>
-              <p className="text-charcoal/60 text-sm leading-relaxed mb-6">{description}</p>
-              <span className="inline-flex items-center gap-2 text-accent font-semibold text-xs uppercase tracking-widest
-                               group-hover:gap-3 transition-all duration-200">
+              <h3 className={`text-xl font-display font-bold mb-3 ${featured ? 'text-white' : 'text-charcoal'}`}>
+                {title}
+              </h3>
+              <p className={`text-sm leading-relaxed mb-6 ${featured ? 'text-white/80' : 'text-charcoal/60'}`}>
+                {description}
+              </p>
+              <span className={`inline-flex items-center gap-2 font-semibold text-xs uppercase tracking-widest
+                               group-hover:gap-3 transition-all duration-200 ${featured ? 'text-white' : 'text-accent'}`}>
                 Learn More
                 <ArrowRightIcon className="w-3.5 h-3.5" />
               </span>
@@ -110,58 +100,26 @@ function ArrowRightIcon({ className }: { className?: string }) {
   );
 }
 
-function PianoIcon({ className }: { className?: string }) {
+function PersonIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path strokeLinecap="round" d="M6 4v10M9 4v10M12 4v10M15 4v10M18 4v10" />
-      <path strokeLinecap="round" d="M7.5 4v7M10.5 4v7M13.5 4v7M16.5 4v7" strokeWidth={3} className="text-charcoal/30" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
     </svg>
   );
 }
 
-function GuitarIcon({ className }: { className?: string }) {
+function PeopleIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 3h6M12 3v4m-4.5 4.5a4.5 4.5 0 109 0 4.5 4.5 0 00-9 0zM12 17v4m-2 0h4" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
     </svg>
   );
 }
 
-function MicIcon({ className }: { className?: string }) {
+function NoteIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-    </svg>
-  );
-}
-
-function DrumsIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <ellipse cx="12" cy="9" rx="9" ry="4" />
-      <path strokeLinecap="round" d="M3 9v6c0 2.21 4.03 4 9 4s9-1.79 9-4V9" />
-      <path strokeLinecap="round" d="M8 3.5L5 1M16 3.5l3-2.5" />
-    </svg>
-  );
-}
-
-function ViolinIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c-1.5 0-3 1.5-3 4s1 3.5 1 5-1.5 2-1.5 4 2 5 3.5 5 3.5-2 3.5-5S14 14 14 12s1-2 1-5-1.5-4-3-4z" />
-      <path strokeLinecap="round" d="M3 3l4 4M21 3l-4 4" />
-    </svg>
-  );
-}
-
-function WoodwindIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 3l6 18M9 3c0 0-2 1-2 3s2 2 2 2M15 21c0 0 2-1 2-3s-2-2-2-2" />
-      <circle cx="10.5" cy="9" r="1" fill="currentColor" />
-      <circle cx="11.5" cy="13" r="1" fill="currentColor" />
-      <circle cx="12.5" cy="17" r="1" fill="currentColor" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
     </svg>
   );
 }

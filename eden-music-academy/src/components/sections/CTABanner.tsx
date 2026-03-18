@@ -25,10 +25,14 @@ export function CTABanner() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
-            <Button variant="accent" size="lg" as={Link} to="/enrol">
+            <Link
+              to="/enrol"
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800
+                         text-white font-semibold text-base transition-colors duration-200 cursor-pointer shadow-sm"
+            >
               Secure Your Spot
               <ArrowRightIcon />
-            </Button>
+            </Link>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-10 py-4 rounded-lg text-white/90 border-2 border-white/25
