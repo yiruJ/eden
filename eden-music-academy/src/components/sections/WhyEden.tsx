@@ -51,7 +51,7 @@ export function WhyEden() {
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <h4 className="font-display font-bold text-charcoal">{title}</h4>
-                <p className="text-sm text-charcoal/60 leading-relaxed">{description}</p>
+                <p className="hidden sm:block text-sm text-charcoal/60 leading-relaxed">{description}</p>
               </div>
             ))}
           </div>

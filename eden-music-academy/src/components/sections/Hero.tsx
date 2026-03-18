@@ -20,13 +20,17 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
-            <Button variant="primary" size="lg" as={Link} to="/programs">
-              Explore Programs
-              <ArrowRightIcon />
-            </Button>
-            <Button variant="ghost" size="lg" as={Link} to="/teachers">
-              Meet Our Teachers
-            </Button>
+            <Link to="/programs">
+              <Button variant="primary" size="lg">
+                Explore Programs
+                <ArrowRightIcon />
+              </Button>
+            </Link>
+            <Link to="/teachers">
+              <Button variant="ghost" size="lg">
+                Meet Our Teachers
+              </Button>
+            </Link>
           </div>
 
           {/* Social proof bar */}

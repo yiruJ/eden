@@ -53,8 +53,8 @@ export function ProgramsPage() {
 
       {/* Community callout */}
       <section className="py-10 px-6 bg-white">
-        <div className="max-w-4xl mx-auto bg-primary/8 rounded-3xl px-10 py-8 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-          <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0 mx-auto sm:mx-0">
+        <div className="max-w-4xl mx-auto bg-primary/8 rounded-3xl px-10 py-8 flex flex-col items-center gap-6 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0">
             <PeopleIcon className="w-7 h-7 text-primary" />
           </div>
           <div>

@@ -1,5 +1,10 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
+
+const EMAILJS_SERVICE  = 'service_4hf3y5e';
+const EMAILJS_TEMPLATE = 'template_f5dt26c';
+const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const instruments = ['Piano', 'Cello', 'Viola', 'Violin'];
 const programs = ['Private Studio (one-on-one)', 'Ensemble', 'Music Theory'];
@@ -45,15 +50,43 @@ export function EnrolPage() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
   function set(field: keyof FormState, value: string | boolean) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Wire to your form backend (Formspree, Resend, etc.)
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        {
+          form_title: 'New Enrolment Request',
+          form_intro: 'A new student has submitted an enrolment request through the website.',
+          from_name: form.contactName,
+          reply_email: form.email,
+          phone: form.phone || '—',
+          details:
+            `Student: ${form.studentName}${form.studentAge ? `, age ${form.studentAge}` : ''}\n` +
+            `Experience: ${form.experience}\n\n` +
+            `Instrument: ${form.instrument}\n` +
+            `Program: ${form.program}\n` +
+            `Lesson duration: ${form.duration}\n\n` +
+            `Goals / Notes:\n${form.goals || '—'}`,
+        },
+        EMAILJS_PUBLIC
+      );
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setSending(false);
+    }
   }
 
   if (submitted) {
@@ -87,6 +120,25 @@ export function EnrolPage() {
           <p className="text-lg text-charcoal/65 font-light">
             Complete the form below and we'll be in touch to confirm your lesson time.
           </p>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="px-6 pb-10 bg-background">
+        <div className="max-w-2xl mx-auto">
+          <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-64">
+            <iframe
+              title="Eden Music Academy location"
+              src="https://maps.google.com/maps?q=136a+Wellbank+St,+North+Strathfield+NSW+2137&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <p className="text-xs text-charcoal/45 text-center mt-3">136a Wellbank St, North Strathfield</p>
         </div>
       </section>
 
@@ -318,6 +370,9 @@ export function EnrolPage() {
                   </span>
                 </label>
 
+                {error && (
+                  <p className="text-sm text-red-500 text-center">{error}</p>
+                )}
                 <div className="flex gap-3 pt-2">
                   <button type="button" onClick={() => setStep(2)} className="flex-1 py-4 rounded-lg border-2 border-primary/20 hover:border-primary/40 text-charcoal font-semibold text-sm transition-all cursor-pointer">
                     Back
@@ -327,9 +382,9 @@ export function EnrolPage() {
                     variant="accent"
                     size="lg"
                     className="flex-[2] justify-center"
-                    disabled={!form.agreedToTerms}
+                    disabled={!form.agreedToTerms || sending}
                   >
-                    Submit Enrolment
+                    {sending ? 'Submitting…' : 'Submit Enrolment'}
                   </Button>
                 </div>
               </div>

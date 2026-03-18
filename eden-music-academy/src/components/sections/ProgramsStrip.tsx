@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '../ui/SectionHeading';
 
@@ -30,6 +31,28 @@ const programs = [
 ];
 
 export function ProgramsStrip() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const atEnd = currentIndex >= programs.length - 1;
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const cardWidth = el.scrollWidth / programs.length;
+      setCurrentIndex(Math.round(el.scrollLeft / cardWidth));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
+  function scrollTo(index: number) {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / programs.length;
+    el.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+  }
+
   return (
     <section className="py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -40,53 +63,102 @@ export function ProgramsStrip() {
           className="mb-16"
         />
 
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="sm:hidden">
+          <div ref={scrollRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
           {programs.map(({ id, icon: Icon, title, description, to, featured }) => (
-            <Link
-              key={id}
-              to={to}
-              className={`group p-8 rounded-2xl border transition-all duration-300 cursor-pointer block
-                         hover:shadow-xl hover:-translate-y-1 ${
-                           featured
-                             ? 'bg-primary text-white border-primary'
-                             : 'bg-background border-primary/8 hover:border-primary/20'
-                         }`}
-            >
-              {featured && (
-                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white font-semibold text-xs uppercase tracking-widest mb-4">
-                  Highly Recommended
+            <div key={id} className="shrink-0 w-[70vw] snap-start flex flex-col">
+              <Link
+                to={to}
+                className={`group p-8 rounded-2xl border transition-all duration-300 cursor-pointer block flex-1
+                           hover:shadow-xl hover:-translate-y-1 ${
+                             featured
+                               ? 'bg-background border-primary/8 hover:border-primary/20'
+                               : 'bg-background border-primary/8 hover:border-primary/20'
+                           }`}
+              >
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-200 ${
+                  featured ? 'bg-primary/10 group-hover:bg-primary/20' : 'bg-primary/10 group-hover:bg-primary/20'
+                }`}>
+                  <Icon className={`w-7 h-7 ${featured ? 'text-primary' : 'text-primary'}`} />
+                </div>
+                <h3 className={`text-xl font-display font-bold mb-3 ${featured ? 'text-charcoal' : 'text-charcoal'}`}>
+                  {title}
+                </h3>
+                <p className={`text-sm leading-relaxed mb-6 ${featured ? 'text-charcoal/60' : 'text-charcoal/60'}`}>
+                  {description}
+                </p>
+                <span className={`inline-flex items-center gap-2 font-semibold text-xs uppercase tracking-widest
+                                 group-hover:gap-3 transition-all duration-200 ${featured ? 'text-accent' : 'text-accent'}`}>
+                  Learn More
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
                 </span>
-              )}
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-200 ${
-                featured ? 'bg-white/20 group-hover:bg-white/30' : 'bg-primary/10 group-hover:bg-primary/20'
-              }`}>
-                <Icon className={`w-7 h-7 ${featured ? 'text-white' : 'text-primary'}`} />
-              </div>
-              <h3 className={`text-xl font-display font-bold mb-3 ${featured ? 'text-white' : 'text-charcoal'}`}>
-                {title}
-              </h3>
-              <p className={`text-sm leading-relaxed mb-6 ${featured ? 'text-white/80' : 'text-charcoal/60'}`}>
-                {description}
-              </p>
-              <span className={`inline-flex items-center gap-2 font-semibold text-xs uppercase tracking-widest
-                               group-hover:gap-3 transition-all duration-200 ${featured ? 'text-white' : 'text-accent'}`}>
-                Learn More
-                <ArrowRightIcon className="w-3.5 h-3.5" />
-              </span>
-            </Link>
+              </Link>
+            </div>
+          ))}
+          </div>
+
+          {/* Prev / Next buttons */}
+          <div className="flex items-center justify-end gap-3 mt-5">
+            <button
+              onClick={() => scrollTo(currentIndex - 1)}
+              disabled={currentIndex === 0}
+              aria-label="Previous program"
+              className="w-11 h-11 rounded-full bg-white shadow border border-primary/15
+                         flex items-center justify-center text-primary
+                         disabled:opacity-30 disabled:cursor-not-allowed
+                         active:scale-95 transition-all duration-150"
+            >
+              <ArrowLeftIcon className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scrollTo(currentIndex + 1)}
+              disabled={atEnd}
+              aria-label="Next program"
+              className={`w-11 h-11 rounded-full bg-white shadow border border-primary/15
+                         flex items-center justify-center text-primary
+                         disabled:opacity-30 disabled:cursor-not-allowed
+                         active:scale-95 transition-all duration-150
+                         ${!atEnd ? 'animate-bounce-x' : ''}`}
+            >
+              <ArrowRightIcon className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden sm:grid sm:grid-cols-3 gap-6 items-end">
+          {programs.map(({ id, icon: Icon, title, description, to, featured }) => (
+            <div key={id} className="flex flex-col">
+              <Link
+                to={to}
+                className={`group p-8 rounded-2xl border transition-all duration-300 cursor-pointer block flex-1
+                           hover:shadow-xl hover:-translate-y-1 ${
+                             featured
+                               ? 'bg-background border-primary/8 hover:border-primary/20'
+                               : 'bg-background border-primary/8 hover:border-primary/20'
+                           }`}
+              >
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-200 ${
+                  featured ? 'bg-primary/10 group-hover:bg-primary/20' : 'bg-primary/10 group-hover:bg-primary/20'
+                }`}>
+                  <Icon className={`w-7 h-7 ${featured ? 'text-primary' : 'text-primary'}`} />
+                </div>
+                <h3 className={`text-xl font-display font-bold mb-3 ${featured ? 'text-charcoal' : 'text-charcoal'}`}>
+                  {title}
+                </h3>
+                <p className={`text-sm leading-relaxed mb-6 ${featured ? 'text-charcoal/60' : 'text-charcoal/60'}`}>
+                  {description}
+                </p>
+                <span className={`inline-flex items-center gap-2 font-semibold text-xs uppercase tracking-widest
+                                 group-hover:gap-3 transition-all duration-200 ${featured ? 'text-accent' : 'text-accent'}`}>
+                  Learn More
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Link
-            to="/programs"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border-2 border-primary/25
-                       hover:border-primary/50 text-charcoal font-semibold text-sm transition-all duration-200 cursor-pointer"
-          >
-            View All Programs
-            <ArrowRightIcon className="w-4 h-4" />
-          </Link>
-        </div>
       </div>
     </section>
   );
@@ -96,6 +168,14 @@ function ArrowRightIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  );
+}
+
+function ArrowLeftIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
     </svg>
   );
 }

@@ -1,5 +1,10 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
+
+const EMAILJS_SERVICE  = 'service_4hf3y5e';
+const EMAILJS_TEMPLATE = 'template_f5dt26c';
+const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const faqs = [
   {
@@ -38,11 +43,33 @@ export function ContactPage() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // In production, wire this to a form service (e.g. Formspree, Resend)
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        {
+          form_title: 'New Contact Message',
+          form_intro: "You've received a new message through the Eden Music Academy website.",
+          from_name: formData.name,
+          reply_email: formData.email,
+          phone: formData.phone || '—',
+          details: formData.message,
+        },
+        EMAILJS_PUBLIC
+      );
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -201,11 +228,32 @@ export function ContactPage() {
                   />
                 </div>
 
-                <Button type="submit" variant="primary" size="lg" className="w-full justify-center">
-                  Send Message
+                {error && (
+                  <p className="text-sm text-red-500 text-center">{error}</p>
+                )}
+                <Button type="submit" variant="primary" size="lg" className="w-full justify-center" disabled={sending}>
+                  {sending ? 'Sending…' : 'Send Message'}
                 </Button>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="px-6 pb-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-80">
+            <iframe
+              title="Eden Music Academy location"
+              src="https://maps.google.com/maps?q=136a+Wellbank+St,+North+Strathfield+NSW+2137&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>
