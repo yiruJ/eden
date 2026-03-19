@@ -17,7 +17,7 @@ export function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-primary/10"
+      className="sticky top-0 z-50 w-full bg-[#EAF2E8]/95 backdrop-blur-md border-b border-[#7D9B76]/20 shadow-sm"
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -42,8 +42,8 @@ export function Navbar() {
               to={to}
               className={`text-sm font-medium transition-colors duration-200 ${
                 pathname === to
-                  ? 'text-primary'
-                  : 'text-charcoal/70 hover:text-primary'
+                  ? 'text-[#3D6635] font-semibold'
+                  : 'text-[#2C2C2A]/70 hover:text-[#7D9B76]'
               }`}
             >
               {label}
@@ -60,25 +60,27 @@ export function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg text-charcoal hover:bg-primary/10 transition-colors cursor-pointer"
+          className="md:hidden p-2 rounded-lg text-charcoal/70 hover:bg-[#7D9B76]/15 transition-colors cursor-pointer"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
         >
-          <span className="block w-5 h-0.5 bg-charcoal mb-1.5 transition-all" />
-          <span className="block w-5 h-0.5 bg-charcoal mb-1.5 transition-all" />
-          <span className="block w-5 h-0.5 bg-charcoal transition-all" />
+          <span className="block w-5 h-0.5 bg-charcoal/70 mb-1.5 transition-all" />
+          <span className="block w-5 h-0.5 bg-charcoal/70 mb-1.5 transition-all" />
+          <span className="block w-5 h-0.5 bg-charcoal/70 transition-all" />
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-background border-t border-primary/10 px-6 py-6 space-y-4">
+        <div className="md:hidden bg-[#EAF2E8] border-t border-[#7D9B76]/20 px-6 py-6 space-y-4">
           {navLinks.map(({ label, to }) => (
             <Link
               key={to}
               to={to}
-              className="block text-base font-medium text-charcoal/80 hover:text-primary transition-colors py-2"
+              className={`block text-base font-medium transition-colors py-2 ${
+                pathname === to ? 'text-[#3D6635] font-semibold' : 'text-charcoal/70 hover:text-[#7D9B76]'
+              }`}
               onClick={() => setMobileOpen(false)}
             >
               {label}
