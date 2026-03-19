@@ -4,7 +4,8 @@
       "Bash(node:*)",
       "Bash(cd:*)",
       "Bash(rm -f vite.config.js)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(python3:*)"
     ]
   }
 }
