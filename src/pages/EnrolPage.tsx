@@ -52,6 +52,7 @@ export function EnrolPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const [showTerms, setShowTerms] = useState(false);
 
   function set(field: keyof FormState, value: string | boolean) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -110,6 +111,7 @@ export function EnrolPage() {
 
   return (
     <>
+      {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
       {/* Header */}
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-2xl mx-auto space-y-4">
@@ -365,7 +367,7 @@ export function EnrolPage() {
                   />
                   <span className="text-sm text-charcoal/65 leading-relaxed">
                     I agree to Eden Music Academy's{' '}
-                    <a href="/terms" className="text-primary underline hover:text-primary/75">Terms & Conditions</a>
+                    <button type="button" onClick={() => setShowTerms(true)} className="text-primary underline hover:text-primary/75 cursor-pointer">Terms & Conditions</button>
                     {' '}and understand that 24-hour cancellation notice is required for rescheduling lessons.
                   </span>
                 </label>
@@ -406,6 +408,108 @@ function Field({ label, required, children }: { label: string; required?: boolea
         {label}{required && <span className="text-accent ml-1">*</span>}
       </label>
       {children}
+    </div>
+  );
+}
+
+function TermsModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="terms-title"
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-charcoal/40 backdrop-blur-sm" onClick={onClose} />
+
+      {/* Panel */}
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col">
+        {/* Header */}
+        <div className="flex items-center justify-between px-8 py-6 border-b border-primary/10 shrink-0">
+          <h2 id="terms-title" className="text-xl font-display font-bold text-charcoal">Terms & Conditions</h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-charcoal/60 hover:bg-primary/20 hover:text-charcoal transition-all cursor-pointer"
+            aria-label="Close"
+          >
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Scrollable content */}
+        <div className="overflow-y-auto px-8 py-6 space-y-7 text-sm text-charcoal/75 leading-relaxed">
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">1. Getting Started and Payments</h3>
+            <p>Payment can be made through bank transfer or cash.</p>
+            <ul className="space-y-2 list-disc list-outside pl-4">
+              <li><strong>Trial lesson:</strong> Before committing to lessons, new students complete a trial lesson, obligation-free. This allows your teacher to understand your musical background, learning preferences, and goals, and gives you a chance to experience our teaching style. Payment is due upon arrival.</li>
+              <li><strong>Ongoing lesson fees:</strong> Lessons are paid in a package of 10 weeks or 5 weeks and the payment must be made upfront. This secures your regular time slot and helps your teacher plan a customised program for your development.</li>
+              <li><strong>Renewing enrolment:</strong> To book lessons for the next package session, full payment must be made before the end of the current payment package. Early payment guarantees preferred lesson times and gives the teacher planning time.</li>
+              <li>Packages are non-refundable once purchased, except in exceptional circumstances at Eden Music Academy's discretion.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">2. Cancellations and Rescheduling</h3>
+            <ul className="space-y-2 list-disc list-outside pl-4">
+              <li><strong>How to cancel or request a make-up lesson:</strong> Contact us by phone or SMS at least 24 hours before your scheduled lesson.</li>
+              <li><strong>Cancellation within 24 hours:</strong> No refund.</li>
+              <li><strong>If Eden Music Academy cancels:</strong> Students can either receive a make-up lesson or a full refund for that single lesson.</li>
+              <li><strong>Medical exceptions:</strong> If illness or a medical issue prevents attendance, provide a medical certificate within one week. Without documentation, the standard cancellation policy applies.</li>
+              <li><strong>Make-up lessons:</strong> Rescheduling can only be made within the same term and cannot extend into the following term.</li>
+              <li>If a student arrives late, the lesson ends at the originally scheduled time. Remaining lesson time is not refunded or compensated. If no student follows, the teacher may use their discretion to extend the lesson.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">3. Safety and Facilities</h3>
+            <ul className="space-y-2 list-disc list-outside pl-4">
+              <li><strong>Before/after lesson supervision:</strong> Eden Music Academy doesn't provide supervision before or after lessons. Parents/guardians are responsible for picking up children promptly when lessons end.</li>
+              <li><strong>Damage responsibility:</strong> Parents and students are liable for any damage to the studio, including instruments, furniture, and building contents.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">4. Photos and Videos</h3>
+            <p>With the parent's permission, we may photograph, video, or audio record lessons, performances, or recording sessions and share them on our website and social media. Parents can request in writing not to participate.</p>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">5. Discounts and Promotions</h3>
+            <p>There is a maximum discount of 25% per student.</p>
+            <ul className="space-y-2 list-disc list-outside pl-4">
+              <li><strong>Sibling discount:</strong> Each sibling that applies for a lesson can stack a 10% discount to their final price.</li>
+              <li><strong>Referral discount:</strong> The referrer will be offered a stackable 10% off discount to their final price. This discount applies only to their next billing period.</li>
+              <li><strong>Piano pairing discount:</strong> Any string instrument (violin, viola, cello), if paired with piano lessons, will receive a stackable 10% discount to their final price.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="font-display font-bold text-charcoal text-base">Agreement and Updates</h3>
+            <ul className="space-y-2 list-disc list-outside pl-4">
+              <li><strong>Your agreement:</strong> By enrolling, you accept these terms and conditions. Ask us before starting if anything needs clarification.</li>
+              <li><strong>Policy updates:</strong> These terms may be updated; the current version is always on our website.</li>
+              <li><strong>Consistent application:</strong> All students and families follow the same policies.</li>
+            </ul>
+          </section>
+        </div>
+
+        {/* Footer */}
+        <div className="px-8 py-5 border-t border-primary/10 shrink-0">
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full py-3 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-all cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
