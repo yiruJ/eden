@@ -1,6 +1,7 @@
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
 import aboutImg from '../assets/about.jpg';
+import { SEO } from '../components/SEO';
 
 const team = [
   {
@@ -50,6 +51,11 @@ const values = [
 export function AboutPage() {
   return (
     <>
+      <SEO
+        title="Eden Music Academy: About Our Music School in North Strathfield, Sydney"
+        description="Founded in 2014, Eden Music Academy is a warm, community-focused music school in North Strathfield, Sydney's Inner West. Meet our Sydney Conservatorium-trained teachers."
+        canonical="/about"
+      />
       {/* Hero */}
       <section className="pt-20 pb-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -61,7 +67,7 @@ export function AboutPage() {
               Music education <span className="italic text-primary">with heart</span>
             </h1>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
-              Eden Music Academy was born from a simple belief — that great music teaching changes lives. Founded on the Mornington Peninsula in 2014, we've grown into a community of passionate teachers and curious students of all ages.
+              Eden Music Academy was born from a simple belief — that great music teaching changes lives. Founded in Sydney in 2014, we've grown into a community of passionate teachers and curious students of all ages.
             </p>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
               We named ourselves Eden because we wanted to create a space where creativity flourishes naturally — warm, alive, and full of possibility.

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
+import { SEO } from '../components/SEO';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
 const EMAILJS_TEMPLATE = 'template_f5dt26c';
@@ -111,6 +112,11 @@ export function EnrolPage() {
 
   return (
     <>
+      <SEO
+        title="Eden Music Academy: Enrol in Music Lessons in North Strathfield, Sydney"
+        description="Start your musical journey at Eden Music Academy in North Strathfield, Sydney. Enrol in piano, violin, viola, or cello lessons. All ages welcome — book your trial today."
+        canonical="/enrol"
+      />
       {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
       {/* Header */}
       <section className="pt-20 pb-12 px-6 bg-background text-center">

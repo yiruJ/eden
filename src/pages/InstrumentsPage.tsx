@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import { CTABanner } from '../components/sections/CTABanner';
+import { SEO } from '../components/SEO';
 
 export function InstrumentsPage() {
   return (
     <>
+      <SEO
+        title="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney"
+        description="Learn piano, violin, viola, or cello at Eden Music Academy, North Strathfield, Sydney. Qualified teachers from the Sydney Conservatorium. All ages welcome."
+        canonical="/instruments"
+      />
       {/* Header */}
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-2xl mx-auto space-y-5">

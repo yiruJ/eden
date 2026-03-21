@@ -5,14 +5,14 @@ const testimonials = [
     quote:
       'Eden has completely transformed my daughter\'s relationship with music. The environment is so calm and encouraging, and her teacher is both incredibly skilled and genuinely kind.',
     name: 'Sarah Mitchell',
-    role: 'Parent, Mt Martha',
+    role: 'Parent, North Strathfield',
     initials: 'SM',
   },
   {
     quote:
       'As an adult learner, I was nervous to start. Eden\'s approach made me feel at home from day one. My piano lessons are honestly the highlight of my week.',
     name: 'James Richards',
-    role: 'Adult Student, Mornington',
+    role: 'Adult Student, Sydney',
     initials: 'JR',
   },
   {

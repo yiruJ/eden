@@ -29,7 +29,7 @@ export function Footer() {
               Eden Music Academy
             </p>
             <p className="text-charcoal/50 text-sm leading-relaxed">
-              Nurturing the next generation of musical talent across the Mornington Peninsula with a focus on artistry and wellbeing.
+              Nurturing the next generation of musical talent in North Strathfield, Sydney with a focus on artistry and wellbeing.
             </p>
             <div className="flex gap-3">
               <a

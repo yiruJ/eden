@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import { SEO } from '../components/SEO';
 
 const programs = [
   {
@@ -36,6 +37,11 @@ const programs = [
 export function ProgramsPage() {
   return (
     <>
+      <SEO
+        title="Eden Music Academy: Private Lessons, Ensemble & Music Theory in Sydney"
+        description="Explore private studio lessons, ensemble, and music theory at Eden Music Academy, North Strathfield, Sydney. Tailored programs for all ages and experience levels."
+        canonical="/programs"
+      />
       {/* Header */}
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-3xl mx-auto space-y-5">

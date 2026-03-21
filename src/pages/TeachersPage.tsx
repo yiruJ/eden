@@ -2,6 +2,7 @@ import { CTABanner } from '../components/sections/CTABanner';
 import jiminImg from '../assets/teachers/jimin.JPG';
 import hanaImg from '../assets/teachers/hana.jpeg';
 import dylanImg from '../assets/teachers/dylan.JPEG';
+import { SEO } from '../components/SEO';
 
 const teachers = [
   {
@@ -27,6 +28,11 @@ const teachers = [
 export function TeachersPage() {
   return (
     <>
+      <SEO
+        title="Eden Music Academy: Meet Our Sydney Conservatorium-Trained Teachers"
+        description="Meet Eden Music Academy's qualified music teachers — all students of the Sydney Conservatorium of Music. Expert violin, viola, cello & piano tuition in North Strathfield."
+        canonical="/teachers"
+      />
       {/* Header */}
       <section className="pt-20 pb-16 px-6 bg-background text-center">
         <div className="max-w-3xl mx-auto space-y-5">

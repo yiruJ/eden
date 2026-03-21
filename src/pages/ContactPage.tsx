@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
+import { SEO } from '../components/SEO';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
 const EMAILJS_TEMPLATE = 'template_f5dt26c';
@@ -74,6 +75,11 @@ export function ContactPage() {
 
   return (
     <>
+      <SEO
+        title="Eden Music Academy: Contact Our North Strathfield Music Studio"
+        description="Get in touch with Eden Music Academy, located at 136a Wellbank St, North Strathfield, Sydney. Questions about music lessons, programs, or enrolment — we'd love to help."
+        canonical="/contact"
+      />
       {/* Header */}
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-2xl mx-auto space-y-5">

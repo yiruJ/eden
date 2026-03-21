@@ -5,13 +5,91 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eden Music Academy</title>
-    <meta name="description" content="Eden Music Academy — nurturing musicians of all ages with expert tuition in a warm, welcoming environment." />
-    <meta property="og:title" content="Eden Music Academy" />
-    <meta property="og:description" content="Nurturing musicians of all ages with expert tuition in a warm, welcoming environment." />
-    <meta property="og:image" content="https://edenmusicacademy.com/logo.png" />
-    <meta property="og:url" content="https://edenmusicacademy.com" />
+
+    <!-- Base title & description (overridden per-page by react-helmet-async) -->
+    <title>Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney</title>
+    <meta name="description" content="Expert piano, violin, viola & cello lessons for all ages in North Strathfield, Sydney. Sydney Conservatorium-trained teachers. Book a trial lesson today." />
+    <link rel="canonical" href="https://edenmusicacademy.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Eden Music Academy" />
+    <meta property="og:locale" content="en_AU" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edenmusicacademy.com" />
+    <meta property="og:title" content="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney" />
+    <meta property="og:description" content="Expert music lessons for all ages in North Strathfield, Sydney. Piano, violin, viola & cello taught by Sydney Conservatorium-trained teachers." />
+    <meta property="og:image" content="https://edenmusicacademy.com/logo.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Eden Music Academy logo" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Eden Music Academy | Music Lessons in North Strathfield" />
+    <meta name="twitter:description" content="Piano, violin, viola & cello lessons for all ages in North Strathfield, Sydney. Expert teachers, warm studio." />
+    <meta name="twitter:image" content="https://edenmusicacademy.com/logo.png" />
+
+    <!-- Geo & contact -->
+    <meta name="geo.region" content="AU-NSW" />
+    <meta name="geo.placename" content="North Strathfield" />
+
+    <!-- LocalBusiness JSON-LD schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicSchool",
+      "name": "Eden Music Academy",
+      "url": "https://edenmusicacademy.com",
+      "logo": "https://edenmusicacademy.com/logo.png",
+      "image": "https://edenmusicacademy.com/logo.png",
+      "description": "Expert piano, violin, viola, and cello lessons for all ages in North Strathfield, Sydney. Sydney Conservatorium-trained teachers.",
+      "telephone": "+61410385227",
+      "email": "emacademyinfo@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "136a Wellbank St",
+        "addressLocality": "North Strathfield",
+        "addressRegion": "NSW",
+        "postalCode": "2137",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.863,
+        "longitude": 151.090
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "15:30",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "17:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Music Lessons",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Piano Lessons" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Violin Lessons" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Viola Lessons" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cello Lessons" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ensemble Program" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Music Theory Classes" } }
+        ]
+      },
+      "sameAs": [
+        "https://instagram.com",
+        "https://facebook.com"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
