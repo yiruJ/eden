@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
@@ -48,9 +49,9 @@ const initialForm: FormState = {
 };
 
 export function EnrolPage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(initialForm);
-  const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const [showTerms, setShowTerms] = useState(false);
@@ -83,31 +84,12 @@ export function EnrolPage() {
         },
         EMAILJS_PUBLIC
       );
-      setSubmitted(true);
+      navigate('/thank-you');
     } catch {
       setError('Something went wrong. Please try again or contact us directly.');
     } finally {
       setSending(false);
     }
-  }
-
-  if (submitted) {
-    return (
-      <div className="min-h-[70vh] flex items-center justify-center px-6">
-        <div className="text-center space-y-5 max-w-md">
-          <div className="w-20 h-20 rounded-full bg-primary/15 flex items-center justify-center mx-auto">
-            <CheckIcon className="w-10 h-10 text-primary" />
-          </div>
-          <h2 className="text-3xl font-display font-bold text-charcoal">Enrolment received!</h2>
-          <p className="text-charcoal/60 leading-relaxed">
-            Thank you for enrolling with Eden Music Academy. We'll be in touch within one business day to confirm your lesson time and next steps.
-          </p>
-          <p className="text-sm text-charcoal/40">
-            A confirmation has been sent to <strong>{form.email}</strong>
-          </p>
-        </div>
-      </div>
-    );
   }
 
   return (

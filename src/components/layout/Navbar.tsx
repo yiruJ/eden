@@ -32,6 +32,10 @@ export function Navbar() {
             alt="Eden Music Academy"
             className="h-12 w-auto group-hover:scale-105 transition-transform duration-200"
           />
+          <span className="ml-3 font-display font-bold text-charcoal text-base tracking-tight leading-tight hidden sm:flex flex-col">
+            <span>Eden</span>
+            <span>Music Academy</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}

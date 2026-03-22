@@ -15,6 +15,8 @@ import { InstrumentsPage } from './pages/InstrumentsPage';
 import { TeachersPage } from './pages/TeachersPage';
 import { ContactPage } from './pages/ContactPage';
 import { EnrolPage } from './pages/EnrolPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { ThankYouPage } from './pages/ThankYouPage';
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
             <Route path="/teachers" element={<TeachersPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/enrol" element={<EnrolPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

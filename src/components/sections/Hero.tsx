@@ -46,7 +46,7 @@ export function Hero() {
               ))}
             </div>
             <p className="text-sm text-charcoal/60">
-              <span className="font-semibold text-charcoal">200+ students</span> trust Eden
+              <span className="font-semibold text-charcoal">40+ students</span> trust Eden
             </p>
           </div>
         </div>
