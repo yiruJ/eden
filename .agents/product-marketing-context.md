@@ -145,7 +145,7 @@ These are the words and phrases the audience uses (not company jargon):
 **Exclude:** Suburbs >15km away
 
 **Ad scheduling:** Weekday evenings 5–9pm + weekends (parent decision-making time)
-**Budget starting point:** $5–15/day Google Search — scale on booking volume
+**Budget starting point:** $25/day Google Search — scale on booking volume once conversions are confirmed
 **Conversion to track:** Trial lesson form submission + phone call click
 
 **Top keywords (English):**
