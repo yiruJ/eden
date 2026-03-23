@@ -6,7 +6,8 @@
       "Bash(rm -f vite.config.js)",
       "Bash(npm run:*)",
       "Bash(python3:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "WebFetch(domain:edenmusicacademy.com)"
     ]
   }
 }

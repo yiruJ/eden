@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
 export function ThankYouPage() {
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', { send_to: 'AW-18033582805/efejCK3R7I0cENXFipdD' });
+    }
+  }, []);
+
   return (
     <>
       <SEO
