@@ -1,5 +1,6 @@
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import { FadeIn } from '../components/ui/FadeIn';
 import aboutImg from '../assets/about.jpg';
 import { SEO } from '../components/SEO';
 
@@ -17,7 +18,7 @@ const team = [
     initials: 'D',
   },
   {
-    name: 'Jimin Park',
+    name: 'Jimin Yang',
     role: 'Violin Teacher',
     bio: 'A passionate violinist with a deep commitment to nurturing each student\'s individual voice and musical confidence.',
     initials: 'J',
@@ -57,6 +58,7 @@ export function AboutPage() {
         canonical="/about"
       />
       {/* Hero */}
+      <FadeIn direction="up" duration={700}>
       <section className="pt-20 pb-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
@@ -86,8 +88,10 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* Values */}
+      <FadeIn direction="up" delay={100}>
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionHeading
@@ -106,8 +110,10 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* Team */}
+      <FadeIn direction="up" delay={100}>
       <section className="py-20 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
           <SectionHeading
@@ -132,8 +138,11 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
-      <CTABanner />
+      <FadeIn direction="up" delay={100}>
+        <CTABanner />
+      </FadeIn>
     </>
   );
 }

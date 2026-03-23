@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
+import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
@@ -101,6 +102,7 @@ export function EnrolPage() {
       />
       {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
       {/* Header */}
+      <FadeIn direction="up" duration={700}>
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-2xl mx-auto space-y-4">
           <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
@@ -112,8 +114,10 @@ export function EnrolPage() {
           </p>
         </div>
       </section>
+      </FadeIn>
 
       {/* Map */}
+      <FadeIn direction="up" delay={100}>
       <section className="px-6 pb-10 bg-background">
         <div className="max-w-2xl mx-auto">
           <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-64">
@@ -131,8 +135,10 @@ export function EnrolPage() {
           <p className="text-xs text-charcoal/45 text-center mt-3">136a Wellbank St, North Strathfield</p>
         </div>
       </section>
+      </FadeIn>
 
       {/* Form */}
+      <FadeIn direction="up" delay={150}>
       <section className="py-10 px-6 pb-24 bg-white">
         <div className="max-w-2xl mx-auto">
 
@@ -382,6 +388,7 @@ export function EnrolPage() {
           </form>
         </div>
       </section>
+      </FadeIn>
     </>
   );
 }

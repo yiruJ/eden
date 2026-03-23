@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 
 export function ThankYouPage() {
@@ -16,6 +17,7 @@ export function ThankYouPage() {
         description="Thank you for enrolling with Eden Music Academy. We will be in touch within one business day."
         canonical="/thank-you"
       />
+      <FadeIn direction="up" duration={700}>
       <div className="min-h-[80vh] flex items-center justify-center px-6">
         <div className="text-center space-y-6 max-w-md">
           <div className="w-20 h-20 rounded-full bg-primary/15 flex items-center justify-center mx-auto">
@@ -44,6 +46,7 @@ export function ThankYouPage() {
           </div>
         </div>
       </div>
+      </FadeIn>
     </>
   );
 }

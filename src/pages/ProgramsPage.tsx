@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 
 const programs = [
@@ -43,6 +44,7 @@ export function ProgramsPage() {
         canonical="/programs"
       />
       {/* Header */}
+      <FadeIn direction="up" duration={700}>
       <section className="pt-20 pb-12 px-6 bg-background text-center">
         <div className="max-w-3xl mx-auto space-y-5">
           <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
@@ -56,8 +58,10 @@ export function ProgramsPage() {
           </p>
         </div>
       </section>
+      </FadeIn>
 
       {/* Community callout */}
+      <FadeIn direction="up" delay={100}>
       <section className="py-10 px-6 bg-white">
         <div className="max-w-4xl mx-auto bg-primary/8 rounded-3xl px-10 py-8 flex flex-col items-center gap-6 text-center">
           <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0">
@@ -71,8 +75,10 @@ export function ProgramsPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* Program list */}
+      <FadeIn direction="up" delay={100}>
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto space-y-8">
           {programs.map(({ slug, title, tagline, description, highlights, image, featured }, i) => (
@@ -122,8 +128,10 @@ export function ProgramsPage() {
           ))}
         </div>
       </section>
+      </FadeIn>
 
       {/* Community section */}
+      <FadeIn direction="up" delay={100}>
       <section className="py-20 px-6 bg-background">
         <div className="max-w-3xl mx-auto text-center space-y-5">
           <SectionHeading
@@ -140,8 +148,11 @@ export function ProgramsPage() {
           </Link>
         </div>
       </section>
+      </FadeIn>
 
-      <CTABanner />
+      <FadeIn direction="up" delay={100}>
+        <CTABanner />
+      </FadeIn>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { WhyEden } from '../components/sections/WhyEden';
 import { Testimonials } from '../components/sections/Testimonials';
 import { CTABanner } from '../components/sections/CTABanner';
 import { SEO } from '../components/SEO';
+import { FadeIn } from '../components/ui/FadeIn';
 
 export function HomePage() {
   return (
@@ -14,12 +15,24 @@ export function HomePage() {
         description="Expert piano, violin, viola & cello lessons for all ages in North Strathfield, Sydney. Sydney Conservatorium-trained teachers. Book a trial lesson today."
         canonical="/"
       />
-      <Hero />
-      <ProgramsStrip />
-      <TeachersPreview />
-      <WhyEden />
-      <Testimonials />
-      <CTABanner />
+      <FadeIn direction="up" duration={700}>
+        <Hero />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <ProgramsStrip />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <TeachersPreview />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <WhyEden />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <Testimonials />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <CTABanner />
+      </FadeIn>
     </>
   );
 }

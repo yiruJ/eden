@@ -35,11 +35,11 @@ export function Testimonials() {
           className="mb-16"
         />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible">
           {testimonials.map(({ quote, name, role, initials }) => (
             <div
               key={name}
-              className="bg-background rounded-3xl p-8 border border-primary/8 flex flex-col gap-6"
+              className="bg-background rounded-3xl p-8 border border-primary/8 flex flex-col gap-6 shrink-0 w-[82vw] snap-start md:w-auto"
             >
               {/* Quote mark */}
               <QuoteIcon className="w-8 h-8 text-accent/60 shrink-0" />
