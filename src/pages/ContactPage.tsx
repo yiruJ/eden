@@ -135,7 +135,7 @@ export function ContactPage() {
               </p>
               <div className="flex gap-3 pt-1">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/edenm_usic?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Eden Music Academy on Instagram"
@@ -144,7 +144,7 @@ export function ContactPage() {
                   <InstagramIcon />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/groups/220209953384548/user/61587068586605/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Eden Music Academy on Facebook"
