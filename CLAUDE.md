@@ -39,6 +39,15 @@ src/
 └── styles/
     └── globals.css
 
+## Marketing Skills (MANDATORY)
+- For ANY marketing task — ad copy, keywords, campaign advice, SEO, content, reviews, messaging — you MUST read and apply these files before responding:
+  1. `marketingskills/skills/paid-ads/SKILL.md` — for any Google/Meta ads work
+  2. `marketingskills/skills/ad-creative/SKILL.md` — for any ad copy or headlines
+  3. `marketingskills/skills/copywriting/SKILL.md` — for any website or landing page copy
+  4. `.agents/product-marketing-context.md` — ALWAYS, for every marketing task (Eden context, audience, keywords, voice)
+- Never give marketing advice from general knowledge alone — always ground it in these files first
+- The `.agents/product-marketing-context.md` file is the single source of truth for Eden's audience, keywords, pricing, tone, and messaging
+
 ## Rules
 - Every component gets its own file
 - Use TypeScript with proper types, no `any`
