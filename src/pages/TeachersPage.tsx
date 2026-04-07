@@ -4,24 +4,50 @@ import hanaImg from '../assets/teachers/hana.jpeg';
 import dylanImg from '../assets/teachers/dylan.JPEG';
 import { SEO } from '../components/SEO';
 
-const teachers = [
+interface Teacher {
+  name: string;
+  instruments: string[];
+  image: string | null;
+  bio: string;
+  highlights: string[];
+}
+
+const teachers: Teacher[] = [
   {
     name: 'Jimin Park',
     instruments: ['Violin'],
     image: jiminImg,
     bio: 'A passionate violinist with a deep commitment to nurturing each student\'s individual voice and musical confidence.',
+    highlights: [],
   },
   {
     name: 'Hana Lee',
     instruments: ['Violin'],
     image: hanaImg,
-    bio: 'Hana brings warmth and precision to every lesson, guiding students from their very first notes through to advanced classical repertoire.',
+    bio: 'Hana is a scholarship recipient at the Sydney Conservatorium, studying under Professor Goetz Richter. She teaches using Suzuki and AMEB methods with students from age 5, including AMEB examination preparation. Fluent in English and Mandarin.',
+    highlights: [
+      'Ted & Susan Meller Memorial Scholarship 2024–2027',
+      'AMEB AMusA Diploma',
+      'Concerto Competition Scholarship winner 2021 & 2022',
+    ],
   },
   {
     name: 'Dylan Lee',
     instruments: ['Violin', 'Viola'],
     image: dylanImg,
     bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
+    highlights: [],
+  },
+  {
+    name: 'Rachel Jeong',
+    instruments: ['Cello'],
+    image: null,
+    bio: 'Rachel is completing her Bachelor of Music Performance at the Sydney Conservatorium under Julian Smiles. A graduate of the Victorian College of the Arts Secondary School, she brings real performance experience — international touring and radio broadcast work — to every lesson.',
+    highlights: [
+      'Melbourne String Ensemble',
+      '2024 Germany & Czechia International Tour',
+      '3MBS Radio soloist',
+    ],
   },
 ];
 
@@ -53,7 +79,7 @@ export function TeachersPage() {
       {/* Teachers grid */}
       <section className="pb-24 px-6 bg-background">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {teachers.map(({ name, instruments, image, bio }) => (
+          {teachers.map(({ name, instruments, image, bio, highlights }) => (
             <article
               key={name}
               className="group bg-white rounded-3xl overflow-hidden border border-primary/8
@@ -62,13 +88,21 @@ export function TeachersPage() {
             >
               {/* Photo — dominant area */}
               <div className="relative overflow-hidden" style={{ height: '420px' }}>
-                <img
-                  src={image}
-                  alt={`${name} — Eden Music Academy teacher`}
-                  className="w-full h-full object-cover object-top
-                             group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
+                {image ? (
+                  <img
+                    src={image}
+                    alt={`${name} — Eden Music Academy teacher`}
+                    className="w-full h-full object-cover object-top
+                               group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-primary/8 flex items-center justify-center">
+                    <span className="text-6xl font-display font-bold text-primary/30">
+                      {name.charAt(0)}
+                    </span>
+                  </div>
+                )}
                 {/* Instrument tags overlaid bottom-left */}
                 <div className="absolute bottom-4 left-4 flex gap-2">
                   {instruments.map((inst) => (
@@ -94,6 +128,18 @@ export function TeachersPage() {
                 <p className="text-sm text-charcoal/60 leading-relaxed flex-1">
                   {bio}
                 </p>
+
+                {/* Teacher-specific highlights */}
+                {highlights.length > 0 && (
+                  <ul className="space-y-1.5">
+                    {highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-2">
+                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                        <span className="text-xs text-charcoal/65 leading-snug">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {/* Credentials */}
                 <div className="pt-2 border-t border-primary/8 space-y-2.5">

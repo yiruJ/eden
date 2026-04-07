@@ -4,24 +4,39 @@ import jiminImg from '../../assets/teachers/jimin.JPG';
 import hanaImg from '../../assets/teachers/hana.jpeg';
 import dylanImg from '../../assets/teachers/dylan.JPEG';
 
-const teachers = [
+interface TeacherPreview {
+  name: string;
+  instruments: string;
+  image: string | null;
+}
+
+const teachers: TeacherPreview[] = [
   { name: 'Jimin Park', instruments: 'Violin', image: jiminImg },
   { name: 'Hana Lee', instruments: 'Violin', image: hanaImg },
   { name: 'Dylan Lee', instruments: 'Violin & Viola', image: dylanImg },
+  { name: 'Rachel Jeong', instruments: 'Cello', image: null },
 ];
 
-const TeacherCard = ({ name, instruments, image }: { name: string; instruments: string; image: string }) => (
+const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
   <Link
     to="/teachers"
     className="group relative block w-full aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm
                hover:shadow-xl transition-shadow duration-300"
   >
-    <img
-      src={image}
-      alt={`${name} — Eden Music Academy`}
-      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-      loading="lazy"
-    />
+    {image ? (
+      <img
+        src={image}
+        alt={`${name} — Eden Music Academy`}
+        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+    ) : (
+      <div className="w-full h-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+        <span className="text-5xl font-display font-bold text-primary/40">
+          {name.charAt(0)}
+        </span>
+      </div>
+    )}
     <div className="absolute top-0 inset-x-0 px-4 py-3 bg-gradient-to-b from-black/55 to-transparent">
       <p className="font-display font-bold text-white text-sm leading-tight">{name}</p>
       <p className="text-white/80 text-xs font-semibold uppercase tracking-wider mt-0.5">{instruments}</p>

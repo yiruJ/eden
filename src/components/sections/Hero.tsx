@@ -15,20 +15,21 @@ export function Hero() {
           </h1>
 
           <p className="text-lg lg:text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
-            Private lessons, group programs and school incursions designed to
-            nurture creativity and technical excellence across all ages.
+            Sydney Conservatorium-trained teachers offering piano, violin, cello
+            and viola lessons for children from age 4 in North Strathfield. We
+            specialise in young beginners.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
-            <Link to="/programs">
+            <Link to="/enrol">
               <Button variant="primary" size="lg">
-                Explore Programs
+                Book a Free Trial Lesson
                 <ArrowRightIcon />
               </Button>
             </Link>
-            <Link to="/teachers">
+            <Link to="/programs">
               <Button variant="ghost" size="lg">
-                Meet Our Teachers
+                Explore Programs
               </Button>
             </Link>
           </div>
