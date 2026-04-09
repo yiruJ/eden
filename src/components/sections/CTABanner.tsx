@@ -17,11 +17,11 @@ export function CTABanner() {
           </span>
 
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
-            Ready to Begin Your<br />Musical Journey?
+            Is Your Child Ready<br />to Start Playing?
           </h2>
 
           <p className="text-white/75 text-lg max-w-xl mx-auto font-light leading-relaxed">
-            Enrolment for the new term is now open. Spaces are limited for our most popular programs — secure your spot today.
+            Spots are limited. Book a free trial lesson and see if Eden is the right fit — no payment, no obligation.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -30,7 +30,7 @@ export function CTABanner() {
               className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800
                          text-white font-semibold text-base transition-colors duration-200 cursor-pointer shadow-sm"
             >
-              Secure Your Spot
+              Book a Free Trial Lesson
               <ArrowRightIcon />
             </Link>
             <Link
@@ -41,6 +41,7 @@ export function CTABanner() {
               Ask a Question
             </Link>
           </div>
+          <p className="text-white/50 text-sm pt-2">No commitment required after the trial.</p>
         </div>
       </div>
     </section>

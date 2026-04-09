@@ -9,7 +9,8 @@
       "Bash(npm install:*)",
       "WebFetch(domain:edenmusicacademy.com)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"shimmer shine animation badge pill subtle loop\" --domain ux)"
     ]
   }
 }

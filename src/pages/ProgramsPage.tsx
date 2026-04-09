@@ -7,10 +7,10 @@ import { SEO } from '../components/SEO';
 const programs = [
   {
     slug: 'private-studio',
-    title: 'Private Studio',
+    title: 'Private Lesson',
     tagline: 'One-on-one instruction, tailored to you',
     description:
-      'Private studio lessons are the foundation of musical growth at Eden. Every session is fully tailored to the individual student — their goals, learning pace, and personality. With the undivided attention of a dedicated teacher, students build strong technique, musicianship, and confidence at every stage.',
+      'Private lessons are the foundation of musical growth at Eden. Every session is fully tailored to the individual student — their goals, learning pace, and personality. With the undivided attention of a dedicated teacher, students build strong technique, musicianship, and confidence at every stage.',
     highlights: ['All ages & levels welcome', '30 or 60 min sessions', 'Structured term-by-term progression'],
     image: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&q=80',
   },

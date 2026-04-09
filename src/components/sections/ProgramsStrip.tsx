@@ -6,7 +6,7 @@ const programs = [
   {
     id: 'private-studio',
     icon: PersonIcon,
-    title: 'Private Studio',
+    title: 'Private Lesson',
     description:
       'One-on-one lessons fully tailored to each student\'s goals, pace, and personality. The foundation of musical growth at Eden.',
     to: '/programs',

@@ -11,6 +11,14 @@ const navLinks = [
   { label: 'Contact', to: '/contact' },
 ];
 
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
+    </svg>
+  );
+}
+
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
@@ -55,10 +63,17 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:block">
+        {/* Phone + CTA */}
+        <div className="hidden md:flex items-center gap-5">
+          <a
+            href="tel:+61410385227"
+            className="flex items-center gap-2 text-sm text-charcoal/60 hover:text-primary transition-colors duration-200"
+          >
+            <PhoneIcon className="w-4 h-4 text-primary" />
+            0410 385 227
+          </a>
           <Button variant="enrol" size="sm" onClick={() => window.location.href='/enrol'}>
-            Enrol Now
+            Book a Free Trial
           </Button>
         </div>
 
@@ -90,9 +105,16 @@ export function Navbar() {
               {label}
             </Link>
           ))}
+          <a
+            href="tel:+61410385227"
+            className="flex items-center gap-2 text-base font-medium text-charcoal/70 hover:text-primary transition-colors py-2"
+          >
+            <PhoneIcon className="w-4 h-4 text-primary" />
+            0410 385 227
+          </a>
           <div className="pt-2">
             <Button variant="enrol" className="w-full justify-center" onClick={() => { setMobileOpen(false); window.location.href = '/enrol'; }}>
-              Enrol Now
+              Book a Free Trial
             </Button>
           </div>
         </div>

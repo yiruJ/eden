@@ -9,9 +9,9 @@ export function Hero() {
         {/* Text content */}
         <div className="relative z-10 space-y-8 -mt-4">
           <h1 className="text-5xl lg:text-7xl font-display font-black leading-[1.08] text-charcoal">
-            Where Music{' '}
-            <span className="block">Becomes a</span>
-            <span className="italic text-primary">Way of Life</span>
+            Where Young{' '}
+            <span className="block">Musicians</span>
+            <span className="italic text-primary">Find Their Voice</span>
           </h1>
 
           <p className="text-lg lg:text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
@@ -34,21 +34,18 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* Social proof bar */}
-          <div className="flex items-center gap-6 pt-4">
-            <div className="flex -space-x-3">
-              {['A', 'B', 'C', 'D'].map((letter) => (
-                <div
-                  key={letter}
-                  className="w-9 h-9 rounded-full bg-primary/20 border-2 border-white flex items-center justify-center text-xs font-bold text-primary"
-                >
-                  {letter}
-                </div>
-              ))}
-            </div>
-            <p className="text-sm text-charcoal/60">
-              <span className="font-semibold text-charcoal">40+ students</span> trust Eden
-            </p>
+          {/* Trust badges */}
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            {[
+              { icon: <StarIcon className="w-4 h-4 text-accent" />, label: 'Ages 4 and up' },
+              { icon: <CheckIcon className="w-4 h-4 text-primary" />, label: 'Free trial lesson' },
+              { icon: <LocationPinIcon className="w-4 h-4 text-primary" />, label: 'North Strathfield' },
+            ].map(({ icon, label }) => (
+              <div key={label} className="relative overflow-hidden badge-shimmer flex items-center gap-2 bg-white border border-primary/10 rounded-full px-4 py-1.5 shadow-sm">
+                {icon}
+                <span className="text-xs font-semibold text-charcoal/70">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -102,6 +99,31 @@ function MusicNoteIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+    </svg>
+  );
+}
+
+function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
+function LocationPinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
     </svg>
   );
 }

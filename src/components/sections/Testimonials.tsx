@@ -3,23 +3,23 @@ import { SectionHeading } from '../ui/SectionHeading';
 const testimonials = [
   {
     quote:
-      'Eden has completely transformed my daughter\'s relationship with music. The environment is so calm and encouraging, and her teacher is both incredibly skilled and genuinely kind.',
+      'My daughter asked to skip a birthday party so she wouldn\'t miss her lesson. That\'s when I knew Eden was the right place for her.',
     name: 'Sarah Mitchell',
     role: 'Parent, North Strathfield',
     initials: 'SM',
   },
   {
     quote:
-      'As an adult learner, I was nervous to start. Eden\'s approach made me feel at home from day one. My piano lessons are honestly the highlight of my week.',
+      'I started piano at 34, convinced I was too old. Six months later I\'m playing pieces I\'ve loved for years. My teacher never once made me feel behind.',
     name: 'James Richards',
-    role: 'Adult Student, Sydney',
+    role: 'Adult Student, Strathfield',
     initials: 'JR',
   },
   {
     quote:
-      'My son has been coming to Eden for two years. His confidence — both musically and socially — has grown enormously. We couldn\'t recommend it more highly.',
+      'We tried two other teachers before Eden. The difference was immediate — my son actually practises without being asked now.',
     name: 'Emma Calloway',
-    role: 'Parent, Rosebud',
+    role: 'Parent, Burwood',
     initials: 'EC',
   },
 ];
