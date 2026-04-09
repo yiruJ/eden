@@ -11,8 +11,13 @@ No "add your content here". Actual components I can ship.
 ## Design system
 - Read .claude/skills/ui-ux-pro-max/ before any UI work
 - Run design system search before building any component
-- Colours: sage #7D9B76 primary, terracotta #C4785A accent, 
-  off-white #FAF8F4 background, charcoal #2C2C2A text
+- Colours (sourced from Canva brand kit "Eden"):
+  - Primary: #4aaf81 (green — main brand colour)
+  - Accent: #ec2f44 (red — from logo, use for CTAs and key highlights only)
+  - Background: #FAF8F4 (warm off-white — preferred over pure white for web warmth)
+  - Secondary Surface: #eef6f1 (light mint — alternating section backgrounds)
+  - Text: #1a1a1a (near black)
+  - Muted Text: #6b7280 (captions, labels, secondary text)
 - Fonts: Playfair Display (headings), Inter (body)
 - Style: Nature Distilled — warm, elegant, minimalist
 
