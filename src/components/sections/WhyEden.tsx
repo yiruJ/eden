@@ -1,3 +1,4 @@
+import CardSwap, { Card } from '../ui/CardSwap';
 import whyEdenImg from '../../assets/why_choose_eden_music_academy.png';
 
 const values = [
@@ -25,56 +26,77 @@ const values = [
 
 export function WhyEden() {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section className="py-14 pb-36 px-6 bg-background">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
 
         {/* Text side */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           <div className="flex flex-col gap-4 items-start text-left">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
               Why Eden
             </span>
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-charcoal leading-tight">
-              Why Choose<br />
-              <span className="underline underline-offset-4">Eden Music Academy</span>?
+              Why Choose Eden Music Academy?
             </h2>
             <p className="text-lg text-charcoal/65 max-w-2xl leading-relaxed font-light">
               We believe music education should feel as good as it sounds — expert guidance in a space that inspires.
             </p>
             <div className="w-16 h-1 bg-accent/40 rounded-full" />
+            <div className="rounded-2xl overflow-hidden shadow-md w-full aspect-video">
+              <img
+                src={whyEdenImg}
+                alt="Teacher guiding a young student through a piano lesson in a sunlit room"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8">
-            {values.map(({ icon: Icon, title, description }) => (
-              <div key={title} className="space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-primary" />
+          {/* Mobile: 2x2 grid fallback */}
+          <div className="grid grid-cols-2 gap-3 lg:hidden">
+            {values.map(({ icon: Icon, title }) => (
+              <div
+                key={title}
+                className="flex flex-col items-center justify-center gap-3 rounded-3xl bg-white border border-primary/10 shadow-sm px-4 py-6 text-center"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-surface flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-                <h4 className="font-display font-bold text-charcoal">{title}</h4>
-                <p className="hidden sm:block text-sm text-charcoal/60 leading-relaxed">{description}</p>
+                <h4 className="font-display font-bold text-charcoal text-sm leading-snug">{title}</h4>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Image side */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-primary/8 rounded-3xl translate-x-5 translate-y-5" />
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square bg-primary/5">
-            <img
-              src={whyEdenImg}
-              alt="Teacher guiding a young student through a piano lesson in a sunlit room"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-
-          {/* Floating badge */}
-          <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-4 border border-primary/10">
-            <p className="text-3xl font-display font-black text-primary">10+</p>
-            <p className="text-xs text-charcoal/50 font-medium mt-0.5">Years of nurturing</p>
-          </div>
+        {/* CardSwap side — desktop only */}
+        <div className="relative hidden lg:block" style={{ height: 420 }}>
+          <CardSwap
+            width={400}
+            height={250}
+            cardDistance={55}
+            verticalDistance={65}
+            delay={3500}
+            pauseOnHover
+            easing="elastic"
+            skewAmount={4}
+          >
+            {values.map(({ icon: Icon, title, description }) => (
+              <Card
+                key={title}
+                className="bg-white border border-primary/10 shadow-xl p-8 flex flex-col gap-4"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-surface flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-display font-bold text-charcoal text-lg leading-snug">{title}</h3>
+                </div>
+                <p className="text-charcoal/60 text-sm leading-relaxed">{description}</p>
+              </Card>
+            ))}
+          </CardSwap>
         </div>
+
       </div>
     </section>
   );

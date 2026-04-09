@@ -1,88 +1,140 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
+const instruments = ['Piano', 'Violin', 'Cello', 'Viola'] as const;
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 px-6 bg-background">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative overflow-hidden bg-background">
 
-        {/* Text content */}
-        <div className="relative z-10 space-y-8 -mt-4">
-          <h1 className="text-5xl lg:text-7xl font-display font-black leading-[1.08] text-charcoal">
-            Where Young{' '}
-            <span className="block">Musicians</span>
-            <span className="italic text-primary">Find Their Voice</span>
+      {/* ── MOBILE: full-bleed image hero ── */}
+      <div className="lg:hidden relative h-[70svh] max-h-[520px] flex flex-col justify-end">
+
+        {/* Background image */}
+        <img
+          src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=80"
+          alt="Student playing violin in a warm sunlit studio"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          loading="eager"
+        />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/55 to-black/95" />
+
+        {/* Text + credential chips + CTAs */}
+        <div className="relative z-10 px-6 pb-10 space-y-4">
+          <h1 className="text-4xl font-display font-black text-white leading-[1.1]">
+            Where Young<br />
+            Musicians<br />
+            <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-700 align-baseline ml-1" aria-hidden="true" />
           </h1>
 
-          <p className="text-lg lg:text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
-            Sydney Conservatorium-trained teachers offering piano, violin, cello
-            and viola lessons for children from age 4 in North Strathfield. We
-            specialise in young beginners.
-          </p>
+          {/* Credential chips */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-primary/80 backdrop-blur-sm flex items-center justify-center shrink-0">
+                <GraduationCapIcon className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span className="text-white/90 text-sm font-medium">Sydney Conservatorium-trained teachers</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-primary/80 backdrop-blur-sm flex items-center justify-center shrink-0">
+                <PeopleIcon className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span className="text-white/90 text-sm font-medium">All ages & levels welcome</span>
+            </div>
+          </div>
 
-          <div className="flex flex-wrap gap-4 pt-2">
-            <Link to="/enrol">
-              <Button variant="primary" size="lg">
+          <div className="flex flex-col gap-3 pt-1">
+            <Link to="/enrol" className="block">
+              <Button variant="primary" size="lg" className="w-full">
                 Book a Free Trial Lesson
                 <ArrowRightIcon />
               </Button>
             </Link>
-            <Link to="/programs">
-              <Button variant="ghost" size="lg">
-                Explore Programs
-              </Button>
+            <Link to="/teachers" className="block">
+              <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg font-semibold
+                                 px-10 py-4 text-base border-2 border-white/35 text-white
+                                 bg-white/10 backdrop-blur-sm hover:bg-white/20
+                                 transition-all duration-200 cursor-pointer
+                                 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent">
+                Explore Teachers
+              </button>
             </Link>
           </div>
-
-          {/* Trust badges */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            {[
-              { icon: <StarIcon className="w-4 h-4 text-accent" />, label: 'Ages 4 and up' },
-              { icon: <CheckIcon className="w-4 h-4 text-primary" />, label: 'Free trial lesson' },
-              { icon: <LocationPinIcon className="w-4 h-4 text-primary" />, label: 'North Strathfield' },
-            ].map(({ icon, label }) => (
-              <div key={label} className="relative overflow-hidden badge-shimmer flex items-center gap-2 bg-white border border-primary/10 rounded-full px-4 py-1.5 shadow-sm">
-                {icon}
-                <span className="text-xs font-semibold text-charcoal/70">{label}</span>
-              </div>
-            ))}
-          </div>
         </div>
+      </div>
 
-        {/* Hero image */}
-        <div className="relative hidden lg:block">
-          {/* Decorative offset bg */}
-          <div className="absolute -bottom-6 -right-6 w-full h-full bg-primary/8 rounded-3xl" />
+      {/* ── DESKTOP: 2-column layout ── */}
+      <div className="hidden lg:block pt-10 pb-14 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-primary/5">
-            {/* Botanical SVG overlay */}
-            <BotanicalDecoration className="absolute -top-8 -right-8 w-48 h-48 text-primary/15 pointer-events-none z-10" />
+          {/* Text content */}
+          <div className="relative z-10 space-y-8 -mt-4">
+            <h1 className="text-7xl font-display font-black leading-[1.08] text-charcoal">
+              Where Young{' '}
+              <span className="block">Musicians</span>
+              <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-700 align-baseline ml-1" aria-hidden="true" />
+            </h1>
 
-            <img
-              src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=80"
-              alt="Student playing piano in a warm, sunlit studio"
-              className="w-full h-full object-cover"
-              loading="eager"
-            />
-            {/* Warm tint overlay */}
-            <div className="absolute inset-0 bg-primary/5 mix-blend-multiply" />
+            <p className="text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
+              Sydney Conservatorium-trained teachers offering piano, violin, cello
+              and viola lessons for children from age 4 in North Strathfield.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link to="/enrol">
+                <Button variant="primary" size="lg">
+                  Book a Free Trial Lesson
+                  <ArrowRightIcon />
+                </Button>
+              </Link>
+              <Link to="/teachers">
+                <Button variant="ghost" size="lg">
+                  Explore Teachers
+                </Button>
+              </Link>
+            </div>
+
+            {/* Instrument pills */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              {instruments.map(i => (
+                <span key={i} className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/15">
+                  {i}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Floating stats card */}
-          <div className="absolute -left-8 bottom-12 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-4 border border-primary/10">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-              <MusicNoteIcon className="w-5 h-5 text-accent" />
+          {/* Image side */}
+          <div className="relative">
+            <div className="absolute -bottom-6 -right-6 w-full h-full bg-primary/8 rounded-3xl" />
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-primary/5">
+              <BotanicalDecoration className="absolute -top-8 -right-8 w-48 h-48 text-primary/15 pointer-events-none z-10" />
+              <img
+                src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=80"
+                alt="Student playing piano in a warm, sunlit studio"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-primary/5 mix-blend-multiply" />
             </div>
-            <div>
-              <p className="text-xs text-charcoal/50 font-medium">Programs available</p>
-              <p className="text-lg font-display font-bold text-charcoal">4 Instruments</p>
+
+            {/* Floating stats card */}
+            <div className="absolute -left-8 bottom-12 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-4 border border-primary/10">
+              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                <MusicNoteIcon className="w-5 h-5 text-accent" />
+              </div>
+              <div>
+                <p className="text-xs text-charcoal/50 font-medium">Programs available</p>
+                <p className="text-lg font-display font-bold text-charcoal">4 Instruments</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Background botanical decoration */}
-      <BotanicalDecoration className="absolute -bottom-20 -left-20 w-80 h-80 text-primary/5 pointer-events-none" />
+      <BotanicalDecoration className="absolute -bottom-20 -left-20 w-80 h-80 text-primary/5 pointer-events-none hidden lg:block" />
     </section>
   );
 }
@@ -103,27 +155,18 @@ function MusicNoteIcon({ className }: { className?: string }) {
   );
 }
 
-function StarIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-    </svg>
-  );
-}
-
-function LocationPinIcon({ className }: { className?: string }) {
+function GraduationCapIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+    </svg>
+  );
+}
+
+function PeopleIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
     </svg>
   );
 }

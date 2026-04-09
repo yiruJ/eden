@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import SplitText from '../ui/SplitText';
 
 export function CTABanner() {
   return (
-    <section className="py-16 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-5xl mx-auto bg-primary rounded-4xl p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl">
         {/* Decorative circles */}
         <div className="absolute -top-12 -left-12 w-56 h-56 border-[28px] border-white/10 rounded-full pointer-events-none" />
@@ -17,25 +18,37 @@ export function CTABanner() {
           </span>
 
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
-            Is Your Child Ready<br />to Start Playing?
+            <SplitText
+              text="Is Your Child Ready to Start Playing?"
+              className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight"
+              tag="span"
+              splitType="chars"
+              delay={30}
+              duration={0.8}
+              ease="power3.out"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              rootMargin="-50px"
+              textAlign="center"
+            />
           </h2>
 
           <p className="text-white/75 text-lg max-w-xl mx-auto font-light leading-relaxed">
             Spots are limited. Book a free trial lesson and see if Eden is the right fit — no payment, no obligation.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link
               to="/enrol"
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800
-                         text-white font-semibold text-base transition-colors duration-200 cursor-pointer shadow-sm"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800
+                         text-white font-semibold text-base transition-colors duration-200 cursor-pointer"
             >
               Book a Free Trial Lesson
               <ArrowRightIcon />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-lg text-white/90 border-2 border-white/25
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 rounded-lg text-white/90 border-2 border-white/25
                          hover:border-white/50 font-semibold text-base transition-all duration-200 cursor-pointer"
             >
               Ask a Question

@@ -54,7 +54,7 @@ export function ProgramsStrip() {
   }
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-14 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           tag="What We Offer"

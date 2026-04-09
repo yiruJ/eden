@@ -4,10 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#7D9B76',    // sage green
-        accent: '#C4785A',     // terracotta
-        background: '#FAF8F4', // off-white
-        charcoal: '#2C2C2A',
+        primary: '#4aaf81',    // green — main brand colour
+        accent: '#ec2f44',     // red — CTAs and key highlights
+        background: '#FAF8F4', // warm off-white
+        surface: '#eef6f1',    // light mint — alternating sections
+        charcoal: '#1a1a1a',   // near black — main text
+        muted: '#6b7280',      // captions, labels, secondary text
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],

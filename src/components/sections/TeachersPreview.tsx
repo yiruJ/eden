@@ -21,7 +21,7 @@ const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
   <Link
     to="/teachers"
     className="group relative block w-full aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm
-               hover:shadow-xl transition-shadow duration-300"
+               hover:shadow-xl transition-all duration-300"
   >
     {image ? (
       <img
@@ -37,10 +37,23 @@ const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
         </span>
       </div>
     )}
+
+    {/* Top name/instrument overlay */}
     <div className="absolute top-0 inset-x-0 px-4 py-3 bg-gradient-to-b from-black/55 to-transparent">
       <p className="font-display font-bold text-white text-sm leading-tight">{name}</p>
       <p className="text-white/80 text-xs font-semibold uppercase tracking-wider mt-0.5">{instruments}</p>
       <p className="text-white/60 text-xs mt-0.5">Sydney Conservatorium</p>
+    </div>
+
+    {/* Bottom CTA — always visible on mobile, slides up on hover for desktop */}
+    <div className="absolute bottom-0 inset-x-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent
+                    translate-y-1 opacity-90 sm:opacity-0 sm:translate-y-2
+                    group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-300">
+      <span className="inline-flex items-center gap-1.5 text-white text-xs font-semibold tracking-wide">
+        View profile
+        <ArrowRightIcon className="w-3.5 h-3.5" />
+      </span>
     </div>
   </Link>
 );
@@ -69,7 +82,7 @@ export function TeachersPreview() {
   }
 
   return (
-    <section className="py-20 px-6 bg-background">
+    <section className="py-14 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
@@ -81,8 +94,7 @@ export function TeachersPreview() {
             Learn from the best
           </h2>
           <p className="text-charcoal/60 font-light">
-            All our teachers study at the{' '}
-            <span className="font-semibold text-charcoal">Sydney Conservatorium of Music.</span>
+            Our teachers build real technique through lessons children actually look forward to.
           </p>
         </div>
 

@@ -121,7 +121,6 @@ export function Footer() {
           <p className="text-xs text-charcoal/40 uppercase tracking-widest">
             © {new Date().getFullYear()} Eden Music Academy. All rights reserved.
           </p>
-          <p className="text-xs text-charcoal/30 italic">Designed with intention.</p>
         </div>
       </div>
     </footer>
