@@ -60,7 +60,7 @@ export function ContactPage() {
           form_intro: "You've received a new message through the Eden Music Academy website.",
           from_name: formData.name,
           reply_email: formData.email,
-          phone: formData.phone || '—',
+          phone: formData.phone || 'Not provided',
           details: formData.message,
         },
         EMAILJS_PUBLIC
@@ -90,7 +90,7 @@ export function ContactPage() {
             Contact Us
           </h1>
           <p className="text-lg text-charcoal/65 font-light leading-relaxed">
-            Questions about enrolment, programs, or anything else — we'd love to hear from you.
+            Questions about enrolment, programs, or anything else? We'd love to hear from you.
           </p>
         </div>
       </section>
@@ -100,7 +100,7 @@ export function ContactPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-16">
 
           {/* Contact details */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-8 order-2 lg:order-1">
             <h2 className="text-2xl font-display font-bold text-charcoal">Studio Details</h2>
 
             <div className="space-y-5">
@@ -157,7 +157,7 @@ export function ContactPage() {
           </div>
 
           {/* Contact form */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 order-1 lg:order-2">
             {submitted ? (
               <div className="h-full flex items-center justify-center">
                 <div className="text-center space-y-4 py-16">

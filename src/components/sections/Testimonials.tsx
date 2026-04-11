@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     quote:
-      'We tried two other teachers before Eden. The difference was immediate — my son actually practises without being asked now.',
+      'We tried two other teachers before Eden. The difference was immediate. My son actually practises without being asked now.',
     name: 'Emma Calloway',
     role: 'Parent, Burwood',
     initials: 'EC',

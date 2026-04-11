@@ -10,7 +10,7 @@ const programs = [
     title: 'Private Lesson',
     tagline: 'One-on-one instruction, tailored to you',
     description:
-      'Private lessons are the foundation of musical growth at Eden. Every session is fully tailored to the individual student — their goals, learning pace, and personality. With the undivided attention of a dedicated teacher, students build strong technique, musicianship, and confidence at every stage.',
+      'Private lessons are the foundation of musical growth at Eden. Every session is fully tailored to the individual student: their goals, learning pace, and personality. With the undivided attention of a dedicated teacher, students build strong technique, musicianship, and confidence at every stage.',
     highlights: ['All ages & levels welcome', '30 or 60 min sessions', 'Structured term-by-term progression'],
     image: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&q=80',
   },
@@ -19,7 +19,7 @@ const programs = [
     title: 'Ensemble',
     tagline: 'Music is better together',
     description:
-      'At Eden, we believe music is meant to be shared. Our ensemble program brings students together to play as a group — whether with close friends or peers they\'ve just met through the academy. Playing together builds listening skills, rhythmic precision, and a deep sense of musical community that solo practice simply cannot replicate. We strongly encourage all students to participate in ensemble alongside their private lessons.',
+      'At Eden, we believe music is meant to be shared. Our ensemble program brings students together to play as a group, whether with close friends or peers they\'ve just met through the academy. Playing together builds listening skills, rhythmic precision, and a deep sense of musical community that solo practice simply cannot replicate. We strongly encourage all students to participate in ensemble alongside their private lessons.',
     highlights: ['Play with friends or meet new ones', 'Builds listening & teamwork', 'Strongly recommended for all students'],
     image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80',
     featured: true,
@@ -29,7 +29,7 @@ const programs = [
     title: 'Music Theory',
     tagline: 'Understand the language of music',
     description:
-      'Music theory unlocks a deeper understanding of everything students play. Our theory program covers note reading, rhythm, harmony, scales, and musical form — giving students the tools to learn new pieces faster, compose their own music, and communicate fluently with other musicians. Theory is offered as a standalone class or integrated into private lessons.',
+      'Music theory unlocks a deeper understanding of everything students play. Our theory program covers note reading, rhythm, harmony, scales, and musical form, giving students the tools to learn new pieces faster, compose their own music, and communicate fluently with other musicians. Theory is offered as a standalone class or integrated into private lessons.',
     highlights: ['Note reading & rhythm', 'Harmony & musical form', 'Standalone or integrated into lessons'],
     image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&q=80',
   },
@@ -54,7 +54,7 @@ export function ProgramsPage() {
             Our Programs
           </h1>
           <p className="text-lg text-charcoal/65 font-light leading-relaxed">
-            Private studio, ensemble, and music theory — a complete musical education grounded in community, craft, and genuine joy.
+            Private studio, ensemble, and music theory. A complete musical education grounded in community, craft, and genuine joy.
           </p>
         </div>
       </section>
@@ -70,7 +70,7 @@ export function ProgramsPage() {
           <div>
             <p className="font-display font-bold text-charcoal text-lg">Music thrives in community</p>
             <p className="text-charcoal/65 text-sm mt-1 leading-relaxed">
-              We strongly encourage every student to join an ensemble. Playing alongside friends — or making new ones — is where music truly comes alive. It builds skills no private lesson can replicate and creates friendships that last beyond the studio.
+              We strongly encourage every student to join an ensemble. Playing alongside friends, or making new ones, is where music truly comes alive. It builds skills no private lesson can replicate and creates friendships that last beyond the studio.
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@ export function ProgramsPage() {
           <SectionHeading
             tag="Our Philosophy"
             title="Learning music together changes everything"
-            subtitle="Private lessons build technique. Ensemble builds musicians. We designed Eden so students can experience both — and find their people along the way."
+            subtitle="Private lessons build technique. Ensemble builds musicians. We designed Eden so students can experience both and find their people along the way."
           />
           <Link
             to="/contact"

@@ -35,7 +35,7 @@ const values = [
   {
     title: 'Artistry First',
     description:
-      'We believe technique is a means to an end — the end being genuine musical expression and a lifelong love of music.',
+      'We believe technique is a means to an end. The end is genuine musical expression and a lifelong love of music.',
   },
   {
     title: 'Student-Centred',
@@ -66,13 +66,13 @@ export function AboutPage() {
               Our Story
             </span>
             <h1 className="text-5xl lg:text-6xl font-display font-bold text-charcoal leading-tight">
-              Music education <span className="italic text-primary">with heart</span>
+              Music education <span className="italic text-primary">with heart</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
             </h1>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
-              Eden Music Academy was born from a simple belief — that great music teaching changes lives. Founded in Sydney in 2014, we've grown into a community of passionate teachers and curious students of all ages.
+              Eden Music Academy was born from a simple belief: great music teaching changes lives. Founded in Sydney in 2014, we've grown into a community of passionate teachers and curious students of all ages.
             </p>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
-              We named ourselves Eden because we wanted to create a space where creativity flourishes naturally — warm, alive, and full of possibility.
+              We named ourselves Eden because we wanted to create a space where creativity flourishes naturally: warm, alive, and full of possibility.
             </p>
           </div>
 

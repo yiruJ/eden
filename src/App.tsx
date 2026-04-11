@@ -17,6 +17,7 @@ import { ContactPage } from './pages/ContactPage';
 import { EnrolPage } from './pages/EnrolPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ThankYouPage } from './pages/ThankYouPage';
+import { PricingPage } from './pages/PricingPage';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/enrol" element={<EnrolPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

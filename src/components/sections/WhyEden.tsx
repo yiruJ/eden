@@ -10,17 +10,17 @@ const values = [
   {
     icon: CalendarIcon,
     title: 'Flexible Scheduling',
-    description: 'Lessons designed to fit your lifestyle — mornings, afternoons, evenings, and weekends.',
+    description: 'Lessons designed to fit your lifestyle, mornings, afternoons, evenings, and weekends.',
   },
   {
     icon: HeartIcon,
     title: 'All Ages Welcome',
-    description: 'From curious 4-year-olds to adult learners returning to music — everyone belongs at Eden.',
+    description: 'From curious 4-year-olds to adult learners returning to music, everyone belongs at Eden.',
   },
   {
     icon: LeafIcon,
     title: 'Nurturing Environment',
-    description: 'A warm, beautiful space free of pressure — where creativity and confidence naturally flourish.',
+    description: 'A warm, beautiful space free of pressure, where creativity and confidence naturally flourish.',
   },
 ];
 
@@ -39,7 +39,7 @@ export function WhyEden() {
               Why Choose Eden Music Academy?
             </h2>
             <p className="text-lg text-charcoal/65 max-w-2xl leading-relaxed font-light">
-              We believe music education should feel as good as it sounds — expert guidance in a space that inspires.
+              We believe music education should feel as good as it sounds: expert guidance in a space that inspires.
             </p>
             <div className="w-16 h-1 bg-accent/40 rounded-full" />
             <div className="rounded-2xl overflow-hidden shadow-md w-full aspect-video">

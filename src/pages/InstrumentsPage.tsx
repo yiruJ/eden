@@ -20,7 +20,7 @@ export function InstrumentsPage() {
             Instruments
           </h1>
           <p className="text-lg text-charcoal/65 font-light leading-relaxed">
-            Piano, violin, viola, and cello — taught with care and intention. Regardless of age or experience, we'll match you with the right teacher and approach.
+            Piano, violin, viola, and cello, taught with care and intention. Regardless of age or experience, we'll match you with the right teacher and approach.
           </p>
         </div>
       </section>
@@ -40,7 +40,7 @@ export function InstrumentsPage() {
               <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Keyboard</span>
               <h3 className="text-2xl font-display font-bold text-charcoal mb-2">Piano</h3>
               <p className="text-sm text-charcoal/60 leading-relaxed">
-                Build a strong musical foundation through classical technique, contemporary styles, and music theory — all on one instrument.
+                Build a strong musical foundation through classical technique, contemporary styles, and music theory. All on one instrument.
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ export function InstrumentsPage() {
               <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-1 block">Strings</span>
               <h3 className="text-xl font-display font-bold text-charcoal mb-1.5">Violin</h3>
               <p className="text-sm text-charcoal/60 leading-relaxed">
-                A nurturing approach to classical strings — from first bow hold to advanced repertoire.
+                A nurturing approach to classical strings, from first bow hold to advanced repertoire.
               </p>
             </div>
           </div>

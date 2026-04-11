@@ -34,7 +34,7 @@ export function CTABanner() {
           </h2>
 
           <p className="text-white/75 text-lg max-w-xl mx-auto font-light leading-relaxed">
-            Spots are limited. Book a free trial lesson and see if Eden is the right fit — no payment, no obligation.
+            Spots are limited. Book a free trial lesson and see if Eden is the right fit. No payment, no obligation.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">

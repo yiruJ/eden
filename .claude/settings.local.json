@@ -10,7 +10,20 @@
       "WebFetch(domain:edenmusicacademy.com)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"shimmer shine animation badge pill subtle loop\" --domain ux)"
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"shimmer shine animation badge pill subtle loop\" --domain ux)",
+      "WebFetch(domain:reactbits.dev)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh repo:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(curl -s https://raw.githubusercontent.com/DavidHDev/react-bits/main/src/content/Components/BorderGlow/BorderGlow.jsx)",
+      "Bash(curl:*)",
+      "Bash(claude mcp:*)",
+      "Read(//Users/yirujang/.claude/**)",
+      "Bash(npx @rafarafarafa/nano-banana-pro-mcp --help)",
+      "mcp__nano-banana-pro__generate_image",
+      "Bash(npx tsc:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

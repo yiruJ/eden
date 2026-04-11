@@ -1,0 +1,165 @@
+.card-nav-container {
+  position: fixed;
+  top: 1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% * 11 / 12);
+  max-width: none;
+  z-index: 99;
+  box-sizing: border-box;
+}
+
+.card-nav-container:has(.card-nav.open) {
+  width: calc(100% * 11 / 12);
+}
+
+.card-nav {
+  display: block;
+  height: 60px;
+  padding: 0;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+  will-change: height;
+}
+
+.card-nav-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  z-index: 2;
+}
+
+.hamburger-menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 6px;
+  order: 2;
+}
+
+.hamburger-menu:hover .hamburger-line {
+  opacity: 0.75;
+}
+
+.hamburger-line {
+  width: 26px;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    margin 0.3s ease;
+  transform-origin: 50% 50%;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  order: 1;
+}
+
+.card-nav-logo {
+  height: 36px;
+  width: auto;
+}
+
+.card-nav-cta-button {
+  display: none;
+}
+
+.card-nav-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .card-nav-content {
+    flex-direction: row;
+  }
+}
+
+.card-nav.open .card-nav-content {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-card {
+  height: auto;
+  min-height: 60px;
+  flex: 1 1 auto;
+  border-radius: calc(0.75rem - 0.2rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  gap: 8px;
+  user-select: none;
+}
+
+.nav-card-label {
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  text-align: right;
+}
+
+.nav-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-end;
+}
+
+.nav-card-link {
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  padding: 4px 0;
+}
+
+.nav-card-link:hover {
+  opacity: 0.75;
+}
+
+.nav-card-link-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}

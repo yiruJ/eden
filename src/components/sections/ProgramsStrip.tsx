@@ -16,7 +16,7 @@ const programs = [
     icon: PeopleIcon,
     title: 'Ensemble',
     description:
-      'Play alongside friends or meet new ones through music. We strongly recommend ensemble for every student — it\'s where music truly comes alive.',
+      'Play alongside friends or meet new ones through music. We strongly recommend ensemble for every student. It\'s where music truly comes alive.',
     to: '/programs',
     featured: true,
   },
@@ -25,7 +25,7 @@ const programs = [
     icon: NoteIcon,
     title: 'Music Theory',
     description:
-      'Understand the language of music. From note reading and rhythm to harmony and form — theory makes every student a more complete musician.',
+      'Understand the language of music. From note reading and rhythm to harmony and form, theory makes every student a more complete musician.',
     to: '/programs',
   },
 ];
@@ -59,7 +59,7 @@ export function ProgramsStrip() {
         <SectionHeading
           tag="What We Offer"
           title="Our Programs"
-          subtitle="A complete musical education — private instruction, ensemble playing, and music theory, all rooted in community."
+          subtitle="A complete musical education: private instruction, ensemble playing, and music theory, all rooted in community."
           className="mb-16"
         />
 

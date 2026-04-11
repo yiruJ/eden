@@ -5,7 +5,7 @@ const instruments = ['Piano', 'Violin', 'Cello', 'Viola'] as const;
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-background -mt-16">
 
       {/* ── MOBILE: full-bleed image hero ── */}
       <div className="lg:hidden relative h-[70svh] max-h-[520px] flex flex-col justify-end">
@@ -26,7 +26,7 @@ export function Hero() {
           <h1 className="text-4xl font-display font-black text-white leading-[1.1]">
             Where Young<br />
             Musicians<br />
-            <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-700 align-baseline ml-1" aria-hidden="true" />
+            <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
           </h1>
 
           {/* Credential chips */}
@@ -74,7 +74,7 @@ export function Hero() {
             <h1 className="text-7xl font-display font-black leading-[1.08] text-charcoal">
               Where Young{' '}
               <span className="block">Musicians</span>
-              <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-700 align-baseline ml-1" aria-hidden="true" />
+              <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
             </h1>
 
             <p className="text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">

@@ -42,7 +42,7 @@ const teachers: Teacher[] = [
     name: 'Rachel Jeong',
     instruments: ['Cello'],
     image: null,
-    bio: 'Rachel is completing her Bachelor of Music Performance at the Sydney Conservatorium under Julian Smiles. A graduate of the Victorian College of the Arts Secondary School, she brings real performance experience — international touring and radio broadcast work — to every lesson.',
+    bio: 'Rachel is completing her Bachelor of Music Performance at the Sydney Conservatorium under Julian Smiles. A graduate of the Victorian College of the Arts Secondary School, she brings real performance experience, including international touring and radio broadcast work, to every lesson.',
     highlights: [
       'Melbourne String Ensemble',
       '2024 Germany & Czechia International Tour',
@@ -69,9 +69,8 @@ export function TeachersPage() {
             Meet Our Teachers
           </h1>
           <p className="text-lg text-charcoal/65 font-light leading-relaxed max-w-xl mx-auto">
-            All of our teachers are students of the{' '}
-            <span className="font-semibold text-charcoal">Sydney Conservatorium of Music</span>{' '}
-            — one of Australia's most prestigious music institutions.
+            Every teacher at Eden brings genuine passion for music and a natural gift for
+            inspiring students to fall in love with playing.
           </p>
         </div>
       </section>
