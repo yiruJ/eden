@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { CTABanner } from '../components/sections/CTABanner';
 import { SEO } from '../components/SEO';
+import { CelloModel } from '../components/ui/CelloModel';
+import { PianoModel } from '../components/ui/PianoModel';
+import { ViolinModel } from '../components/ui/ViolinModel';
 
 export function InstrumentsPage() {
   return (
@@ -27,66 +30,70 @@ export function InstrumentsPage() {
 
       {/* Bento grid */}
       <section className="py-8 px-6 pb-20 bg-background">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 gap-4">
 
-          {/* Piano — landscape, 2 cols × 1 row */}
-          <div className="sm:col-span-2 lg:col-span-2 lg:row-span-1
+          {/* Piano — landscape, cols 1-4 row 1 */}
+          <div className="sm:col-span-2 lg:col-span-4 lg:row-span-1 lg:col-start-1 lg:row-start-1
                        bg-white rounded-3xl border border-primary/8 shadow-sm
-                       overflow-hidden flex flex-col sm:flex-row min-h-[220px]">
-            <div className="flex items-center justify-center bg-primary/6 sm:w-2/5 py-10 sm:py-0">
-              <PianoIcon className="w-36 h-24 text-primary" />
-            </div>
-            <div className="flex flex-col justify-center p-7 sm:w-3/5">
-              <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Keyboard</span>
+                       overflow-hidden flex flex-row min-h-[220px]">
+            <div className="flex flex-col justify-center p-7 w-1/2 shrink-0">
+              <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-2 block">Keyboard</span>
               <h3 className="text-2xl font-display font-bold text-charcoal mb-2">Piano</h3>
               <p className="text-sm text-charcoal/60 leading-relaxed">
                 Build a strong musical foundation through classical technique, contemporary styles, and music theory. All on one instrument.
               </p>
             </div>
+            <div className="relative w-1/2 min-h-0">
+              <PianoModel />
+            </div>
           </div>
 
-          {/* Violin — portrait, 1 col × 2 rows */}
-          <div className="lg:col-span-1 lg:row-span-2
+          {/* Violin + Viola wrapper — cols 1-4 row 2 */}
+          <div className="lg:col-span-4 lg:row-span-1 lg:col-start-1 lg:row-start-2
+                       flex flex-col lg:flex-row gap-4">
+
+            {/* Violin */}
+            <div className="relative bg-white rounded-3xl border border-primary/8 shadow-sm overflow-hidden
+                         w-full lg:w-[48%]" style={{ minHeight: '280px' }}>
+              <div className="absolute inset-0">
+                <ViolinModel distanceMultiplier={1.6} cameraYOffset={0.32} cameraXOffset={-0.15} />
+              </div>
+              <div className="absolute top-0 left-0 p-4 w-1/2">
+                <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-1 block">Strings</span>
+                <h3 className="text-lg font-display font-bold text-charcoal mb-1">Violin</h3>
+                <p className="text-xs text-charcoal/60 leading-relaxed">
+                  Classical strings from first bow hold to advanced repertoire.
+                </p>
+              </div>
+            </div>
+
+            {/* Viola */}
+            <div className="bg-white rounded-3xl border border-primary/8 shadow-sm overflow-hidden flex flex-row
+                         w-full lg:w-[52%]">
+              <div className="relative w-[55%]" style={{ minHeight: '280px' }}>
+                <ViolinModel distanceMultiplier={1.3} cameraYOffset={0.22} />
+              </div>
+              <div className="flex flex-col justify-end p-5 pb-6 w-[45%]">
+                <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-1 block">Strings</span>
+                <h3 className="text-lg font-display font-bold text-charcoal mb-1">Viola</h3>
+                <p className="text-xs text-charcoal/60 leading-relaxed">
+                  Warm, resonant tone. Open to beginners and violin transfers.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Cello — tall vertical, cols 5-6 rows 1-2 */}
+          <div className="sm:col-span-2 lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-1
                        bg-white rounded-3xl border border-primary/8 shadow-sm
-                       overflow-hidden flex flex-col min-h-[220px] lg:min-h-0">
-            <div className="flex items-center justify-center bg-primary/6 flex-1 py-10">
-              <ViolinIcon className="w-16 h-40 text-primary" />
+                       overflow-hidden flex flex-col min-h-[400px]">
+            <div className="relative flex-1 min-h-0" style={{ minHeight: '300px' }}>
+              <CelloModel />
             </div>
             <div className="p-6">
               <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-1 block">Strings</span>
-              <h3 className="text-xl font-display font-bold text-charcoal mb-1.5">Violin</h3>
-              <p className="text-sm text-charcoal/60 leading-relaxed">
-                A nurturing approach to classical strings, from first bow hold to advanced repertoire.
-              </p>
-            </div>
-          </div>
-
-          {/* Viola — portrait, 1 col × 2 rows */}
-          <div className="lg:col-span-1 lg:row-span-2
-                       bg-white rounded-3xl border border-primary/8 shadow-sm
-                       overflow-hidden flex flex-col min-h-[220px] lg:min-h-0">
-            <div className="flex items-center justify-center bg-accent/6 flex-1 py-10">
-              <ViolaIcon className="w-16 h-40 text-accent" />
-            </div>
-            <div className="p-6">
-              <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-1 block">Strings</span>
-              <h3 className="text-xl font-display font-bold text-charcoal mb-1.5">Viola</h3>
-              <p className="text-sm text-charcoal/60 leading-relaxed">
-                The viola's warm, resonant tone makes it deeply rewarding. Open to beginners and violin transfers.
-              </p>
-            </div>
-          </div>
-
-          {/* Cello — landscape, 2 cols × 1 row */}
-          <div className="sm:col-span-2 lg:col-span-2 lg:row-span-1
-                       bg-white rounded-3xl border border-primary/8 shadow-sm
-                       overflow-hidden flex flex-col sm:flex-row min-h-[220px]">
-            <div className="flex items-center justify-center bg-charcoal/4 sm:w-2/5 py-10 sm:py-0">
-              <CelloIcon className="w-20 h-28 text-charcoal/70" />
-            </div>
-            <div className="flex flex-col justify-center p-7 sm:w-3/5">
-              <span className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Strings</span>
-              <h3 className="text-2xl font-display font-bold text-charcoal mb-2">Cello</h3>
+              <h3 className="text-xl font-display font-bold text-charcoal mb-1.5">Cello</h3>
               <p className="text-sm text-charcoal/60 leading-relaxed">
                 Rich, expressive, and deeply musical. Lessons cover posture, bow technique, and beautiful classical repertoire.
               </p>
@@ -167,19 +174,3 @@ function ViolaIcon({ className }: { className?: string }) {
   );
 }
 
-function CelloIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 70 185" fill="none" aria-hidden="true">
-      <ellipse cx="35" cy="130" rx="28" ry="34" stroke="currentColor" strokeWidth="3" fill="none" />
-      <ellipse cx="35" cy="62" rx="21" ry="25" stroke="currentColor" strokeWidth="3" fill="none" />
-      <path d="M7 102 C13 93, 13 83, 15 76" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <path d="M63 102 C57 93, 57 83, 55 76" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <rect x="31" y="22" width="8" height="22" rx="3" fill="currentColor" />
-      <path d="M35 22 C35 22, 27 17, 27 11 C27 5, 32 3, 35 5 C38 7, 39 12, 35 13" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <line x1="35" y1="164" x2="35" y2="178" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-      <path d="M24 120 C24 115, 26 113, 26 108" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M46 120 C46 115, 44 113, 44 108" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-      <line x1="35" y1="13" x2="35" y2="158" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
-    </svg>
-  );
-}
