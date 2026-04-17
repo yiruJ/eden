@@ -4,17 +4,17 @@ import logo from '../../assets/logo.png';
 const mobileNavItems = [
   {
     label: 'Get Started',
-    bgColor: '#2C2C2A',
+    bgColor: '#4aaf81',
     textColor: '#ffffff',
     links: [
       { label: 'Pricing', to: '/pricing' },
       { label: 'Contact', to: '/contact' },
-      { label: 'Book a Trial', to: '/enrol' },
+      { label: 'Book a Trial', to: '/enrol', variant: 'button' as const },
     ],
   },
   {
     label: 'Programs',
-    bgColor: '#4aaf81',
+    bgColor: '#2C2C2A',
     textColor: '#ffffff',
     links: [
       { label: 'All Programs', to: '/programs' },

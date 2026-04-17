@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import jiminImg from '../../assets/teachers/jimin.JPG';
 import hanaImg from '../../assets/teachers/hana.jpeg';
 import dylanImg from '../../assets/teachers/dylan.JPEG';
+import rachelImg from '../../assets/teachers/rachel.JPEG';
 
 interface TeacherPreview {
   name: string;
@@ -11,10 +12,11 @@ interface TeacherPreview {
 }
 
 const teachers: TeacherPreview[] = [
+  { name: 'Dylan Lee', instruments: 'Violin & Viola', image: dylanImg },
   { name: 'Jimin Park', instruments: 'Violin', image: jiminImg },
   { name: 'Hana Lee', instruments: 'Violin', image: hanaImg },
-  { name: 'Dylan Lee', instruments: 'Violin & Viola', image: dylanImg },
-  { name: 'Rachel Jeong', instruments: 'Cello', image: null },
+  { name: 'Rachel Jeong', instruments: 'Cello & Piano', image: rachelImg },
+  { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null },
 ];
 
 const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (

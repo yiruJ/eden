@@ -1,10 +1,9 @@
 import { Hero } from '../components/sections/Hero';
 import { ProgramsStrip } from '../components/sections/ProgramsStrip';
 import { TeachersPreview } from '../components/sections/TeachersPreview';
-import { WhyEden } from '../components/sections/WhyEden';
 import { Testimonials } from '../components/sections/Testimonials';
-import { PricingTeaser } from '../components/sections/PricingTeaser';
 import { CTABanner } from '../components/sections/CTABanner';
+import { FacilitySection } from '../components/sections/FacilitySection';
 import { SEO } from '../components/SEO';
 import { FadeIn } from '../components/ui/FadeIn';
 
@@ -26,13 +25,10 @@ export function HomePage() {
         <TeachersPreview />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
-        <WhyEden />
+        <FacilitySection />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
         <Testimonials />
-      </FadeIn>
-      <FadeIn direction="up" delay={100}>
-        <PricingTeaser />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
         <CTABanner />

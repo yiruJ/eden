@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Button } from '../ui/Button';
 import SplitText from '../ui/SplitText';
 
 export function CTABanner() {
@@ -37,7 +36,21 @@ export function CTABanner() {
             Spots are limited. Book a free trial lesson and see if Eden is the right fit. No payment, no obligation.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          {/* Pricing strip */}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-white/10 rounded-2xl px-7 py-4 mx-auto">
+            <span className="text-white/60 text-xs font-semibold uppercase tracking-widest">Lesson lengths</span>
+            {['30 min', '45 min', '60 min'].map((len) => (
+              <span key={len} className="text-white font-semibold text-sm">{len}</span>
+            ))}
+            <Link
+              to="/pricing"
+              className="text-white/80 text-xs underline underline-offset-2 hover:text-white transition-colors"
+            >
+              View full pricing
+            </Link>
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
             <Link
               to="/enrol"
               className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800

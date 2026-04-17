@@ -2,6 +2,7 @@ import { CTABanner } from '../components/sections/CTABanner';
 import jiminImg from '../assets/teachers/jimin.JPG';
 import hanaImg from '../assets/teachers/hana.jpeg';
 import dylanImg from '../assets/teachers/dylan.JPEG';
+import rachelImg from '../assets/teachers/rachel.JPEG';
 import { SEO } from '../components/SEO';
 
 interface Teacher {
@@ -13,6 +14,13 @@ interface Teacher {
 }
 
 const teachers: Teacher[] = [
+  {
+    name: 'Dylan Lee',
+    instruments: ['Violin', 'Viola'],
+    image: dylanImg,
+    bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
+    highlights: [],
+  },
   {
     name: 'Jimin Park',
     instruments: ['Violin'],
@@ -32,22 +40,22 @@ const teachers: Teacher[] = [
     ],
   },
   {
-    name: 'Dylan Lee',
-    instruments: ['Violin', 'Viola'],
-    image: dylanImg,
-    bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
-    highlights: [],
-  },
-  {
     name: 'Rachel Jeong',
-    instruments: ['Cello'],
-    image: null,
+    instruments: ['Cello', 'Piano'],
+    image: rachelImg,
     bio: 'Rachel is completing her Bachelor of Music Performance at the Sydney Conservatorium under Julian Smiles. A graduate of the Victorian College of the Arts Secondary School, she brings real performance experience, including international touring and radio broadcast work, to every lesson.',
     highlights: [
       'Melbourne String Ensemble',
       '2024 Germany & Czechia International Tour',
       '3MBS Radio soloist',
     ],
+  },
+  {
+    name: 'Elijah Lee',
+    instruments: ['Cello', 'Piano'],
+    image: null,
+    bio: 'A graduate of the Sydney Conservatorium of Music, Elijah brings a rare dual fluency in cello and piano. His teaching draws on a thorough classical training to help students build strong technique, expressive depth, and a genuine love of music from the very first lesson.',
+    highlights: [],
   },
 ];
 

@@ -8,6 +8,7 @@ interface NavLink {
   label: string;
   to: string;
   ariaLabel?: string;
+  variant?: 'link' | 'button';
 }
 
 interface NavItem {
@@ -24,6 +25,8 @@ interface CardNavProps {
   className?: string;
   ease?: string;
   baseColor?: string;
+  ctaLabel?: string;
+  ctaTo?: string;
 }
 
 function ArrowUpRightIcon({ className }: { className?: string }) {
@@ -41,12 +44,25 @@ export function CardNav({
   className = '',
   ease = 'power3.out',
   baseColor = '#EAF2E8',
+  ctaLabel = 'Book a Trial',
+  ctaTo = '/enrol',
 }: CardNavProps) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 1024px)').matches : false
+  );
   const navRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+
+  // Track desktop breakpoint
+  useLayoutEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const calculateHeight = () => {
     const navEl = navRef.current;
@@ -93,6 +109,7 @@ export function CardNav({
   };
 
   useLayoutEffect(() => {
+    if (isDesktop) return;
     const tl = createTimeline();
     tlRef.current = tl;
     return () => {
@@ -100,9 +117,10 @@ export function CardNav({
       tlRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ease, items]);
+  }, [ease, items, isDesktop]);
 
   useLayoutEffect(() => {
+    if (isDesktop) return;
     const handleResize = () => {
       if (!tlRef.current) return;
       if (isExpanded) {
@@ -120,7 +138,7 @@ export function CardNav({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isExpanded]);
+  }, [isExpanded, isDesktop]);
 
   const toggleMenu = () => {
     const tl = tlRef.current;
@@ -143,6 +161,63 @@ export function CardNav({
     tlRef.current?.reverse();
   };
 
+  // ── Desktop layout ─────────────────────────────────────────────────────────
+  if (isDesktop) {
+    return (
+      <div className={`card-nav-container ${className}`}>
+        <nav
+          className="card-nav"
+          style={{ backgroundColor: baseColor, height: 'auto', overflow: 'visible' }}
+        >
+          <div className="card-nav-top" style={{ position: 'relative', height: 'auto', padding: '0.5rem 1rem' }}>
+            {/* Logo */}
+            <Link to="/" aria-label="Eden Music Academy home" className="logo-container">
+              <img src={logo} alt={logoAlt} className="card-nav-logo" />
+            </Link>
+
+            {/* Cards row */}
+            <div className="desktop-cards-row">
+              {items.slice(0, 3).map((item) => (
+                <div
+                  key={item.label}
+                  className="desktop-nav-card"
+                  style={{ backgroundColor: item.bgColor, color: item.textColor }}
+                >
+                  <p className="desktop-nav-card-label">{item.label}</p>
+                  <div className="desktop-nav-card-links">
+                    {item.links.map((lnk, i) =>
+                      lnk.variant === 'button' ? (
+                        <Link
+                          key={`${lnk.label}-${i}`}
+                          to={lnk.to}
+                          aria-label={lnk.ariaLabel}
+                          className="desktop-nav-card-btn"
+                        >
+                          {lnk.label}
+                        </Link>
+                      ) : (
+                        <Link
+                          key={`${lnk.label}-${i}`}
+                          to={lnk.to}
+                          aria-label={lnk.ariaLabel}
+                          className="desktop-nav-card-link"
+                        >
+                          <ArrowUpRightIcon className="nav-card-link-icon" />
+                          {lnk.label}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+
+  // ── Mobile layout (unchanged) ───────────────────────────────────────────────
   return (
     <div className={`card-nav-container ${className}`}>
       <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
@@ -176,16 +251,30 @@ export function CardNav({
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
                 {item.links.map((lnk, i) => (
-                  <Link
-                    key={`${lnk.label}-${i}`}
-                    className="nav-card-link"
-                    to={lnk.to}
-                    aria-label={lnk.ariaLabel}
-                    onClick={closeMenu}
-                  >
-                    <ArrowUpRightIcon className="nav-card-link-icon" />
-                    {lnk.label}
-                  </Link>
+                  lnk.variant === 'button' ? (
+                    <Link
+                      key={`${lnk.label}-${i}`}
+                      to={lnk.to}
+                      aria-label={lnk.ariaLabel}
+                      onClick={closeMenu}
+                      className="mt-2 inline-flex items-center justify-center px-5 py-2.5 rounded-lg
+                                 bg-accent text-white text-sm font-bold hover:bg-accent/90
+                                 transition-colors self-end"
+                    >
+                      {lnk.label}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={`${lnk.label}-${i}`}
+                      className="nav-card-link"
+                      to={lnk.to}
+                      aria-label={lnk.ariaLabel}
+                      onClick={closeMenu}
+                    >
+                      <ArrowUpRightIcon className="nav-card-link-icon" />
+                      {lnk.label}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
