@@ -163,53 +163,40 @@ export function CardNav({
 
   // ── Desktop layout ─────────────────────────────────────────────────────────
   if (isDesktop) {
+    const allLinks = items.flatMap((item) => item.links);
+    const regularLinks = allLinks.filter((lnk) => lnk.variant !== 'button');
+    const ctaLink = allLinks.find((lnk) => lnk.variant === 'button');
+
     return (
       <div className={`card-nav-container ${className}`}>
         <nav
           className="card-nav"
-          style={{ backgroundColor: baseColor, height: 'auto', overflow: 'visible' }}
+          style={{ height: '60px', overflow: 'visible' }}
         >
-          <div className="card-nav-top" style={{ position: 'relative', height: 'auto', padding: '0.5rem 1rem' }}>
-            {/* Logo */}
-            <Link to="/" aria-label="Eden Music Academy home" className="logo-container">
-              <img src={logo} alt={logoAlt} className="card-nav-logo" />
-            </Link>
+          <div className="card-nav-top" style={{ position: 'relative', height: '60px', padding: '0 1.25rem' }}>
+            {/* Logo — left */}
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+              <Link to="/" aria-label="Eden Music Academy home" className="logo-container">
+                <img src={logo} alt={logoAlt} className="card-nav-logo" />
+              </Link>
+            </div>
 
-            {/* Cards row */}
-            <div className="desktop-cards-row">
-              {items.slice(0, 3).map((item) => (
-                <div
-                  key={item.label}
-                  className="desktop-nav-card"
-                  style={{ backgroundColor: item.bgColor, color: item.textColor }}
-                >
-                  <p className="desktop-nav-card-label">{item.label}</p>
-                  <div className="desktop-nav-card-links">
-                    {item.links.map((lnk, i) =>
-                      lnk.variant === 'button' ? (
-                        <Link
-                          key={`${lnk.label}-${i}`}
-                          to={lnk.to}
-                          aria-label={lnk.ariaLabel}
-                          className="desktop-nav-card-btn"
-                        >
-                          {lnk.label}
-                        </Link>
-                      ) : (
-                        <Link
-                          key={`${lnk.label}-${i}`}
-                          to={lnk.to}
-                          aria-label={lnk.ariaLabel}
-                          className="desktop-nav-card-link"
-                        >
-                          <ArrowUpRightIcon className="nav-card-link-icon" />
-                          {lnk.label}
-                        </Link>
-                      )
-                    )}
-                  </div>
-                </div>
+            {/* Nav links — centre */}
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem' }}>
+              {regularLinks.map((lnk, i) => (
+                <Link key={`${lnk.label}-${i}`} to={lnk.to} className="desktop-flat-link">
+                  {lnk.label}
+                </Link>
               ))}
+            </div>
+
+            {/* CTA — right */}
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+              {ctaLink && (
+                <Link to={ctaLink.to} className="desktop-flat-btn">
+                  {ctaLink.label}
+                </Link>
+              )}
             </div>
           </div>
         </nav>
