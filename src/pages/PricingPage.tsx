@@ -71,6 +71,13 @@ const discounts = [
     badgeColor: 'bg-accent/10 text-accent',
     description: "Refer a friend to Eden and you'll receive 5% off your next payment package once they enrol. Applied to the referrer only.",
   },
+  {
+    icon: PackageIcon,
+    title: '10-Week Package',
+    badge: '$50 off',
+    badgeColor: 'bg-primary text-white',
+    description: 'Pay upfront for a full 10-week term and receive $50 off the total price. Secures your regular time slot and gives your teacher time to plan ahead.',
+  },
 ];
 
 const included = [
@@ -343,6 +350,14 @@ function ReferralIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+    </svg>
+  );
+}
+
+function PackageIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
     </svg>
   );
 }
