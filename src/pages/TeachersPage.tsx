@@ -22,7 +22,7 @@ const teachers: Teacher[] = [
     highlights: [],
   },
   {
-    name: 'Jimin Park',
+    name: 'Jimin Yang',
     instruments: ['Violin'],
     image: jiminImg,
     bio: 'A passionate violinist with a deep commitment to nurturing each student\'s individual voice and musical confidence.',
