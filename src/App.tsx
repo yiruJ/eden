@@ -18,6 +18,7 @@ import { EnrolPage } from './pages/EnrolPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ThankYouPage } from './pages/ThankYouPage';
 import { PricingPage } from './pages/PricingPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>
