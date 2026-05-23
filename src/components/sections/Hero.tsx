@@ -17,6 +17,7 @@ export function Hero() {
           alt="Student playing violin in a warm sunlit studio"
           className="absolute inset-0 w-full h-full object-cover object-top"
           loading="eager"
+          fetchPriority="high"
         />
 
         {/* Gradient overlay */}
@@ -117,6 +118,7 @@ export function Hero() {
                 alt="Student playing piano in a warm, sunlit studio"
                 className="w-full h-full object-cover"
                 loading="eager"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-primary/5 mix-blend-multiply" />
             </div>
