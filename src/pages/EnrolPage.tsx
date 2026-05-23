@@ -83,8 +83,8 @@ export function EnrolPage() {
   return (
     <>
       <SEO
-        title="Book a Free Trial Lesson — Eden Music Academy, North Strathfield"
-        description="Book a free, no-obligation trial lesson at Eden Music Academy in North Strathfield. Piano, violin, viola and cello — all ages welcome from 4 years old."
+        title="Free Trial Music Lesson in North Strathfield, Sydney | Eden Music Academy"
+        description="Piano, violin, viola and cello lessons for all ages in North Strathfield, Sydney. Book a free, no-obligation trial lesson today. Sydney Conservatorium-trained teachers."
         canonical="/enrol"
       />
 
