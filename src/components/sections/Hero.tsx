@@ -68,7 +68,7 @@ export function Hero() {
       </div>
 
       {/* ── DESKTOP: 2-column layout ── */}
-      <div className="hidden lg:block pt-10 pb-14 px-6">
+      <div className="hidden lg:block pt-28 pb-14 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Text content */}
