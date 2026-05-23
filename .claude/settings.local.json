@@ -23,7 +23,12 @@
       "Bash(npx @rafarafarafa/nano-banana-pro-mcp --help)",
       "mcp__nano-banana-pro__generate_image",
       "Bash(npx tsc:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Skill(grill-me)"
     ]
   }
 }
