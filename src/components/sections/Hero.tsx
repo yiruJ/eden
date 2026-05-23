@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import heroImg from '../../assets/hero.webp';
 
 const instruments = ['Piano', 'Violin', 'Cello', 'Viola'] as const;
 
@@ -12,7 +13,7 @@ export function Hero() {
 
         {/* Background image */}
         <img
-          src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=80"
+          src={heroImg}
           alt="Student playing violin in a warm sunlit studio"
           className="absolute inset-0 w-full h-full object-cover object-top"
           loading="eager"
@@ -112,7 +113,7 @@ export function Hero() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-primary/5">
               <BotanicalDecoration className="absolute -top-8 -right-8 w-48 h-48 text-primary/15 pointer-events-none z-10" />
               <img
-                src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=80"
+                src={heroImg}
                 alt="Student playing piano in a warm, sunlit studio"
                 className="w-full h-full object-cover"
                 loading="eager"
