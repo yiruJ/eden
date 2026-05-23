@@ -1,7 +1,7 @@
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
 import { FadeIn } from '../components/ui/FadeIn';
-import aboutImg from '../assets/about.jpg';
+import aboutImg from '../assets/about.webp';
 import { SEO } from '../components/SEO';
 
 const team = [

@@ -1,5 +1,5 @@
-import exteriorImg from '../../assets/Facility Shot - Exterior.png';
-import interiorImg from '../../assets/Facility Shot - Interior.png';
+import exteriorImg from '../../assets/Facility Shot - Exterior.webp';
+import interiorImg from '../../assets/Facility Shot - Interior.webp';
 
 export function FacilitySection() {
   return (

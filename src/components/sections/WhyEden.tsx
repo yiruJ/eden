@@ -1,5 +1,5 @@
 import CardSwap, { Card } from '../ui/CardSwap';
-import whyEdenImg from '../../assets/why_choose_eden_music_academy.png';
+import whyEdenImg from '../../assets/why_choose_eden_music_academy.webp';
 
 const values = [
   {

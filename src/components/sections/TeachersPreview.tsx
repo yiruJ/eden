@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import jiminImg from '../../assets/teachers/jimin.JPG';
-import hanaImg from '../../assets/teachers/hana.jpeg';
-import dylanImg from '../../assets/teachers/dylan.JPEG';
-import rachelImg from '../../assets/teachers/rachel.JPEG';
+import jiminImg from '../../assets/teachers/jimin.webp';
+import hanaImg from '../../assets/teachers/hana.webp';
+import dylanImg from '../../assets/teachers/dylan.webp';
+import rachelImg from '../../assets/teachers/rachel.webp';
 
 interface TeacherPreview {
   name: string;

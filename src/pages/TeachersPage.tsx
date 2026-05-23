@@ -1,8 +1,8 @@
 import { CTABanner } from '../components/sections/CTABanner';
-import jiminImg from '../assets/teachers/jimin.JPG';
-import hanaImg from '../assets/teachers/hana.jpeg';
-import dylanImg from '../assets/teachers/dylan.JPEG';
-import rachelImg from '../assets/teachers/rachel.JPEG';
+import jiminImg from '../assets/teachers/jimin.webp';
+import hanaImg from '../assets/teachers/hana.webp';
+import dylanImg from '../assets/teachers/dylan.webp';
+import rachelImg from '../assets/teachers/rachel.webp';
 import { SEO } from '../components/SEO';
 
 interface Teacher {
