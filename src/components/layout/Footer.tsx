@@ -13,6 +13,7 @@ const supportLinks = [
   { label: 'Contact Us', to: '/contact' },
   { label: 'FAQs', to: '/contact#faqs' },
   { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Login', to: '/admin' },
 ];
 
 export function Footer() {
@@ -93,11 +94,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:emacademyinfo@gmail.com"
+                  href="mailto:info@edenmusicacademy.com"
                   className="flex items-start gap-3 text-sm text-charcoal/60 hover:text-primary transition-colors duration-200"
                 >
                   <MailIcon className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                  emacademyinfo@gmail.com
+                  info@edenmusicacademy.com
                 </a>
               </li>
               <li>
