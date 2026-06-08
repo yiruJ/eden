@@ -8,12 +8,75 @@ export function PrivacyPage() {
             Policies &amp; Terms
           </h1>
           <p className="text-charcoal/50 text-sm">
-            Last updated March 2025
+            Last updated June 2026
           </p>
           <div className="mt-6 h-px bg-primary/15" />
         </div>
 
         <div className="space-y-14 text-charcoal/75 leading-relaxed">
+
+          {/* Privacy Policy */}
+          <section>
+            <h2 className="text-xl font-display font-bold text-charcoal mb-6">
+              Privacy Policy
+            </h2>
+            <p className="text-sm mb-5">
+              This Privacy Policy applies to Eden Music Academy's website (edenmusicacademy.com) and mobile application (Eden Music Academy). By using either, you agree to the collection and use of information as described below.
+            </p>
+            <ul className="space-y-4 text-sm">
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Information we collect:</strong>{' '}
+                  Names, email addresses, student enrollment details, messages and images sent through the app, and device push notification tokens.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">How we use your information:</strong>{' '}
+                  To deliver our services, facilitate communication between families and teachers, send push notifications about lessons, and maintain the safety and security of our platform.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Monitoring of in-app communications:</strong>{' '}
+                  All messages sent through the Eden Music Academy app between parents and teachers are visible to Eden Music Academy administrators. This monitoring exists to maintain a safe, professional communication environment. By using the messaging feature, all parties acknowledge and consent to the possibility that their communications may be reviewed by an administrator. Eden Music Academy will not share the contents of these communications with any third party except where required by law.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Children's information:</strong>{' '}
+                  Student information is collected solely for the purpose of managing music lessons and is managed through a parent or guardian's account. Parents and guardians may request access to, correction of, or deletion of their child's information at any time by contacting info@edenmusicacademy.com.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Data storage:</strong>{' '}
+                  Your data is stored securely using Supabase, hosted on Amazon Web Services (AWS) servers. We implement appropriate technical and organisational security measures to protect your personal information.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Google API:</strong>{' '}
+                  We use Google Calendar API to display lesson schedules. Our use of information received from Google APIs adheres to the Google API Services User Data Policy.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
+                  <strong className="text-charcoal font-semibold">Your rights:</strong>{' '}
+                  Under Australia's Privacy Act 1988, you have the right to access, correct, or request deletion of your personal information. Contact us at info@edenmusicacademy.com.
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <div className="h-px bg-primary/10" />
 
           {/* Section 1 */}
           <section>
@@ -149,38 +212,6 @@ export function PrivacyPage() {
             </ul>
           </section>
 
-          <div className="h-px bg-primary/10" />
-
-          {/* Section 5 */}
-          <section>
-            <h2 className="text-xl font-display font-bold text-charcoal mb-6">
-              5. Discounts and Promotions
-            </h2>
-            <p className="text-sm mb-5">There is a maximum discount of 25% per student.</p>
-            <ul className="space-y-4 text-sm">
-              <li className="flex gap-3">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                <span>
-                  <strong className="text-charcoal font-semibold">Sibling discount:</strong>{' '}
-                  Each sibling that applies for a lesson can stack a 10% discount to their final price.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                <span>
-                  <strong className="text-charcoal font-semibold">Referral discount:</strong>{' '}
-                  The referrer will be offered a stackable 10% off discount to their final price. This discount applies only to their next billing period.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                <span>
-                  <strong className="text-charcoal font-semibold">Piano pairing discount:</strong>{' '}
-                  Any string instrument (violin, viola, cello), if paired with piano lessons, will be given a stackable 10% discount to their final price.
-                </span>
-              </li>
-            </ul>
-          </section>
 
           <div className="h-px bg-primary/10" />
 

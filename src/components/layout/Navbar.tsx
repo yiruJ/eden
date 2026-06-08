@@ -28,6 +28,7 @@ const mobileNavItems = [
     links: [
       { label: 'About Us', to: '/about' },
       { label: 'Our Teachers', to: '/teachers' },
+      { label: 'Policies & Terms', to: '/privacy' },
     ],
   },
 ];

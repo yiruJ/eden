@@ -28,7 +28,11 @@
       "Bash(git push *)",
       "mcp__claude_ai_Notion__notion-search",
       "mcp__claude_ai_Notion__notion-fetch",
-      "Skill(grill-me)"
+      "Skill(grill-me)",
+      "Bash(sed -n '55,65p' src/pages/EnrolPage.tsx)",
+      "Bash(sed -n '55,65p' src/pages/ContactPage.tsx)",
+      "Bash(cd ~/project_stuff/eden-app && grep -rn \"console\\\\.log\\\\|TODO\\\\|FIXME\\\\|localhost\\\\|hardcoded\" --include=\"*.ts\" --include=\"*.tsx\" app/ components/ lib/ utils/ 2>/dev/null | grep -v node_modules | head -20)",
+      "Bash(cd ~/project_stuff/eden-app && grep -rn \"import.meta.env\\\\|EXPO_PUBLIC_\\\\|process.env\" --include=\"*.ts\" --include=\"*.tsx\" . 2>/dev/null | grep -v node_modules | head -20)"
     ]
   }
 }
