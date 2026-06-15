@@ -158,28 +158,31 @@ export function EventsPage() {
       {events.length === 0 ? (
         <p style={{ color: '#6b7280' }}>No events yet. Create one above.</p>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
           {events.map(event => (
-            <div key={event.id} style={{ backgroundColor: '#fff', borderRadius: 12, padding: '16px 20px', border: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                {event.image_url && (
-                  <img src={event.image_url} alt={event.title} style={{ width: 56, height: 56, borderRadius: 8, objectFit: 'cover' }} />
-                )}
-                <div>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#1a1a1a', marginBottom: 4 }}>{event.title}</p>
-                  <p style={{ fontSize: 13, color: '#6b7280' }}>
-                    {new Date(event.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    {event.time ? ` · ${event.time.slice(0, 5)}` : ''}
-                    {event.location ? ` · ${event.location}` : ''}
-                  </p>
+            <div key={event.id} style={{ backgroundColor: '#fff', borderRadius: 12, border: '1px solid #e5e7eb', overflow: 'hidden' }}>
+              {event.image_url ? (
+                <img src={event.image_url} alt={event.title} style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', display: 'block' }} />
+              ) : (
+                <div style={{ width: '100%', aspectRatio: '4/5', backgroundColor: '#eef6f1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontSize: 13, color: '#6b7280' }}>No poster</span>
                 </div>
+              )}
+              <div style={{ padding: '16px 20px' }}>
+                <p style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a', marginBottom: 6 }}>{event.title}</p>
+                <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>
+                  {event.date ? new Date(event.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
+                  {event.time ? ` · ${event.time.slice(0, 5)}` : ''}
+                </p>
+                {event.location && <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>{event.location}</p>}
+                {event.description && <p style={{ fontSize: 13, color: '#6b7280', marginTop: 8 }}>{event.description}</p>}
+                <button
+                  onClick={() => handleDelete(event.id)}
+                  style={{ marginTop: 12, background: 'none', border: 'none', cursor: 'pointer', fontSize: 13, color: '#ec2f44', fontWeight: 500, padding: 0 }}
+                >
+                  Delete
+                </button>
               </div>
-              <button
-                onClick={() => handleDelete(event.id)}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 13, color: '#ec2f44', fontWeight: 500 }}
-              >
-                Delete
-              </button>
             </div>
           ))}
         </div>
