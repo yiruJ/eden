@@ -32,7 +32,7 @@ export function EventsPage() {
     const { data } = await supabase
       .from('events')
       .select('*')
-      .order('date', { ascending: true });
+      .order('created_at', { ascending: false });
     if (data) setEvents(data);
     setLoading(false);
   }
@@ -52,15 +52,6 @@ export function EventsPage() {
         image_url = urlData.publicUrl;
       }
     }
-
-    await supabase.from('events').insert({
-        title: form.title,
-        date: form.date || null,
-        time: form.time || null,
-        location: form.location || null,
-        description: form.description || null,
-        image_url,
-    });
 
     const { error } = await supabase.from('events').insert({
         title: form.title,
