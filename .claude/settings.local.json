@@ -33,7 +33,12 @@
       "Bash(sed -n '55,65p' src/pages/ContactPage.tsx)",
       "Bash(cd ~/project_stuff/eden-app && grep -rn \"console\\\\.log\\\\|TODO\\\\|FIXME\\\\|localhost\\\\|hardcoded\" --include=\"*.ts\" --include=\"*.tsx\" app/ components/ lib/ utils/ 2>/dev/null | grep -v node_modules | head -20)",
       "Bash(cd ~/project_stuff/eden-app && grep -rn \"import.meta.env\\\\|EXPO_PUBLIC_\\\\|process.env\" --include=\"*.ts\" --include=\"*.tsx\" . 2>/dev/null | grep -v node_modules | head -20)",
-      "Bash(find /Users/yirujang/project_stuff/eden-app -name \"*.tsx\" -o -name \"*.ts\" | grep -i event | grep -v node_modules)"
+      "Bash(find /Users/yirujang/project_stuff/eden-app -name \"*.tsx\" -o -name \"*.ts\" | grep -i event | grep -v node_modules)",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-fetch",
+      "Bash(cp \"/Users/yirujang/Library/Messages/Attachments/43/03/B0C36EA4-5B08-46B0-AF59-83F17DA8480A/Aurelia Bergin Resume \\(4\\).pdf\" /tmp/aurelia_resume.pdf 2>&1 && echo \"Success\")",
+      "Bash(find /Users/yirujang/project_stuff -name \"*.xcodeproj\" -o -name \"*.xcworkspace\" 2>/dev/null | head -20)",
+      "mcp__visualize__show_widget",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

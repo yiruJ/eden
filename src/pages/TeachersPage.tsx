@@ -3,6 +3,7 @@ import jiminImg from '../assets/teachers/jimin.webp';
 import hanaImg from '../assets/teachers/hana.webp';
 import dylanImg from '../assets/teachers/dylan.webp';
 import rachelImg from '../assets/teachers/rachel.webp';
+import aureliaImg from '../assets/teachers/aurelia.webp';
 import { SEO } from '../components/SEO';
 
 interface Teacher {
@@ -48,6 +49,17 @@ const teachers: Teacher[] = [
       'Melbourne String Ensemble',
       '2024 Germany & Czechia International Tour',
       '3MBS Radio soloist',
+    ],
+  },
+  {
+    name: 'Aurelia',
+    instruments: ['Violin'],
+    image: aureliaImg,
+    bio: 'Aurelia has a rare ability to make young students feel genuinely excited about playing. She has been teaching violin and drums to children aged 5 to 12 since 2021, with a natural warmth and patience that keeps kids coming back week after week. Now studying classical violin at the Sydney Conservatorium of Music, she knows exactly what it takes to go from a first note to a real performance, and she loves being part of that journey.',
+    highlights: [
+      'Australian Youth Orchestra: National Camp 3 years running, 2026 Melbourne season',
+      'AMusA Diploma with Distinction (AMEB) 2023',
+      'Goodlet Memorial Music Scholarship, PLC Sydney 2017–2024',
     ],
   },
   {
