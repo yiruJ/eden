@@ -34,7 +34,7 @@ export function LoginPage() {
       return;
     }
 
-    if (profile?.role !== 'director') {
+    if (profile?.role !== 'admin') {
       await supabase.auth.signOut();
       setError('Access denied.');
       setLoading(false);

@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { label: 'Dashboard', path: '/admin/dashboard' },
   { label: 'Conversations', path: '/admin/conversations' },
   { label: 'Events', path: '/admin/events' },
+  { label: 'Invite User', path: '/admin/invite' },
 ];
 
 export function AdminLayout() {

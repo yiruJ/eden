@@ -4,6 +4,7 @@ import hanaImg from '../assets/teachers/hana.webp';
 import dylanImg from '../assets/teachers/dylan.webp';
 import rachelImg from '../assets/teachers/rachel.webp';
 import aureliaImg from '../assets/teachers/aurelia.webp';
+import lucasImg from '../assets/teachers/lucas.webp';
 import { SEO } from '../components/SEO';
 
 interface Teacher {
@@ -68,6 +69,17 @@ const teachers: Teacher[] = [
     image: null,
     bio: 'A graduate of the Sydney Conservatorium of Music, Elijah brings a rare dual fluency in cello and piano. His teaching draws on a thorough classical training to help students build strong technique, expressive depth, and a genuine love of music from the very first lesson.',
     highlights: [],
+  },
+  {
+    name: 'Lucas Choi',
+    instruments: ['Cello'],
+    image: lucasImg,
+    bio: 'Lucas brings a rare versatility to the studio — trained not just on cello but piano, trombone and euphonium too, he understands music from every angle and loves sharing that perspective with students. Currently pursuing his Bachelor of Music Performance in Cello at the Sydney Conservatorium of Music, he pairs serious technical grounding with genuine warmth, making every lesson feel less like a chore and more like discovery. Students walk away not just playing better, but actually excited to pick their instrument back up.',
+    highlights: [
+      'Sydney Conservatorium of Music Corinna D\'Hage Mayer String Scholarship',
+      'The Dame Joan Sutherland Memorial Award for Outstanding Achievements in Music (2024)',
+      'AMEB AMusA & LMusA Cello Exams (Pass)',
+    ],
   },
 ];
 

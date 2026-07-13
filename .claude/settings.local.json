@@ -38,7 +38,23 @@
       "Bash(cp \"/Users/yirujang/Library/Messages/Attachments/43/03/B0C36EA4-5B08-46B0-AF59-83F17DA8480A/Aurelia Bergin Resume \\(4\\).pdf\" /tmp/aurelia_resume.pdf 2>&1 && echo \"Success\")",
       "Bash(find /Users/yirujang/project_stuff -name \"*.xcodeproj\" -o -name \"*.xcworkspace\" 2>/dev/null | head -20)",
       "mcp__visualize__show_widget",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(find /Users/yirujang/project_stuff -name \"*login*\" -o -name \"*Login*\" -o -name \"*signin*\" -o -name \"*SignIn*\" 2>/dev/null | grep -v node_modules | grep -v .git)",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-search",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__list_repos",
+      "Bash(ls /Users/yirujang/project_stuff/eden-app/)",
+      "Bash(npx expo *)",
+      "Bash(find /Users/yirujang/project_stuff -maxdepth 2 -iname \"*eden*\" 2>/dev/null)",
+      "Bash(npx eas *)",
+      "WebFetch(domain:expo.dev)",
+      "Bash(xxd /private/tmp/claude-501/-Users-yirujang-project-stuff-eden/60eb116e-3e7b-482b-a8bd-c355637b097a/scratchpad/build_log2.bin)",
+      "Bash(npm view *)",
+      "Bash(npm ci *)",
+      "WebSearch",
+      "Bash(sips -Z 600 src/assets/teachers/lucas.webp --out src/assets/teachers/lucas.webp)",
+      "Bash(sips -g pixelWidth -g pixelHeight src/assets/teachers/lucas.webp)",
+      "Bash(npx --yes sharp-cli --version)",
+      "Bash(npx --yes sharp-cli resize 600 600 --fit cover -i lucas.webp -o lucas-resized.webp)"
     ]
   }
 }

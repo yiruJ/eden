@@ -22,6 +22,7 @@ const AdminConversationsPage = lazy(() => import('./pages/admin/ConversationsPag
 const AdminChatPage          = lazy(() => import('./pages/admin/ChatPage').then(m => ({ default: m.ChatPage })));
 const AdminEventsPage        = lazy(() => import('./pages/admin/EventsPage').then(m => ({ default: m.EventsPage })));
 const AdminDashboardPage     = lazy(() => import('./pages/admin/DashboardPage').then(m => ({ default: m.DashboardPage })));
+const AdminInviteUserPage    = lazy(() => import('./pages/admin/InviteUserPage').then(m => ({ default: m.InviteUserPage })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -59,6 +60,7 @@ export default function App() {
                 <Route path="/admin/conversations" element={<AdminConversationsPage />} />
                 <Route path="/admin/conversations/:id" element={<AdminChatPage />} />
                 <Route path="/admin/events" element={<AdminEventsPage />} />
+                <Route path="/admin/invite" element={<AdminInviteUserPage />} />
               </Route>
             </Routes>
           </Suspense>
