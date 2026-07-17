@@ -23,30 +23,40 @@ export function FacilitySection() {
         {/* Split panel */}
         <div className="grid md:grid-cols-2 gap-5">
           {/* Exterior */}
-          <div className="relative overflow-hidden rounded-3xl shadow-md group" style={{ height: '420px' }}>
+          <div className="relative overflow-hidden rounded-3xl shadow-md" style={{ height: '420px' }}>
             <img
               src={exteriorImg}
-              alt="Eden Music Academy studio exterior — Strathfield"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="Eden Music Academy studio exterior — new Strathfield location"
+              className="w-full h-full object-cover scale-110 blur-lg"
               loading="lazy"
             />
-            <div className="absolute bottom-0 inset-x-0 px-6 py-5 bg-gradient-to-t from-black/60 to-transparent">
-              <p className="text-white font-display font-bold text-lg leading-tight">Exterior</p>
-              <p className="text-white/70 text-sm mt-0.5">Strathfield, Sydney</p>
+            <div className="absolute inset-0 bg-charcoal/55 flex flex-col items-center justify-center text-center px-6 gap-3">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-accent text-white text-[11px] font-semibold uppercase tracking-widest">
+                Coming Soon
+              </span>
+              <p className="text-white font-display font-bold text-2xl leading-tight">New Location</p>
+              <p className="text-white/75 text-sm max-w-[220px]">
+                We're moving to a brand new studio in Strathfield. Photos coming soon.
+              </p>
             </div>
           </div>
 
           {/* Interior */}
-          <div className="relative overflow-hidden rounded-3xl shadow-md group" style={{ height: '420px' }}>
+          <div className="relative overflow-hidden rounded-3xl shadow-md" style={{ height: '420px' }}>
             <img
               src={interiorImg}
-              alt="Eden Music Academy studio interior — practice room"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="Eden Music Academy studio interior — new practice rooms"
+              className="w-full h-full object-cover scale-110 blur-lg"
               loading="lazy"
             />
-            <div className="absolute bottom-0 inset-x-0 px-6 py-5 bg-gradient-to-t from-black/60 to-transparent">
-              <p className="text-white font-display font-bold text-lg leading-tight">Studio Interior</p>
-              <p className="text-white/70 text-sm mt-0.5">Purpose-built practice rooms</p>
+            <div className="absolute inset-0 bg-charcoal/55 flex flex-col items-center justify-center text-center px-6 gap-3">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-accent text-white text-[11px] font-semibold uppercase tracking-widest">
+                Coming Soon
+              </span>
+              <p className="text-white font-display font-bold text-2xl leading-tight">New Studio</p>
+              <p className="text-white/75 text-sm max-w-[220px]">
+                Purpose-built practice rooms are being prepared for our new home.
+              </p>
             </div>
           </div>
         </div>
