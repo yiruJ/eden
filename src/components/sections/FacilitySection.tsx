@@ -15,7 +15,7 @@ export function FacilitySection() {
             A space built for music
           </h2>
           <p className="text-charcoal/60 font-light max-w-xl">
-            Our dedicated studio in North Strathfield gives every student a calm, focused
+            Our dedicated studio in Strathfield gives every student a calm, focused
             environment to learn, practise, and grow.
           </p>
         </div>
@@ -26,13 +26,13 @@ export function FacilitySection() {
           <div className="relative overflow-hidden rounded-3xl shadow-md group" style={{ height: '420px' }}>
             <img
               src={exteriorImg}
-              alt="Eden Music Academy studio exterior — North Strathfield"
+              alt="Eden Music Academy studio exterior — Strathfield"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
             <div className="absolute bottom-0 inset-x-0 px-6 py-5 bg-gradient-to-t from-black/60 to-transparent">
               <p className="text-white font-display font-bold text-lg leading-tight">Exterior</p>
-              <p className="text-white/70 text-sm mt-0.5">North Strathfield, Sydney</p>
+              <p className="text-white/70 text-sm mt-0.5">Strathfield, Sydney</p>
             </div>
           </div>
 
@@ -60,11 +60,11 @@ export function FacilitySection() {
             </div>
             <div>
               <p className="text-sm font-semibold text-charcoal">Eden Music Academy</p>
-              <p className="text-xs text-charcoal/55 mt-0.5">North Strathfield, NSW 2137</p>
+              <p className="text-xs text-charcoal/55 mt-0.5">Strathfield, NSW 2137</p>
             </div>
           </div>
           <a
-            href="https://maps.google.com/?q=North+Strathfield+NSW+2137"
+            href="https://www.google.com/maps/search/?api=1&query=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white

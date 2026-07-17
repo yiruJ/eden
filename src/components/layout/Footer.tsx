@@ -30,7 +30,7 @@ export function Footer() {
               Eden Music Academy
             </p>
             <p className="text-charcoal/50 text-sm leading-relaxed">
-              Nurturing the next generation of musical talent in North Strathfield, Sydney with a focus on artistry and wellbeing.
+              Nurturing the next generation of musical talent in Strathfield, Sydney with a focus on artistry and wellbeing.
             </p>
             <div className="flex gap-3">
               <a
@@ -112,7 +112,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-charcoal/60">
                 <LocationIcon className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                136a Wellbank St, North Strathfield
+                shop 24/48 Cooper Street, Strathfield NSW 2137
               </li>
             </ul>
           </div>

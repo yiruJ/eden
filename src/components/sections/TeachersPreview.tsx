@@ -17,8 +17,8 @@ const teachers: TeacherPreview[] = [
   { name: 'Dylan Lee', instruments: 'Violin & Viola', image: dylanImg },
   { name: 'Jimin Park', instruments: 'Violin', image: jiminImg },
   { name: 'Hana Lee', instruments: 'Violin', image: hanaImg },
-  { name: 'Rachel Jeong', instruments: 'Cello & Piano', image: rachelImg },
-  { name: 'Aurelia', instruments: 'Violin & Drums', image: aureliaImg },
+  { name: 'Rachel Jeong', instruments: 'Cello', image: rachelImg },
+  { name: 'Aurelia', instruments: 'Violin', image: aureliaImg },
   { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null },
   { name: 'Lucas Choi', instruments: 'Cello', image: lucasImg },
 ];

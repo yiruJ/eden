@@ -20,8 +20,8 @@ const teachers: Teacher[] = [
     name: 'Dylan Lee',
     instruments: ['Violin', 'Viola'],
     image: dylanImg,
-    bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
-    highlights: [],
+    bio: 'Dylan co-founded Eden Music Academy to build the kind of studio he wished he\'d had as a young student: structured, encouraging, and genuinely invested in every student\'s progress. His dual training in violin and viola gives him a rare, rounded perspective on string playing and ensemble musicianship that shapes every lesson he teaches. Beyond teaching, Dylan helps lead the academy day to day, setting the standard for how every class runs and the culture students feel from their very first visit.',
+    highlights: ['Co-Founder'],
   },
   {
     name: 'Jimin Yang',
