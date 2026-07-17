@@ -54,7 +54,11 @@
       "Bash(sips -Z 600 src/assets/teachers/lucas.webp --out src/assets/teachers/lucas.webp)",
       "Bash(sips -g pixelWidth -g pixelHeight src/assets/teachers/lucas.webp)",
       "Bash(npx --yes sharp-cli --version)",
-      "Bash(npx --yes sharp-cli resize 600 600 --fit cover -i lucas.webp -o lucas-resized.webp)"
+      "Bash(npx --yes sharp-cli resize 600 600 --fit cover -i lucas.webp -o lucas-resized.webp)",
+      "Bash(find /Users/yirujang/project_stuff/eden -iname \"_layout*\" -not -path \"*/node_modules/*\" 2>/dev/null; echo \"---checking sibling dirs---\"; ls -la /Users/yirujang/project_stuff/ 2>/dev/null)",
+      "Bash(git log *)",
+      "Bash(find ~/project_stuff -maxdepth 2 -iname \"*eden*\" 2>/dev/null)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

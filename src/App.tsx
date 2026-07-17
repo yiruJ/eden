@@ -23,6 +23,7 @@ const AdminChatPage          = lazy(() => import('./pages/admin/ChatPage').then(
 const AdminEventsPage        = lazy(() => import('./pages/admin/EventsPage').then(m => ({ default: m.EventsPage })));
 const AdminDashboardPage     = lazy(() => import('./pages/admin/DashboardPage').then(m => ({ default: m.DashboardPage })));
 const AdminInviteUserPage    = lazy(() => import('./pages/admin/InviteUserPage').then(m => ({ default: m.InviteUserPage })));
+const ResetPasswordPage      = lazy(() => import('./pages/ResetPasswordPage').then(m => ({ default: m.ResetPasswordPage })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -55,6 +56,7 @@ export default function App() {
 
               {/* Admin routes - no navbar/footer */}
               <Route path="/admin" element={<AdminLoginPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route element={<AdminLayout />}>
                 <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
                 <Route path="/admin/conversations" element={<AdminConversationsPage />} />
