@@ -50,7 +50,7 @@ export function Hero() {
           <div className="flex flex-col gap-3 pt-1">
             <Link to="/enrol" className="block">
               <Button variant="primary" size="lg" className="w-full">
-                Book a Free Trial Lesson
+                Book a Trial Lesson
                 <ArrowRightIcon />
               </Button>
             </Link>
@@ -87,7 +87,7 @@ export function Hero() {
             <div className="flex flex-wrap gap-4 pt-2">
               <Link to="/enrol">
                 <Button variant="primary" size="lg">
-                  Book a Free Trial Lesson
+                  Book a Trial Lesson
                   <ArrowRightIcon />
                 </Button>
               </Link>

@@ -91,7 +91,7 @@ export function PrivacyPage() {
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                 <span>
                   <strong className="text-charcoal font-semibold">Trial lesson:</strong>{' '}
-                  Before committing to lessons, new students complete a trial lesson, obligation-free. This allows your teacher to understand your musical background, learning preferences, and goals, and gives you a chance to experience our teaching style. Payment is due upon arrival.
+                  Before committing to lessons, new students complete a trial lesson. This allows your teacher to understand your musical background, learning preferences, and goals, and gives you a chance to experience our teaching style. Payment is due upon arrival.
                 </span>
               </li>
               <li className="flex gap-3">

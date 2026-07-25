@@ -83,8 +83,8 @@ export function EnrolPage() {
   return (
     <>
       <SEO
-        title="Free Trial Music Lesson in North Strathfield, Sydney | Eden Music Academy"
-        description="Piano, violin, viola and cello lessons for all ages in North Strathfield, Sydney. Book a free, no-obligation trial lesson today. Sydney Conservatorium-trained teachers."
+        title="Trial Music Lesson in North Strathfield, Sydney | Eden Music Academy"
+        description="Piano, violin, viola and cello lessons for all ages in North Strathfield, Sydney. Book a trial lesson today. Sydney Conservatorium-trained teachers."
         canonical="/enrol"
       />
 
@@ -93,11 +93,11 @@ export function EnrolPage() {
         <section className="pt-20 pb-12 px-6 bg-background text-center">
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
-              Free Trial Lesson
+              Trial Lesson
             </span>
             <h1 className="text-5xl font-display font-bold text-charcoal">Book Your Trial</h1>
             <p className="text-lg text-charcoal/65 font-light">
-              No payment, no obligation. Just come in, meet your teacher, and see if it feels right.
+              Just come in, meet your teacher, and see if it feels right.
             </p>
           </div>
         </section>
@@ -235,7 +235,7 @@ export function EnrolPage() {
                   className="w-full justify-center"
                   disabled={!canSubmit || sending}
                 >
-                  {sending ? 'Sending…' : 'Request My Free Trial Lesson'}
+                  {sending ? 'Sending…' : 'Request My Trial Lesson'}
                 </Button>
                 <p className="text-xs text-charcoal/40 text-center mt-3">
                   We'll call or email you within 24 hours to confirm a time that suits your family.

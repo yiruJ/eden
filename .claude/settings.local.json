@@ -58,7 +58,18 @@
       "Bash(find /Users/yirujang/project_stuff/eden -iname \"_layout*\" -not -path \"*/node_modules/*\" 2>/dev/null; echo \"---checking sibling dirs---\"; ls -la /Users/yirujang/project_stuff/ 2>/dev/null)",
       "Bash(git log *)",
       "Bash(find ~/project_stuff -maxdepth 2 -iname \"*eden*\" 2>/dev/null)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(xargs -I{} echo {})",
+      "Bash(eas whoami *)",
+      "Bash(eas build:list --limit 5 --non-interactive)",
+      "Bash(eas build *)",
+      "Bash(eas build:list --platform ios --limit 3 --non-interactive)",
+      "Bash(eas build:view e79c3f93-2a42-48bf-a3e3-dcf45172a8c0 --json)",
+      "Bash(eas credentials *)",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-update-page",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-pages",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-move-pages",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-database"
     ]
   }
 }

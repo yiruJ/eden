@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 
 function extractParams(url: string): Record<string, string> {
@@ -78,10 +77,9 @@ export function ResetPasswordPage() {
         ) : success ? (
           <>
             <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 24, color: '#1a1a1a', marginBottom: 8 }}>Password updated</h1>
-            <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 24 }}>
-              Your password has been changed. Sign in with it in the Eden app, or below if you're an admin.
+            <p style={{ color: '#6b7280', fontSize: 14 }}>
+              Your password has been successfully reset. You can close this browser tab and sign in to the Eden app with your new password.
             </p>
-            <Link to="/admin" style={{ color: '#4aaf81', fontSize: 14, fontWeight: 600 }}>Go to admin sign in &rarr;</Link>
           </>
         ) : (
           <>
