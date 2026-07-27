@@ -25,21 +25,63 @@ Any questions, call us on 0410 385 227 or email info@edenmusicacademy.com.
 
 ---
 
-## 2. Email to legacy families only
+## 2. Email to current families
 
-**Recipients:** families enrolled before 1 August 2026. Currently 38 families. Do not send to anyone who enrolled after that date.
+**Recipients:** every currently enrolled family. Because the new rates have not launched yet, all current students are legacy students, so this goes to everyone. From launch day onward, anyone who enrols is on current pricing and must be excluded from the January follow-up.
 
 **Subject: A note about our lesson rates**
 
 Dear [Parent name],
 
-We wanted you to hear this from us rather than come across it on our website.
+We wanted you to hear this from us directly rather than come across it on our website.
 
-Our lesson rates have increased for new enrolments. This is the first change since Eden opened, and it reflects our growth to a team of five teachers and our move to the new Strathfield studio.
+Our lesson rates have increased for new enrolments. Before anything else, **your rate is not changing.** You stay exactly where you are until 1 March 2027, and we will write to you well before then.
 
-**Nothing changes for you right now.** You continue at your current rate until 1 March 2027, and we will write to you well before then with plenty of notice. Any package you have already paid for is honoured in full at the rate you paid, and if you enrol a sibling in the meantime they join at your rate too.
+**Why we are doing this**
 
-If anything is unclear, just reply here or call us on 0410 385 227.
+We want Eden to be more than somewhere your child turns up for a weekly lesson. The chances to perform, to play alongside other students, to feel part of something rather than practising alone at home. Those are the moments students actually remember, and they are what keeps a child playing for years instead of terms.
+
+We have a great deal in preparation on that front, more than we are ready to announce just yet. Building it properly takes real investment, in the space, the instruments, and the time it takes to prepare a student to walk on stage feeling ready. The new rates are what let us keep going in that direction rather than fitting it in around the edges.
+
+**Why your rate is staying where it is**
+
+Because you were here first.
+
+You joined when Eden was still finding its feet, and the academy is what it is today because families like yours took a chance on a young studio. Holding your rate through to March is a small way of saying we have not forgotten that.
+
+A few practical things:
+
+- Any package you have already paid for is honoured in full at the rate you paid.
+- If you enrol a sibling before March, they join at your rate too.
+- When your rate does change, you will always get at least two months' written notice.
+
+If anything is unclear, just reply to this email or call us on 0410 385 227.
+
+Thank you for being part of Eden.
+
+Warm regards,
+[Name]
+Eden Music Academy
+
+---
+
+### Shorter version, if the above feels too long
+
+**Subject: A note about our lesson rates**
+
+Dear [Parent name],
+
+A quick note so you hear this from us rather than spot it on our website.
+
+Our lesson rates have gone up for new enrolments. **Your rate is not changing.** You stay where you are until 1 March 2027, and we will write to you well before then.
+
+The reason for the change is that we want Eden to be more than a weekly lesson. The chances to perform, to play alongside other students, to feel part of something. We have a great deal in preparation on that front, more than we are ready to announce just yet, and we want to build it properly rather than fit it in around the edges.
+
+Your rate is staying put because you were here first, and the academy is what it is today because families like yours took a chance on a young studio.
+
+Anything you have already paid for stays at the rate you paid, and if you enrol a sibling before March they join at your rate too.
+
+Any questions, just reply or call us on 0410 385 227.
 
 Thank you for being part of Eden.
 

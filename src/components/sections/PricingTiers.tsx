@@ -68,7 +68,7 @@ function money(value: number): string {
 }
 
 export function PricingTiers() {
-  const [plan, setPlan] = useState<PlanId>('ten');
+  const [plan, setPlan] = useState<PlanId>('five');
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const activePlan = PLANS.find((p) => p.id === plan)!;
@@ -221,36 +221,59 @@ export function PricingTiers() {
                   {duration} min lesson
                 </p>
 
-                {/* Anchor: full undiscounted total, slashed, above the real total */}
-                <div className="min-h-[44px] flex items-end">
-                  {isTen && (
-                    <span className="price-slash text-4xl font-display font-bold leading-none text-charcoal/30">
-                      ${money(BASE[duration] * 10)}
-                    </span>
-                  )}
-                </div>
+                {/* Anchor: undiscounted per-lesson rate, slashed, above the real one.
+                    Only rendered on the 10-week plan, so the other plans do not carry
+                    an empty reserved row. Price leads per-lesson (smaller number, compared
+                    against everyday costs) while the saving stays at package level, where
+                    the figure is larger. */}
+                {isTen && (
+                  <span className="price-slash block w-fit mb-3 text-4xl font-display font-bold leading-none text-charcoal/30">
+                    ${money(BASE[duration])}
+                  </span>
+                )}
 
-                <div className="flex items-end gap-2 mt-3">
+                <div className="flex items-end gap-2">
                   <span className="text-2xl font-display font-bold leading-none text-charcoal">
-                    ${money(total ?? price)}
+                    ${money(price)}
                   </span>
                   <span className="text-sm text-charcoal/50 leading-none mb-0.5">
-                    {total !== null ? 'total' : '/ week'}
+                    per lesson
                   </span>
                 </div>
 
-                {saving > 0 && (
+                {/* On the 10-week plan the badge confirms the saving. On the other plans it
+                    surfaces the rate they could get, so the discount is visible at a glance
+                    without having to switch tabs first. */}
+                {isTen ? (
                   <span className="inline-flex self-start items-center gap-1.5 mt-4 px-3 py-1.5 rounded-full
                                    bg-accent text-white text-xs font-bold">
                     <TagIcon className="w-3 h-3" />
-                    Save ${saving}
+                    Save ${saving} on the package
                   </span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setPlan('ten')}
+                    className="inline-flex self-start items-center justify-between gap-3 mt-4
+                               min-h-[44px] w-full px-4 py-2.5 rounded-lg
+                               border-2 border-accent/35 bg-accent/5 text-accent text-sm font-semibold
+                               hover:bg-accent/10 hover:border-accent/70 active:bg-accent/15
+                               transition-colors duration-200 cursor-pointer
+                               focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  >
+                    <span className="text-left leading-snug">
+                      Get it for ${money(perLesson('ten', duration))} per lesson
+                    </span>
+                    <ChevronIcon className="w-3.5 h-3.5 shrink-0" />
+                  </button>
                 )}
 
                 <div className="mt-6 pt-5 border-t border-primary/10">
                   <p className="text-sm text-charcoal/70">
                     <span className="font-semibold text-charcoal">{activePlan.lessons}</span>
-                    <span className="text-charcoal/45"> · ${money(price)} per lesson</span>
+                    {total !== null && (
+                      <span className="text-charcoal/45"> · ${money(total)} total</span>
+                    )}
                   </p>
                   <p className="text-xs text-charcoal/45 mt-2 leading-relaxed">
                     {DURATION_NOTE[duration]}
