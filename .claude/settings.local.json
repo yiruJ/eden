@@ -69,7 +69,11 @@
       "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-update-page",
       "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-pages",
       "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-move-pages",
-      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-database"
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-database",
+      "Bash(cd \"/Users/yirujang/Downloads/Private & Shared 4\" && echo \"=== _all.csv ===\" && head -5 \"Private Lesson Packages 32067b0c0e4b80daa3a2ee93c7072409_all.csv\" && echo \"\" && echo \"=== plain .csv ===\" && head -5 \"Private Lesson Packages 32067b0c0e4b80daa3a2ee93c7072409.csv\" && echo \"\" && echo \"=== row counts ===\" && wc -l \"Private Lesson Packages 32067b0c0e4b80daa3a2ee93c7072409_all.csv\" \"Private Lesson Packages 32067b0c0e4b80daa3a2ee93c7072409.csv\")",
+      "WebFetch(domain:www.ashleydanyew.com)",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-query-data-sources",
+      "Bash(awk -F'/' '{if \\($2 % 5 != 0\\) print \"INVALID: \" $0; else print \"  ok:   \" $0}')"
     ]
   }
 }

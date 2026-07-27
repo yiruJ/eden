@@ -16,19 +16,7 @@ const team = [
     role: 'Co-Founder & Violin / Viola Teacher',
     bio: 'Dylan\'s dual expertise in violin and viola gives students a rich perspective on string playing and ensemble musicianship.',
     initials: 'D',
-  },
-  {
-    name: 'Jimin Yang',
-    role: 'Violin Teacher',
-    bio: 'A passionate violinist with a deep commitment to nurturing each student\'s individual voice and musical confidence.',
-    initials: 'J',
-  },
-  {
-    name: 'Hana Lee',
-    role: 'Violin Teacher',
-    bio: 'Hana brings warmth and precision to every lesson, guiding students from their very first notes through to advanced classical repertoire.',
-    initials: 'H',
-  },
+  }
 ];
 
 const values = [
@@ -69,7 +57,7 @@ export function AboutPage() {
               Music education <span className="italic text-primary">with heart</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
             </h1>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
-              Eden Music Academy was born from a simple belief: great music teaching changes lives. Founded in Sydney in 2014, we've grown into a community of passionate teachers and curious students of all ages.
+              Eden Music Academy was born from a simple belief: great music teaching changes lives. Founded in Sydney in 2026, we've grown into a community of passionate teachers and curious students of all ages.
             </p>
             <p className="text-lg text-charcoal/65 leading-relaxed font-light max-w-lg">
               We named ourselves Eden because we wanted to create a space where creativity flourishes naturally: warm, alive, and full of possibility.

@@ -25,6 +25,27 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+
+  /* Angled slash for struck-through prices. A flat line-through sits heavily on
+     Playfair numerals; a thin tilted rule in the accent colour reads as intentional
+     and ties the old price to the savings badge. */
+  .price-slash {
+    position: relative;
+    display: inline-block;
+  }
+  .price-slash::after {
+    content: '';
+    position: absolute;
+    left: -7%;
+    right: -7%;
+    top: 50%;
+    height: 2px;
+    border-radius: 999px;
+    background-color: #ec2f44;
+    opacity: 0.65;
+    transform: translateY(-50%) rotate(-8deg);
+    pointer-events: none;
+  }
 }
 
 @keyframes badge-shimmer {

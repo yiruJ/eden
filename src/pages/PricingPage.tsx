@@ -1,61 +1,17 @@
-import { Link } from 'react-router-dom';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import { PricingTiers } from '../components/sections/PricingTiers';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 
-const tiers = [
-  {
-    duration: '30 min',
-    price: 45,
-    description: 'A focused session ideal for younger beginners or students with shorter attention spans. Great for building early habits.',
-    highlights: ['Ages 4+ recommended', 'Ideal for first-year students', 'One instrument focus'],
-  },
-  {
-    duration: '45 min',
-    price: 65,
-    description: 'The sweet spot for most students. Enough time to warm up, work on technique, and run through repertoire in a single session.',
-    highlights: ['Most popular choice', 'Suits all ages and levels', 'Balanced pacing'],
-    featured: true,
-  },
-  {
-    duration: '60 min',
-    price: 80,
-    description: 'A full hour for students who are ready to go deeper, with more repertoire, theory integration, and performance preparation.',
-    highlights: ['Popular with adults & high schoolers', 'Performance prep included', 'Best value per minute'],
-  },
-];
-
-const ensembleTiers = [
-  {
-    duration: '45 min',
-    price: 35,
-    description: 'A focused group session to develop ensemble skills, intonation, and musical communication.',
-    highlights: ['2+ students', 'Per student pricing', 'String ensemble focus'],
-  },
-  {
-    duration: '60 min',
-    price: 45,
-    description: 'The full ensemble experience — more time for repertoire, part-work, and performance preparation together.',
-    highlights: ['2+ students', 'Per student pricing', 'Best for exam or concert prep'],
-    featured: true,
-  },
-];
 
 const discounts = [
   {
-    icon: UsersIcon,
-    title: 'Ensemble + Private Combo',
-    badge: '$50 off',
-    badgeColor: 'bg-primary text-white',
-    description: 'Enrol in both ensemble and private lessons with Eden and receive $50 off your ensemble package payment.',
-  },
-  {
     icon: SiblingIcon,
     title: 'Sibling Discount',
-    badge: '10% off each',
+    badge: '5% off each',
     badgeColor: 'bg-primary text-white',
-    description: 'When two siblings both enrol in private lessons, each sibling receives 10% off their individual lesson fees.',
+    description: 'When two siblings both enrol in private lessons, each sibling receives 5% off their individual lesson fees.',
   },
   {
     icon: PianoIcon,
@@ -65,18 +21,18 @@ const discounts = [
     description: 'Add piano lessons alongside your primary instrument and receive a stackable 5% discount on your fees.',
   },
   {
+    icon: TheoryIcon,
+    title: 'Music Theory Pairing',
+    badge: '5% off',
+    badgeColor: 'bg-primary text-white',
+    description: 'Add music theory alongside your instrument lessons and receive a stackable 5% discount on your fees.',
+  },
+  {
     icon: ReferralIcon,
     title: 'Referral Reward',
     badge: '5% off',
     badgeColor: 'bg-accent/10 text-accent',
     description: "Refer a friend to Eden and you'll receive 5% off your next payment package once they enrol. Applied to the referrer only.",
-  },
-  {
-    icon: PackageIcon,
-    title: '10-Week Package',
-    badge: '$50 off',
-    badgeColor: 'bg-primary text-white',
-    description: 'Pay upfront for a full 10-week term and receive $50 off the total price. Secures your regular time slot and gives your teacher time to plan ahead.',
   },
 ];
 
@@ -104,7 +60,7 @@ export function PricingPage() {
     <>
       <SEO
         title="Lesson Pricing — Eden Music Academy"
-        description="Simple, transparent pricing for piano, violin, viola and cello lessons at Eden Music Academy in North Strathfield. 30, 45 and 60 minute sessions available."
+        description="Piano, violin, viola and cello lesson rates at Eden Music Academy in North Strathfield. 30, 45 and 60 minute lessons, with casual, 5 week and 10 week payment options."
         canonical="/pricing"
       />
 
@@ -115,144 +71,24 @@ export function PricingPage() {
             <SectionHeading
               tag="Lesson Pricing"
               title="Simple, transparent pricing"
-              subtitle="Choose the lesson length that suits your child's age and focus. No hidden fees, no term contracts. Just great teaching."
+              subtitle="No hidden fees, no term contracts. Just great teaching."
             />
           </div>
         </section>
       </FadeIn>
 
-      {/* Private lesson pricing cards */}
-      <FadeIn direction="up" delay={100}>
-        <section className="py-16 px-6 bg-background">
-          <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-8">Private Lessons</p>
-            <div className="grid sm:grid-cols-3 gap-6 items-stretch">
-              {tiers.map(({ duration, price, description, highlights, featured }) => (
-                <div
-                  key={duration}
-                  className={`relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
-                    featured
-                      ? 'bg-primary text-white border-primary shadow-2xl scale-[1.03]'
-                      : 'bg-white border-primary/10 hover:border-primary/30 hover:shadow-xl'
-                  }`}
-                >
-                  {featured && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-xs font-semibold uppercase tracking-widest whitespace-nowrap">
-                      Most Popular
-                    </span>
-                  )}
-                  <div className="mb-6">
-                    <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${featured ? 'text-white/70' : 'text-primary'}`}>
-                      {duration} lesson
-                    </p>
-                    <div className="flex items-end gap-1">
-                      <span className={`text-5xl font-display font-bold leading-none ${featured ? 'text-white' : 'text-charcoal'}`}>
-                        ${price}
-                      </span>
-                      <span className={`text-sm mb-1 ${featured ? 'text-white/60' : 'text-charcoal/50'}`}>/ session</span>
-                    </div>
-                  </div>
-                  <p className={`text-sm leading-relaxed mb-6 flex-1 ${featured ? 'text-white/80' : 'text-charcoal/65'}`}>
-                    {description}
-                  </p>
-                  <ul className="space-y-2 mb-8">
-                    {highlights.map((point) => (
-                      <li key={point} className="flex items-center gap-2 text-sm">
-                        <CheckIcon className={`w-4 h-4 shrink-0 ${featured ? 'text-white/70' : 'text-primary'}`} />
-                        <span className={featured ? 'text-white/85' : 'text-charcoal/70'}>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/enrol"
-                    className={`inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-lg font-semibold text-sm transition-all duration-200 ${
-                      featured
-                        ? 'bg-white text-primary hover:bg-white/90'
-                        : 'bg-primary/10 text-primary hover:bg-primary/20'
-                    }`}
-                  >
-                    Book a Trial Lesson
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* Ensemble pricing */}
-      <FadeIn direction="up" delay={100}>
-        <section className="py-16 px-6 bg-[#eef6f1]">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Ensemble Lessons</p>
-<p className="text-charcoal/60 text-sm mt-2 max-w-xl">
-                Ensemble lessons bring 2 or more students together to develop chamber music skills, musical listening, and performance confidence. Pricing is per student.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
-              {ensembleTiers.map(({ duration, price, description, highlights, featured }) => (
-                <div
-                  key={duration}
-                  className={`relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
-                    featured
-                      ? 'bg-primary text-white border-primary shadow-2xl scale-[1.02]'
-                      : 'bg-white border-primary/10 hover:border-primary/30 hover:shadow-xl'
-                  }`}
-                >
-                  {featured && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-xs font-semibold uppercase tracking-widest whitespace-nowrap">
-                      Recommended
-                    </span>
-                  )}
-                  <div className="mb-6">
-                    <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${featured ? 'text-white/70' : 'text-primary'}`}>
-                      {duration} session
-                    </p>
-                    <div className="flex items-end gap-1">
-                      <span className={`text-5xl font-display font-bold leading-none ${featured ? 'text-white' : 'text-charcoal'}`}>
-                        ${price}
-                      </span>
-                      <span className={`text-sm mb-1 ${featured ? 'text-white/60' : 'text-charcoal/50'}`}>/ student</span>
-                    </div>
-                  </div>
-                  <p className={`text-sm leading-relaxed mb-6 flex-1 ${featured ? 'text-white/80' : 'text-charcoal/65'}`}>
-                    {description}
-                  </p>
-                  <ul className="space-y-2 mb-8">
-                    {highlights.map((point) => (
-                      <li key={point} className="flex items-center gap-2 text-sm">
-                        <CheckIcon className={`w-4 h-4 shrink-0 ${featured ? 'text-white/70' : 'text-primary'}`} />
-                        <span className={featured ? 'text-white/85' : 'text-charcoal/70'}>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/enrol"
-                    className={`inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-lg font-semibold text-sm transition-all duration-200 ${
-                      featured
-                        ? 'bg-white text-primary hover:bg-white/90'
-                        : 'bg-primary/10 text-primary hover:bg-primary/20'
-                    }`}
-                  >
-                    Enquire About Ensemble
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
+      {/* Private lesson pricing */}
+      <PricingTiers />
 
       {/* Discounts */}
       <FadeIn direction="up" delay={100}>
-        <section className="py-16 px-6 bg-background">
+        <section id="discounts" className="py-16 px-6 bg-background scroll-mt-24">
           <div className="max-w-5xl mx-auto">
             <div className="mb-10">
               <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Discounts</p>
               <h2 className="text-3xl font-display font-bold text-charcoal leading-tight">Ways to save</h2>
               <p className="text-charcoal/60 text-sm mt-2 max-w-xl">
-                Contact us to have discounts applied to your enrolment.
+                These stack on top of the package rates above. Contact us to have them applied to your enrolment.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -261,7 +97,7 @@ export function PricingPage() {
                   key={title}
                   className="bg-white rounded-2xl border border-primary/10 p-7 flex gap-5 hover:border-primary/25 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div className="space-y-1.5">
@@ -278,7 +114,7 @@ export function PricingPage() {
             <div className="mt-6 flex items-center gap-3 bg-primary/5 border border-primary/10 rounded-xl px-6 py-4">
               <InfoIcon className="w-4 h-4 text-primary shrink-0" />
               <p className="text-sm text-charcoal/70">
-                Discounts are stackable but capped at <span className="font-semibold text-charcoal">20% maximum</span> per student per payment cycle. To apply a discount, mention it when you enrol or contact us directly.
+                Discounts are stackable but capped at <span className="font-semibold text-charcoal">10% maximum</span> per student per payment cycle. To apply a discount, mention it when you enrol or contact us directly.
               </p>
             </div>
           </div>
@@ -297,11 +133,64 @@ export function PricingPage() {
             />
             <div className="grid sm:grid-cols-2 gap-6">
               {included.map(({ heading, body }) => (
-                <div key={heading} className="bg-white rounded-2xl p-7 border border-primary/8">
+                <div key={heading} className="bg-white rounded-2xl p-7 border border-primary/10">
                   <h3 className="font-display font-bold text-charcoal text-lg mb-2">{heading}</h3>
                   <p className="text-sm text-charcoal/65 leading-relaxed">{body}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Fee promise */}
+      <FadeIn direction="up" delay={100}>
+        <section className="py-16 px-6 bg-background">
+          <div className="max-w-4xl mx-auto">
+            <div className="rounded-3xl border border-primary/15 bg-white p-8 sm:p-10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+                Our fee promise
+              </p>
+              <h2 className="text-2xl font-display font-bold text-charcoal mb-6">
+                You will always know where you stand
+              </h2>
+              <ul className="space-y-5">
+                <li className="flex gap-4">
+                  <LockIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    <span className="font-semibold text-charcoal">Your package is locked in.</span>{' '}
+                    Once you have paid for a 5 or 10 week package, it is honoured in full at the rate you
+                    paid, whatever happens to our rates in the meantime.
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <BellIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    <span className="font-semibold text-charcoal">You will always get notice.</span>{' '}
+                    If our rates change, families already enrolled keep their existing rate until the change
+                    date, and we give at least two months' written notice beforehand.
+                  </p>
+                </li>
+              </ul>
+              <p className="text-sm text-charcoal/55 mt-7 pt-6 border-t border-primary/10">
+                Any questions about your rate, call us on{' '}
+                <a
+                  href="tel:+61410385227"
+                  className="font-semibold text-primary hover:text-primary/80 transition-colors duration-200
+                             focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                >
+                  0410 385 227
+                </a>{' '}
+                or email{' '}
+                <a
+                  href="mailto:info@edenmusicacademy.com"
+                  className="font-semibold text-primary hover:text-primary/80 transition-colors duration-200
+                             focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                >
+                  info@edenmusicacademy.com
+                </a>
+                .
+              </p>
             </div>
           </div>
         </section>
@@ -314,21 +203,6 @@ export function PricingPage() {
   );
 }
 
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-    </svg>
-  );
-}
-
-function UsersIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-    </svg>
-  );
-}
 
 function SiblingIcon({ className }: { className?: string }) {
   return (
@@ -346,6 +220,14 @@ function PianoIcon({ className }: { className?: string }) {
   );
 }
 
+function TheoryIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+    </svg>
+  );
+}
+
 function ReferralIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
@@ -354,10 +236,18 @@ function ReferralIcon({ className }: { className?: string }) {
   );
 }
 
-function PackageIcon({ className }: { className?: string }) {
+function LockIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+    </svg>
+  );
+}
+
+function BellIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
     </svg>
   );
 }
