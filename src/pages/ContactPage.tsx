@@ -106,7 +106,7 @@ export function ContactPage() {
             <div className="space-y-5">
               {[
                 { icon: MailIcon, label: 'Email', value: 'emacademyinfo@gmail.com', href: 'mailto:emacademyinfo@gmail.com' },
-                { icon: PhoneIcon, label: 'Phone', value: '+61 410 385 227', href: 'tel:+61410385227' },
+                { icon: PhoneIcon, label: 'Phone', value: '+61 434 144 955', href: 'tel:+61434144955' },
                 { icon: LocationIcon, label: 'Location', value: '136a Wellbank St\nNorth Strathfield', href: null },
                 { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 8:00pm\nSat: 9:30am – 5:00pm', href: null },
               ].map(({ icon: Icon, label, value, href }) => (

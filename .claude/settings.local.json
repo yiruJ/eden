@@ -74,7 +74,12 @@
       "WebFetch(domain:www.ashleydanyew.com)",
       "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-query-data-sources",
       "Bash(awk -F'/' '{if \\($2 % 5 != 0\\) print \"INVALID: \" $0; else print \"  ok:   \" $0}')",
-      "Bash(grep -n \"Trial lesson\\\\|Start here\\\\|\\\\$30\" src/pages/PricingPage.tsx)"
+      "Bash(grep -n \"Trial lesson\\\\|Start here\\\\|\\\\$30\" src/pages/PricingPage.tsx)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__computer",
+      "mcp__claude-in-chrome__read_page",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-update-data-source"
     ]
   }
 }

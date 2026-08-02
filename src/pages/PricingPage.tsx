@@ -175,11 +175,11 @@ export function PricingPage() {
               <p className="text-sm text-charcoal/55 mt-7 pt-6 border-t border-primary/10">
                 Any questions about your rate, call us on{' '}
                 <a
-                  href="tel:+61410385227"
+                  href="tel:+61434144955"
                   className="font-semibold text-primary hover:text-primary/80 transition-colors duration-200
                              focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
-                  0410 385 227
+                  0434 144 955
                 </a>{' '}
                 or email{' '}
                 <a

@@ -74,7 +74,7 @@ export function EnrolPage() {
       );
       navigate('/thank-you');
     } catch {
-      setError('Something went wrong. Please try again or call us on +61 410 385 227.');
+      setError('Something went wrong. Please try again or call us on +61 434 144 955.');
     } finally {
       setSending(false);
     }
