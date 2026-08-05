@@ -110,7 +110,7 @@ export function EnrolPage() {
             <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-64">
               <iframe
                 title="Eden Music Academy location"
-                src="https://maps.google.com/maps?q=136a+Wellbank+St,+North+Strathfield+NSW+2137&output=embed"
+                src="https://maps.google.com/maps?q=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW+2137&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -119,7 +119,7 @@ export function EnrolPage() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <p className="text-xs text-charcoal/45 text-center mt-3">136a Wellbank St, North Strathfield</p>
+            <p className="text-xs text-charcoal/45 text-center mt-3">Shop 24/48 Cooper Street, Strathfield NSW 2137</p>
           </div>
         </section>
       </FadeIn>
