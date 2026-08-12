@@ -79,7 +79,23 @@
       "mcp__claude-in-chrome__navigate",
       "mcp__claude-in-chrome__computer",
       "mcp__claude-in-chrome__read_page",
-      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-update-data-source"
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-update-data-source",
+      "Read(//Users/yirujang/project_stuff/**)",
+      "Bash(find / -maxdepth 4 -iname \"*eden-app*\" -not -path \"*/node_modules/*\")",
+      "Bash(grep -rn \"\\\\$\" src/pages/PricingPage.tsx)",
+      "Bash(grep -rn \"price\\\\|Price\\\\|\\\\b[0-9]\\\\{2,3\\\\}\\\\b\" src/components/sections/PricingTiers.tsx)",
+      "Bash(grep -i \"\\\\$\\\\|price\\\\|cost\\\\|book\")",
+      "Bash(grep -iE \"\\\\\\\\$|fee|cost|price|free|charge|complimentary\")",
+      "Bash(grep -iE '\\\\$|fee|cost|price|free|charge|complimentary')",
+      "Bash(grep -iE \"\\\\\\\\$|price|cost|fee|free\")",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-list-recent-pages",
+      "Bash(grep -nE \"\\\\\\\\$|price|55|82|110|50|72\" src/pages/PricingPage.tsx)",
+      "Bash(pdftoppm -jpeg -r 90 Eden-Marketing-Coordinator-JD.pdf page)",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:www.frontiersin.org)",
+      "WebFetch(domain:growyourmusicstudio.com)",
+      "WebFetch(domain:ocg.nsw.gov.au)",
+      "WebFetch(domain:www.fairwork.gov.au)"
     ]
   }
 }

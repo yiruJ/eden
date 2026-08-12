@@ -1,6 +1,6 @@
 export function PrivacyPage() {
   return (
-    <main className="bg-background min-h-screen px-6 py-20">
+    <main className="bg-background min-h-screen px-6 pt-28 pb-20">
       <div className="max-w-3xl mx-auto">
 
         <div className="mb-14">

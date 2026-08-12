@@ -47,7 +47,7 @@ export function AboutPage() {
       />
       {/* Hero */}
       <FadeIn direction="up" duration={700}>
-      <section className="pt-20 pb-16 px-6 bg-background">
+      <section className="pt-28 pb-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">

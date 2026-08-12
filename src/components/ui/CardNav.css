@@ -236,6 +236,28 @@
   box-shadow: 0 2px 8px rgba(236, 47, 68, 0.25);
 }
 
+/* ── Mobile: attach nav flush to the top edge instead of floating ── */
+@media (max-width: 1023.98px) {
+  .card-nav-container {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .card-nav-container:has(.card-nav.open) {
+    width: 100%;
+  }
+
+  .card-nav {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+}
+
 .desktop-flat-btn:focus-visible {
   outline: 2px solid #ec2f44;
   outline-offset: 4px;

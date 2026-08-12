@@ -16,7 +16,7 @@
 - Music Theory — structured theoretical foundation
 **Ages:** 4+ (toddler-friendly — very young beginners welcome)
 **Languages:** English-primary; welcoming to all ethnicities and backgrounds
-**Pricing:** $45 / 30 min · $65 / 45 min · $80 / 60 min (do not lead with pricing in ad copy — let the website handle it)
+**Pricing:** $55 / 30 min · $82.50 / 45 min · $110 / 60 min (5-week package rate; casual is +$15/lesson, 10-week package saves $50/$100/$150 total) (do not lead with pricing in ad copy — let the website handle it)
 **Primary CTA:** Book a trial lesson
 **Model:** Private lessons at boutique studio (not a franchise or chain)
 
@@ -69,7 +69,7 @@ These are the words and phrases the audience uses (not company jargon):
 |-----------|----------|
 | "My child is too young" | Ages 4+ — we specialise in young beginners |
 | "I don't know if they'll stick with it" | That's what the trial lesson is for — zero commitment |
-| "Is it worth the cost?" | Frame as $45 for a 30-min expert session — less than many tutors |
+| "Is it worth the cost?" | Frame as $55 for a 30-min expert session — less than many tutors |
 | "Will the teacher be patient?" | Small, boutique studio — personal attention, not a factory |
 | "Are you too far?" | Easily accessible from Strathfield, Burwood, Homebush, Rhodes |
 | "We're Korean-speaking" | Bilingual environment — Korean-speaking staff/teachers |

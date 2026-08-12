@@ -90,7 +90,7 @@ export function EnrolPage() {
 
       {/* Header */}
       <FadeIn direction="up" duration={700}>
-        <section className="pt-20 pb-12 px-6 bg-background text-center">
+        <section className="pt-28 pb-12 px-6 bg-background text-center">
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
               Trial Lesson

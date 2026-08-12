@@ -66,7 +66,7 @@ export function PricingPage() {
 
       {/* Page header */}
       <FadeIn direction="up" duration={700}>
-        <section className="pt-20 pb-10 px-6 bg-[#eef6f1]">
+        <section className="pt-28 pb-10 px-6 bg-[#eef6f1]">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
               tag="Lesson Pricing"
