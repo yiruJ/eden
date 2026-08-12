@@ -254,7 +254,7 @@ export function TeachersPage() {
             We're always looking for passionate, qualified teachers who share our values. Get in touch.
           </p>
           <a
-            href="mailto:emacademyinfo@gmail.com"
+            href="mailto:info@edenmusicacademy.com"
             className="inline-flex items-center gap-2 mt-4 px-8 py-3.5 bg-primary text-white
                        rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors cursor-pointer"
           >
