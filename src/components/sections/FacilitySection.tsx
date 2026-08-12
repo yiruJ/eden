@@ -3,7 +3,7 @@ import interiorImg from '../../assets/Facility Shot - Interior.webp';
 
 export function FacilitySection() {
   return (
-    <section className="py-20 px-6 bg-secondary">
+    <section className="pb-10 px-6 bg-secondary">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

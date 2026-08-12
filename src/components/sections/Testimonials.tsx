@@ -77,35 +77,6 @@ export function Testimonials() {
             </div>
           ))}
         </div>
-
-        {/* Google Review Badge */}
-        <div className="mt-12 flex justify-center">
-          <a
-            href="https://g.page/r/CWebQOEralbjEAE/review"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-5 bg-white border border-charcoal/10 rounded-2xl px-7 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
-          >
-            {/* Google G logo */}
-            <GoogleIcon className="w-9 h-9 shrink-0" />
-
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-charcoal leading-none">5.0</span>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} className="w-4 h-4 text-[#FBBC04]" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-xs text-charcoal/50 font-medium">Rated on Google Reviews</p>
-            </div>
-
-            <div className="h-10 w-px bg-charcoal/10" />
-
-            <span className="text-sm font-semibold text-[#4285F4] whitespace-nowrap">Write a review</span>
-          </a>
-        </div>
       </div>
     </section>
   );

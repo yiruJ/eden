@@ -88,7 +88,7 @@ export function TeachersPreview() {
   }
 
   return (
-    <section className="py-14 px-6 bg-background">
+    <section className="py-10 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

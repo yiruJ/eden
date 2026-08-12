@@ -19,7 +19,7 @@ export function CTABanner() {
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
             <SplitText
               text="Is Your Child Ready to Start Playing?"
-              className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight"
+              className="text-2xl lg:text-5xl font-display font-bold text-white leading-tight"
               tag="span"
               splitType="chars"
               delay={30}
@@ -35,20 +35,6 @@ export function CTABanner() {
           <p className="text-white/75 text-lg max-w-xl mx-auto font-light leading-relaxed">
             Spots are limited. Book a trial lesson and see if Eden is the right fit.
           </p>
-
-          {/* Pricing strip */}
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-white/10 rounded-2xl px-7 py-4 mx-auto">
-            <span className="text-white/60 text-xs font-semibold uppercase tracking-widest">Lesson lengths</span>
-            {['30 min', '45 min', '60 min'].map((len) => (
-              <span key={len} className="text-white font-semibold text-sm">{len}</span>
-            ))}
-            <Link
-              to="/pricing"
-              className="text-white/80 text-xs underline underline-offset-2 hover:text-white transition-colors"
-            >
-              View full pricing
-            </Link>
-          </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
             <Link

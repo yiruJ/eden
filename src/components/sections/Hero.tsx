@@ -9,7 +9,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-background -mt-10">
 
       {/* ── MOBILE: full-bleed image hero ── */}
-      <div className="lg:hidden relative h-[70svh] max-h-[520px] flex flex-col justify-end">
+      <div className="lg:hidden relative h-[64svh] max-h-[480px] flex flex-col justify-end">
 
         {/* Background image */}
         <img
@@ -24,7 +24,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/55 to-black/95" />
 
         {/* Text + credential chips + CTAs */}
-        <div className="relative z-10 px-6 pb-10 space-y-4">
+        <div className="relative z-10 px-6 pb-10 space-y-6">
           <h1 className="text-4xl font-display font-black text-white leading-[1.1]">
             Where Young<br />
             Musicians<br />
@@ -47,21 +47,12 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 pt-1">
+          <div className="pt-1">
             <Link to="/enrol" className="block">
               <Button variant="primary" size="lg" className="w-full">
                 Book a Trial Lesson
                 <ArrowRightIcon />
               </Button>
-            </Link>
-            <Link to="/teachers" className="block">
-              <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg font-semibold
-                                 px-10 py-4 text-base border-2 border-white/35 text-white
-                                 bg-white/10 backdrop-blur-sm hover:bg-white/20
-                                 transition-all duration-200 cursor-pointer
-                                 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent">
-                Explore Teachers
-              </button>
             </Link>
           </div>
         </div>
