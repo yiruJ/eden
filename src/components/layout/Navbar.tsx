@@ -7,7 +7,6 @@ const mobileNavItems = [
     bgColor: '#4aaf81',
     textColor: '#ffffff',
     links: [
-      { label: 'Pricing', to: '/pricing' },
       { label: 'Contact', to: '/contact' },
       { label: 'Book a Trial', to: '/enrol', variant: 'button' as const },
     ],

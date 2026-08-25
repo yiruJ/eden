@@ -95,7 +95,18 @@
       "WebFetch(domain:www.frontiersin.org)",
       "WebFetch(domain:growyourmusicstudio.com)",
       "WebFetch(domain:ocg.nsw.gov.au)",
-      "WebFetch(domain:www.fairwork.gov.au)"
+      "WebFetch(domain:www.fairwork.gov.au)",
+      "Bash(pod install *)",
+      "Bash(/usr/bin/python3 -c \"import Quartz; print\\('quartz ok'\\)\")",
+      "Bash(mdls -name kMDItemTextContent \"/Users/yirujang/Downloads/Sky Lam Resume \\(13\\) \\(1\\).pdf\")",
+      "mcp__4a1a8a6b-0f0a-49e8-bcbf-db5eec88bba9__notion-create-view",
+      "Bash(./.venv/bin/pip install *)",
+      "Bash(./.venv/bin/python -c ' *)",
+      "Bash(./.venv/bin/python build_template.py)",
+      "Bash(./.venv/bin/python \"/Users/yirujang/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/156688fb-71a4-4890-8ab1-c541118f9069/1352d571-9f80-4ded-9814-eee002ac45ba/skills/xlsx/scripts/recalc.py\" /Users/yirujang/project_stuff/eden/automation/payment-reminder/Eden-Invoice-Template.xlsx)",
+      "Read(//Applications/LibreOffice.app/Contents/MacOS/**)",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(./.venv/bin/python pkg.py)"
     ]
   }
 }

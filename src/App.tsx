@@ -13,8 +13,8 @@ const ContactPage     = lazy(() => import('./pages/ContactPage').then(m => ({ de
 const EnrolPage       = lazy(() => import('./pages/EnrolPage').then(m => ({ default: m.EnrolPage })));
 const PrivacyPage     = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
 const ThankYouPage    = lazy(() => import('./pages/ThankYouPage').then(m => ({ default: m.ThankYouPage })));
-const PricingPage     = lazy(() => import('./pages/PricingPage').then(m => ({ default: m.PricingPage })));
 const NotFoundPage    = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const ShaderDemoPage  = lazy(() => import('./pages/ShaderDemoPage').then(m => ({ default: m.ShaderDemoPage })));
 
 // Admin pages
 const AdminLoginPage         = lazy(() => import('./pages/admin/LoginPage').then(m => ({ default: m.LoginPage })));
@@ -50,9 +50,11 @@ export default function App() {
                 <Route path="/enrol" element={<EnrolPage />} />
                 <Route path="/thank-you" element={<ThankYouPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
-                <Route path="/pricing" element={<PricingPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
+
+              {/* Temporary shader demo - no navbar/footer */}
+              <Route path="/shader-demo" element={<ShaderDemoPage />} />
 
               {/* Admin routes - no navbar/footer */}
               <Route path="/admin" element={<AdminLoginPage />} />
