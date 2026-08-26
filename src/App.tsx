@@ -11,6 +11,7 @@ const InstrumentsPage = lazy(() => import('./pages/InstrumentsPage').then(m => (
 const TeachersPage    = lazy(() => import('./pages/TeachersPage').then(m => ({ default: m.TeachersPage })));
 const ContactPage     = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const EnrolPage       = lazy(() => import('./pages/EnrolPage').then(m => ({ default: m.EnrolPage })));
+const ParkingPage     = lazy(() => import('./pages/ParkingPage').then(m => ({ default: m.ParkingPage })));
 const PrivacyPage     = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
 const ThankYouPage    = lazy(() => import('./pages/ThankYouPage').then(m => ({ default: m.ThankYouPage })));
 const NotFoundPage    = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
@@ -49,6 +50,7 @@ export default function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/enrol" element={<EnrolPage />} />
                 <Route path="/thank-you" element={<ThankYouPage />} />
+                <Route path="/parking" element={<ParkingPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>

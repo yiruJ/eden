@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import exteriorImg from '../../assets/Facility Shot - Exterior.webp';
 import interiorImg from '../../assets/Facility Shot - Interior.webp';
 
@@ -17,6 +18,14 @@ export function FacilitySection() {
           <p className="text-charcoal/60 font-light max-w-xl">
             Our dedicated studio in Strathfield gives every student a calm, focused
             environment to learn, practise, and grow.
+          </p>
+          <p className="text-charcoal/60 font-light max-w-xl">
+            Eden families also have three dedicated parking spots in the building's
+            underground car park.{' '}
+            <Link to="/parking" className="text-primary font-semibold hover:underline">
+              See how to park
+            </Link>
+            .
           </p>
         </div>
 

@@ -30,6 +30,17 @@ export function ThankYouPage() {
           <p className="text-sm text-charcoal/40">
             In the meantime, feel free to explore what we offer.
           </p>
+          <div className="rounded-2xl bg-surface border border-primary/10 p-5 text-left">
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              <span className="font-semibold text-charcoal">Driving in?</span> Eden families
+              have three dedicated spots in the underground car park, entered from Clarence
+              Street.{' '}
+              <Link to="/parking" className="text-primary font-semibold hover:underline">
+                See how to park
+              </Link>
+              .
+            </p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <Link
               to="/"

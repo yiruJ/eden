@@ -11,6 +11,7 @@ const academyLinks = [
 const supportLinks = [
   { label: 'Enrolment Info', to: '/enrol' },
   { label: 'Contact Us', to: '/contact' },
+  { label: 'Parking', to: '/parking' },
   { label: 'FAQs', to: '/contact#faqs' },
   { label: 'Privacy Policy', to: '/privacy' },
   { label: 'Login', to: '/admin' },

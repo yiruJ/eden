@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
@@ -108,6 +109,7 @@ export function ContactPage() {
                 { icon: MailIcon, label: 'Email', value: 'info@edenmusicacademy.com', href: 'mailto:info@edenmusicacademy.com' },
                 { icon: PhoneIcon, label: 'Phone', value: '+61 434 144 955', href: 'tel:+61434144955' },
                 { icon: LocationIcon, label: 'Location', value: 'Shop 24/48 Cooper Street\nStrathfield NSW 2137', href: null },
+                { icon: CarIcon, label: 'Parking', value: 'Three dedicated spots underground\nEntry from Clarence Street', href: '/parking' },
                 { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 8:30pm\nSat: 9:30am – 5:00pm', href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
@@ -116,7 +118,11 @@ export function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-charcoal/40 uppercase tracking-wider mb-1">{label}</p>
-                    {href ? (
+                    {href && href.startsWith('/') ? (
+                      <Link to={href} className="text-charcoal hover:text-primary transition-colors text-sm font-medium whitespace-pre-line">
+                        {value}
+                      </Link>
+                    ) : href ? (
                       <a href={href} className="text-charcoal hover:text-primary transition-colors text-sm font-medium whitespace-pre-line">
                         {value}
                       </a>
@@ -313,6 +319,14 @@ function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
+    </svg>
+  );
+}
+
+function CarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h.375c.621 0 1.125-.504 1.125-1.125V14.25m-17.25 0h17.25m-17.25 0l1.72-5.16a2.25 2.25 0 012.134-1.59h9.542a2.25 2.25 0 012.134 1.59l1.72 5.16" />
     </svg>
   );
 }
