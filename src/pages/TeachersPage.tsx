@@ -88,7 +88,7 @@ export function TeachersPage() {
     <>
       <SEO
         title="Eden Music Academy: Meet Our Sydney Conservatorium-Trained Teachers"
-        description="Meet Eden Music Academy's qualified music teachers — all students of the Sydney Conservatorium of Music. Expert violin, viola, cello & piano tuition in North Strathfield."
+        description="Meet Eden Music Academy's qualified music teachers — all students of the Sydney Conservatorium of Music. Expert violin, viola, cello & piano tuition in Strathfield."
         canonical="/teachers"
       />
       {/* Header */}

@@ -33,11 +33,11 @@ const steps: Step[] = [
   },
   {
     number: 2,
-    title: 'Enter your passcode',
+    title: 'Enter the passcode',
     body: 'Enter the passcode from your confirmation email. It rings the studio, we answer, and the gate opens.',
     detail: (
       <>
-        Give us a moment to pick up. Cannot find your passcode?{' '}
+        Give us a moment to pick up. No response?{' '}
         <a href={`tel:${STUDIO_PHONE}`} className="text-primary font-semibold hover:underline">
           Call {STUDIO_PHONE_DISPLAY}
         </a>

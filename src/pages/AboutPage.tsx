@@ -41,8 +41,8 @@ export function AboutPage() {
   return (
     <>
       <SEO
-        title="Eden Music Academy: About Our Music School in North Strathfield, Sydney"
-        description="Founded in 2014, Eden Music Academy is a warm, community-focused music school in North Strathfield, Sydney's Inner West. Meet our Sydney Conservatorium-trained teachers."
+        title="Eden Music Academy: About Our Music School in Strathfield, Sydney"
+        description="Founded in 2014, Eden Music Academy is a warm, community-focused music school in Strathfield, Sydney's Inner West. Meet our Sydney Conservatorium-trained teachers."
         canonical="/about"
       />
       {/* Hero */}

@@ -10,7 +10,7 @@ export function InstrumentsPage() {
     <>
       <SEO
         title="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney"
-        description="Learn piano, violin, viola, or cello at Eden Music Academy, North Strathfield, Sydney. Qualified teachers from the Sydney Conservatorium. All ages welcome."
+        description="Learn piano, violin, viola, or cello at Eden Music Academy, Strathfield, Sydney. Qualified teachers from the Sydney Conservatorium. All ages welcome."
         canonical="/instruments"
       />
       {/* Header */}

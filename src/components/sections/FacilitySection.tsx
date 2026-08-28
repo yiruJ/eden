@@ -79,7 +79,7 @@ export function FacilitySection() {
             </div>
             <div>
               <p className="text-sm font-semibold text-charcoal">Eden Music Academy</p>
-              <p className="text-xs text-charcoal/55 mt-0.5">Strathfield, NSW 2137</p>
+              <p className="text-xs text-charcoal/55 mt-0.5">Strathfield, NSW 2135</p>
             </div>
           </div>
           <a

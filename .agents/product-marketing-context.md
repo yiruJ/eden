@@ -7,7 +7,7 @@
 ## Business Overview
 
 **Academy:** Eden Music Academy
-**Location:** 136a Wellbank St, North Strathfield, Sydney NSW
+**Location:** Shop 24/48 Cooper St, Strathfield, Sydney NSW
 **Website:** edenmusicacademy.com
 **Instruments:** Violin, viola, cello, piano
 **Programs:**
@@ -91,7 +91,7 @@ These are the words and phrases the audience uses (not company jargon):
 ## Messaging Framework
 
 ### Core Value Proposition
-> A warm, expert, bilingual music academy in North Strathfield — where young children thrive from their very first lesson.
+> A warm, expert, bilingual music academy in Strathfield — where young children thrive from their very first lesson.
 
 ### Headline Options (by formula)
 - **Outcome-focused:** "Give Your Child the Gift of Music — From Age 4"
@@ -140,7 +140,7 @@ These are the words and phrases the audience uses (not company jargon):
 **Primary platform:** Google Search (high-intent — parents searching right now)
 **Secondary platform:** Meta (demand gen — reach parents not actively searching yet)
 
-**Target radius:** 5–8km from 136a Wellbank St, North Strathfield
+**Target radius:** 5–8km from Shop 24/48 Cooper St, Strathfield
 **Core suburbs:** North Strathfield, Strathfield, Burwood, Homebush, Rhodes, Concord, Meadowbank
 **Exclude:** Suburbs >15km away
 
@@ -150,14 +150,14 @@ These are the words and phrases the audience uses (not company jargon):
 
 **Top keywords (English):**
 ```
-piano lessons north strathfield
+piano lessons strathfield
 violin lessons strathfield
 music lessons for kids strathfield
 kids piano lessons burwood
 music school near me
 trial music lesson sydney
 beginner violin lessons sydney
-piano teacher north strathfield
+piano teacher strathfield
 music lessons ages 4
 ```
 

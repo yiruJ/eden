@@ -40,7 +40,7 @@ export function ProgramsPage() {
     <>
       <SEO
         title="Eden Music Academy: Private Lessons, Ensemble & Music Theory in Sydney"
-        description="Explore private studio lessons, ensemble, and music theory at Eden Music Academy, North Strathfield, Sydney. Tailored programs for all ages and experience levels."
+        description="Explore private studio lessons, ensemble, and music theory at Eden Music Academy, Strathfield, Sydney. Tailored programs for all ages and experience levels."
         canonical="/programs"
       />
       {/* Header */}

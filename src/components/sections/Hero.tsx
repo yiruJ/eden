@@ -72,7 +72,7 @@ export function Hero() {
 
             <p className="text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
               Sydney Conservatorium-trained teachers offering piano, violin, cello
-              and viola lessons for children from age 4 in North Strathfield.
+              and viola lessons for children from age 4 in Strathfield.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">

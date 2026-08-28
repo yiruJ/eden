@@ -108,7 +108,7 @@ export function ContactPage() {
               {[
                 { icon: MailIcon, label: 'Email', value: 'info@edenmusicacademy.com', href: 'mailto:info@edenmusicacademy.com' },
                 { icon: PhoneIcon, label: 'Phone', value: '+61 434 144 955', href: 'tel:+61434144955' },
-                { icon: LocationIcon, label: 'Location', value: 'Shop 24/48 Cooper Street\nStrathfield NSW 2137', href: null },
+                { icon: LocationIcon, label: 'Location', value: 'Shop 24/48 Cooper Street\nStrathfield NSW 2135', href: null },
                 { icon: CarIcon, label: 'Parking', value: 'Three dedicated spots underground\nEntry from Clarence Street', href: '/parking' },
                 { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 8:30pm\nSat: 9:30am – 5:00pm', href: null },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -258,7 +258,7 @@ export function ContactPage() {
           <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-80">
             <iframe
               title="Eden Music Academy location"
-              src="https://maps.google.com/maps?q=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW+2137&output=embed"
+              src="https://maps.google.com/maps?q=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW+2135&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
