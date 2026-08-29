@@ -5,12 +5,13 @@ interface SEOProps {
   description: string;
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const BASE_URL = 'https://edenmusicacademy.com';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/logo.png`;
 
-export function SEO({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE }: SEOProps) {
+export function SEO({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE, noindex = false }: SEOProps) {
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
   return (
@@ -18,6 +19,7 @@ export function SEO({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE 
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonical} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

@@ -9,8 +9,8 @@ export function InstrumentsPage() {
   return (
     <>
       <SEO
-        title="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney"
-        description="Learn piano, violin, viola, or cello at Eden Music Academy, Strathfield, Sydney. Qualified teachers from the Sydney Conservatorium. All ages welcome."
+        title="Choose an Instrument: Piano, Violin, Viola & Cello | Eden Music Academy"
+        description="Not sure which instrument to start? Compare piano, violin, viola and cello lessons at Eden Music Academy, Strathfield. Sydney Conservatorium-trained teachers, ages 4+."
         canonical="/instruments"
       />
       {/* Header */}

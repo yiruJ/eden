@@ -16,6 +16,7 @@ export function ThankYouPage() {
         title="Enrolment Received — Eden Music Academy"
         description="Thank you for enrolling with Eden Music Academy. We will be in touch within one business day."
         canonical="/thank-you"
+        noindex
       />
       <FadeIn direction="up" duration={700}>
       <div className="min-h-[80vh] flex items-center justify-center px-6">

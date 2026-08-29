@@ -16,27 +16,25 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&display=swap">
     </noscript>
 
-    <!-- Base title & description (overridden per-page by react-helmet-async) -->
+    <!-- Fallback title for pre-JS paint / non-JS crawlers. Every routed page overrides
+         this (and description/OG/Twitter tags) via the <SEO> component (react-helmet-async).
+         Do NOT add a static <meta name="description">, og:title, og:description, og:url,
+         twitter:title, twitter:description, or twitter:image here — react-helmet-async
+         does not remove pre-existing static tags, it only appends its own, so a static
+         duplicate here would sit ahead of the per-page one in the DOM and could get read
+         by crawlers/link-unfurlers instead of the correct per-page content. -->
     <title>Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney</title>
-    <meta name="description" content="Expert piano, violin, viola & cello lessons for all ages in Strathfield, Sydney. Sydney Conservatorium-trained teachers. Book a trial lesson today." />
 
-    <!-- Open Graph -->
+    <!-- Open Graph: only tags NOT set per-page by <SEO> live here -->
     <meta property="og:site_name" content="Eden Music Academy" />
     <meta property="og:locale" content="en_AU" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://edenmusicacademy.com" />
-    <meta property="og:title" content="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney" />
-    <meta property="og:description" content="Expert music lessons for all ages in Strathfield, Sydney. Piano, violin, viola & cello taught by Sydney Conservatorium-trained teachers." />
-    <meta property="og:image" content="https://edenmusicacademy.com/logo.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="Eden Music Academy logo" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter Card: only tags NOT set per-page by <SEO> live here -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Eden Music Academy | Music Lessons in Strathfield" />
-    <meta name="twitter:description" content="Piano, violin, viola & cello lessons for all ages in Strathfield, Sydney. Expert teachers, warm studio." />
-    <meta name="twitter:image" content="https://edenmusicacademy.com/logo.png" />
 
     <!-- Google Ads tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18033582805"></script>
@@ -81,7 +79,7 @@
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "15:30",
-          "closes": "20:00"
+          "closes": "20:30"
         },
         {
           "@type": "OpeningHoursSpecification",
