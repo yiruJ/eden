@@ -110,7 +110,7 @@ export function ContactPage() {
                 { icon: PhoneIcon, label: 'Phone', value: '+61 434 144 955', href: 'tel:+61434144955' },
                 { icon: LocationIcon, label: 'Location', value: 'Shop 24/48 Cooper Street\nStrathfield NSW 2135', href: null },
                 { icon: CarIcon, label: 'Parking', value: 'Three dedicated spots underground\nEntry from Clarence Street', href: '/parking' },
-                { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 8:30pm\nSat: 9:30am – 5:00pm', href: null },
+                { icon: ClockIcon, label: 'Hours', value: 'Mon–Fri: 3:30pm – 6:30pm\nSat: 9:30am – 6:30pm', href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
