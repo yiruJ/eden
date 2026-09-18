@@ -1,20 +1,13 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 
 export function ThankYouPage() {
-  useEffect(() => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', { send_to: 'AW-18033582805/tEA9COH_w44cENXFipdD' });
-    }
-  }, []);
-
   return (
     <>
       <SEO
-        title="Enrolment Received — Eden Music Academy"
-        description="Thank you for enrolling with Eden Music Academy. We will be in touch within one business day."
+        title="Trial Request Received | Eden Music Academy"
+        description="Thanks for requesting a trial lesson at Eden Music Academy. We will be in touch within one business day to confirm your time."
         canonical="/thank-you"
         noindex
       />
@@ -24,9 +17,9 @@ export function ThankYouPage() {
           <div className="w-20 h-20 rounded-full bg-primary/15 flex items-center justify-center mx-auto">
             <CheckIcon className="w-10 h-10 text-primary" />
           </div>
-          <h1 className="text-4xl font-display font-bold text-charcoal">Enrolment received!</h1>
+          <h1 className="text-4xl font-display font-bold text-charcoal">Trial request received!</h1>
           <p className="text-charcoal/60 leading-relaxed">
-            Thank you for enrolling with Eden Music Academy. We will be in touch within one business day to confirm your lesson time and next steps.
+            Thanks for requesting a trial lesson. We will call or email you within one business day to confirm a time that suits your family.
           </p>
           <p className="text-sm text-charcoal/40">
             In the meantime, feel free to explore what we offer.

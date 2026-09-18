@@ -255,6 +255,7 @@ export function TeachersPage() {
           </p>
           <a
             href="mailto:info@edenmusicacademy.com"
+            data-conversion="off"
             className="inline-flex items-center gap-2 mt-4 px-8 py-3.5 bg-primary text-white
                        rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors cursor-pointer"
           >

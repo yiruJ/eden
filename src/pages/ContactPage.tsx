@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
+import { trackConversion } from '../lib/adsTracking';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
 const EMAILJS_TEMPLATE = 'template_f5dt26c';
@@ -66,6 +67,7 @@ export function ContactPage() {
         },
         EMAILJS_PUBLIC
       );
+      trackConversion('contactMessage');
       setSubmitted(true);
     } catch {
       setError('Something went wrong. Please try again or email us directly.');

@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/HomePage';
 import { AdminLayout } from './components/layout/AdminLayout';
+import { ConversionClickTracker } from './components/ConversionClickTracker';
 
 const AboutPage       = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ProgramsPage    = lazy(() => import('./pages/ProgramsPage').then(m => ({ default: m.ProgramsPage })));
@@ -37,6 +38,7 @@ export default function App() {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <ConversionClickTracker />
           <Suspense fallback={null}>
             <Routes>
               {/* Public routes — with navbar/footer */}

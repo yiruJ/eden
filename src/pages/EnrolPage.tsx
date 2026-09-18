@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
+import { trackConversion } from '../lib/adsTracking';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
 const EMAILJS_TEMPLATE = 'template_f5dt26c';
@@ -37,8 +38,17 @@ export function EnrolPage() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const formStarted = useRef(false);
+
+  useEffect(() => {
+    trackConversion('enrolPageView');
+  }, []);
 
   function set(field: keyof FormState, value: string) {
+    if (!formStarted.current) {
+      formStarted.current = true;
+      trackConversion('enrolFormStart');
+    }
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
@@ -72,6 +82,7 @@ export function EnrolPage() {
         },
         EMAILJS_PUBLIC
       );
+      trackConversion('trialRequest');
       navigate('/thank-you');
     } catch {
       setError('Something went wrong. Please try again or call us on +61 434 144 955.');
