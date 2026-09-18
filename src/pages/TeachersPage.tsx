@@ -5,6 +5,7 @@ import dylanImg from '../assets/teachers/dylan.webp';
 import rachelImg from '../assets/teachers/rachel.webp';
 import aureliaImg from '../assets/teachers/aurelia.webp';
 import lucasImg from '../assets/teachers/lucas.webp';
+import erikImg from '../assets/teachers/erik.webp';
 import { SEO } from '../components/SEO';
 
 interface Teacher {
@@ -79,6 +80,17 @@ const teachers: Teacher[] = [
       'Sydney Conservatorium of Music Corinna D\'Hage Mayer String Scholarship',
       'The Dame Joan Sutherland Memorial Award for Outstanding Achievements in Music (2024)',
       'AMEB AMusA & LMusA Cello Exams (Pass)',
+    ],
+  },
+  {
+    name: 'Erik Wild',
+    instruments: ['Cello'],
+    image: erikImg,
+    bio: 'Erik is studying his Bachelor of Music in Cello Performance at the Sydney Conservatorium of Music, where he learns from renowned cellists Christopher Bennett and Julian Smiles. As a member of the cello section in Sydney Youth Orchestra\'s flagship orchestra, he performs in several orchestral projects and international tours each year. Erik believes every young musician deserves to experience the life-changing joy of making music, and he brings that passion into every lesson, sharing everything he has learned with the next generation of players.',
+    highlights: [
+      'Sydney Youth Orchestras: flagship orchestra, cello section',
+      'Annual international orchestral tours',
+      'Studies with Christopher Bennett and Julian Smiles',
     ],
   },
 ];

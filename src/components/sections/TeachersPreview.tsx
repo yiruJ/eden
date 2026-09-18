@@ -6,6 +6,7 @@ import dylanImg from '../../assets/teachers/dylan.webp';
 import rachelImg from '../../assets/teachers/rachel.webp';
 import aureliaImg from '../../assets/teachers/aurelia.webp';
 import lucasImg from '../../assets/teachers/lucas.webp';
+import erikImg from '../../assets/teachers/erik.webp';
 
 interface TeacherPreview {
   name: string;
@@ -21,6 +22,7 @@ const teachers: TeacherPreview[] = [
   { name: 'Aurelia', instruments: 'Violin', image: aureliaImg },
   { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null },
   { name: 'Lucas Choi', instruments: 'Cello', image: lucasImg },
+  { name: 'Erik Wild', instruments: 'Cello', image: erikImg },
 ];
 
 const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
