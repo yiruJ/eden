@@ -1,5 +1,6 @@
 import { Hero } from '../components/sections/Hero';
 import { MomentsStrip } from '../components/sections/MomentsStrip';
+import { Testimonials } from '../components/sections/Testimonials';
 import { ProgramsStrip } from '../components/sections/ProgramsStrip';
 import { TeachersPreview } from '../components/sections/TeachersPreview';
 import { CTABanner } from '../components/sections/CTABanner';
@@ -12,7 +13,7 @@ export function HomePage() {
     <>
       <SEO
         title="Eden Music Academy: Piano, Violin, Viola & Cello Lessons in Sydney"
-        description="Expert piano, violin, viola & cello lessons for all ages in Strathfield, Sydney. Sydney Conservatorium-trained teachers. Book a trial lesson today."
+        description="Expert piano, violin, viola & cello lessons for all ages in Strathfield, Sydney. Sydney Conservatorium-trained teachers. Book a free trial lesson today."
         canonical="/"
       />
       <FadeIn direction="up" duration={700}>
@@ -20,6 +21,9 @@ export function HomePage() {
       </FadeIn>
       <FadeIn direction="none">
         <MomentsStrip />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <Testimonials />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
         <ProgramsStrip />

@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '../ui/SectionHeading';
 import { FeatureCard } from '../ui/FeatureCard';
-// Placeholder image until a dedicated programs photo is ready.
-import programsImg from '../../assets/why_choose_eden_music_academy.webp';
+import programsImg from '../../assets/programs.webp';
 import teachersImg from '../../assets/about.webp';
 
 export function ProgramsStrip() {
@@ -31,6 +30,13 @@ export function ProgramsStrip() {
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500
                        group-hover:scale-105"
           />
+
+          {/* Same green wash as the desktop FeatureCard, so the shared image matches across breakpoints. */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none
+                       bg-gradient-to-t from-[#256448]/95 via-primary/45 to-transparent"
+          />
+
           <span
             className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 inline-flex items-center gap-2
                        px-5 py-3 rounded-full bg-white text-primary text-sm font-semibold shadow-lg

@@ -44,7 +44,7 @@ export function CardNav({
   className = '',
   ease = 'power3.out',
   baseColor = '#EAF2E8',
-  ctaLabel = 'Book a Trial',
+  ctaLabel = 'Book a Free Trial',
   ctaTo = '/enrol',
 }: CardNavProps) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);

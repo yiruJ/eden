@@ -95,7 +95,7 @@ export function EnrolPage() {
     <>
       <SEO
         title="Trial Music Lesson in Strathfield, Sydney | Eden Music Academy"
-        description="Piano, violin, viola and cello lessons for all ages in Strathfield, Sydney. Book a trial lesson today. Sydney Conservatorium-trained teachers."
+        description="Piano, violin, viola and cello lessons for all ages in Strathfield, Sydney. Book a free trial lesson today. Sydney Conservatorium-trained teachers."
         canonical="/enrol"
       />
 
@@ -246,7 +246,7 @@ export function EnrolPage() {
                   className="w-full justify-center"
                   disabled={!canSubmit || sending}
                 >
-                  {sending ? 'Sending…' : 'Request My Trial Lesson'}
+                  {sending ? 'Sending…' : 'Request My Free Trial Lesson'}
                 </Button>
                 <p className="text-xs text-charcoal/40 text-center mt-3">
                   We'll call or email you within 24 hours to confirm a time that suits your family.

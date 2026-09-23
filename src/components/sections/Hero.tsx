@@ -5,10 +5,10 @@ import heroImg from '../../assets/hero.webp';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white -mt-10 lg:pb-14">
+    <section className="relative overflow-hidden bg-white -mt-10 lg:pb-6">
 
       {/* ── MOBILE: full-bleed image hero ── */}
-      <div className="lg:hidden relative h-[74svh] max-h-[600px] flex flex-col justify-end">
+      <div className="lg:hidden relative h-[84svh] max-h-[700px] flex flex-col justify-end">
 
         {/* Background image */}
         <img
@@ -49,7 +49,7 @@ export function Hero() {
           <div className="pt-1">
             <Link to="/enrol" className="block">
               <Button variant="primary" size="lg" className="w-full">
-                Book a Trial Lesson
+                Book a Free Trial Lesson
                 <ArrowRightIcon />
               </Button>
             </Link>
@@ -79,7 +79,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center">
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 pb-24 flex items-end">
           <div className="max-w-xl space-y-8">
             <h1 className="text-[clamp(2rem,3.4vw,2.75rem)] font-display font-black leading-[1.08] text-white">
               Helping Children Discover
@@ -87,15 +87,16 @@ export function Hero() {
               Music<span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
             </h1>
 
-            <p className="text-xl text-white/75 max-w-lg leading-relaxed font-light">
-              Sydney Conservatorium-trained teachers offering piano, violin, cello
-              and viola lessons for children from age 4 in Strathfield.
+            <p className="text-xl text-white/85 max-w-lg leading-relaxed font-light">
+              More than music lessons. Children find somewhere they belong, a passion
+              of their own, and dedication that grows from wanting to play, not being
+              told to.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Link to="/enrol">
                 <Button variant="primary" size="lg">
-                  Book a Trial Lesson
+                  Book a Free Trial Lesson
                   <ArrowRightIcon />
                 </Button>
               </Link>

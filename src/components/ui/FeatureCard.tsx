@@ -27,10 +27,11 @@ export function FeatureCard({ to, image, title, caption, ariaLabel, className = 
                    group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
       />
 
-      {/* Gradient keeps the title above 4.5:1 contrast over any photo */}
+      {/* Eden green wash rising from the base. #256448 is as green as the base can go:
+          it keeps the caption at 4.74:1, and the next step brighter drops it under AA. */}
       <div
-        className="absolute inset-x-0 bottom-0 pt-24 pb-6 px-6 flex items-end justify-between gap-4
-                   bg-gradient-to-t from-charcoal/85 via-charcoal/45 to-transparent"
+        className="absolute inset-x-0 bottom-0 pt-28 pb-6 px-6 flex items-end justify-between gap-4
+                   bg-gradient-to-t from-[#256448]/95 via-primary/45 to-transparent"
       >
         <div>
           <h2 className="font-display font-bold text-white text-2xl leading-tight">{title}</h2>

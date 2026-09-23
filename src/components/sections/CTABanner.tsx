@@ -30,7 +30,7 @@ export function CTABanner() {
           </h2>
 
           <p className="text-white/75 text-lg max-w-xl mx-auto font-light leading-relaxed">
-            Spots are limited. Book a trial lesson and see if Eden is the right fit.
+            Spots are limited. Book a free trial lesson and see if Eden is the right fit.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
@@ -39,7 +39,7 @@ export function CTABanner() {
               className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 rounded-lg bg-rose-700 hover:bg-rose-800
                          text-white font-semibold text-base transition-colors duration-200 cursor-pointer"
             >
-              Book a Trial Lesson
+              Book a Free Trial Lesson
               <ArrowRightIcon />
             </Link>
             <Link
