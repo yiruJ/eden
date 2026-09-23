@@ -82,7 +82,7 @@ export function EnrolPage() {
         },
         EMAILJS_PUBLIC
       );
-      trackConversion('trialRequest');
+      trackConversion('trialRequest', { instrument: form.instrument, level: form.level });
       navigate('/thank-you');
     } catch {
       setError('Something went wrong. Please try again or call us on +61 434 144 955.');

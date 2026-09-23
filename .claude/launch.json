@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "eden-web", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5173 }
+    { "name": "eden-web", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5173 },
+    { "name": "eden-prod-preview", "runtimeExecutable": "sh", "runtimeArgs": ["-c", "npm run build && npx vite preview --port 4173 --strictPort"], "port": 4173 }
   ]
 }

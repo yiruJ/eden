@@ -5,6 +5,7 @@ import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/HomePage';
 import { AdminLayout } from './components/layout/AdminLayout';
 import { ConversionClickTracker } from './components/ConversionClickTracker';
+import { isInternalPath, optOutDevice } from './lib/analytics';
 
 const AboutPage       = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ProgramsPage    = lazy(() => import('./pages/ProgramsPage').then(m => ({ default: m.ProgramsPage })));
@@ -33,11 +34,19 @@ function ScrollToTop() {
   return null;
 }
 
+// A device that opens a staff page is a staff device: stop tracking it for good.
+function InternalTrafficGuard() {
+  const { pathname } = useLocation();
+  useEffect(() => { if (isInternalPath(pathname)) optOutDevice(); }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <InternalTrafficGuard />
         <ConversionClickTracker />
           <Suspense fallback={null}>
             <Routes>

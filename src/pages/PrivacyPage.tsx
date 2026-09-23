@@ -69,6 +69,13 @@ export function PrivacyPage() {
               <li className="flex gap-3">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                 <span>
+                  <strong className="text-charcoal font-semibold">Website analytics:</strong>{' '}
+                  We use PostHog to understand how visitors use our website, including which pages are viewed, how visitors arrive, and anonymous recordings of page interactions. Anything typed into forms is hidden from these recordings, and we do not link this data to your name or contact details. We also use Google Ads conversion tracking to measure which of our ads lead to enquiries.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span>
                   <strong className="text-charcoal font-semibold">Your rights:</strong>{' '}
                   Under Australia's Privacy Act 1988, you have the right to access, correct, or request deletion of your personal information. Contact us at info@edenmusicacademy.com.
                 </span>
