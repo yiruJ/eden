@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Carousel } from '../ui/Carousel';
 import jiminImg from '../../assets/teachers/jimin.webp';
 import hanaImg from '../../assets/teachers/hana.webp';
 import dylanImg from '../../assets/teachers/dylan.webp';
@@ -67,37 +67,12 @@ const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
 );
 
 export function TeachersPreview() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const atEnd = currentIndex >= teachers.length - 1;
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const cardWidth = el.scrollWidth / teachers.length;
-      setCurrentIndex(Math.round(el.scrollLeft / cardWidth));
-    };
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, []);
-
-  function scrollTo(index: number) {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cardWidth = el.scrollWidth / teachers.length;
-    el.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
-  }
-
   return (
-    <section className="py-10 px-6 bg-background">
+    <section className="py-10 px-6 bg-background md:hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="mb-12 space-y-3">
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
-            Our Teachers
-          </span>
           <h2 className="text-4xl font-display font-bold text-charcoal leading-tight">
             Learn from the best
           </h2>
@@ -106,41 +81,17 @@ export function TeachersPreview() {
           </p>
         </div>
 
-        {/* Mobile: horizontal scroll + buttons */}
-        <div className="sm:hidden">
-          <div ref={scrollRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
-            {teachers.map(({ name, instruments, image }) => (
-              <div key={name} className="shrink-0 w-[70vw] snap-start">
-                <TeacherCard name={name} instruments={instruments} image={image} />
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center justify-end gap-3 mt-5">
-            <button
-              onClick={() => scrollTo(currentIndex - 1)}
-              disabled={currentIndex === 0}
-              aria-label="Previous teacher"
-              className="w-11 h-11 rounded-full bg-white shadow border border-primary/15
-                         flex items-center justify-center text-primary
-                         disabled:opacity-30 disabled:cursor-not-allowed
-                         active:scale-95 transition-all duration-150"
-            >
-              <ArrowLeftIcon className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scrollTo(currentIndex + 1)}
-              disabled={atEnd}
-              aria-label="Next teacher"
-              className={`w-11 h-11 rounded-full bg-white shadow border border-primary/15
-                         flex items-center justify-center text-primary
-                         disabled:opacity-30 disabled:cursor-not-allowed
-                         active:scale-95 transition-all duration-150
-                         ${!atEnd ? 'animate-bounce-x' : ''}`}
-            >
-              <ArrowRightIcon className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
+        {/* Mobile: swipe carousel (same as the studio photos) */}
+        <Carousel
+          className="sm:hidden"
+          ariaLabel="Eden Music Academy teachers"
+          hint="Swipe to meet more of our teachers"
+          slides={teachers.map((teacher) => ({
+            key: teacher.name,
+            label: teacher.name,
+            content: <TeacherCard {...teacher} />,
+          }))}
+        />
 
         {/* Desktop: 3-column grid */}
         <div className="hidden sm:grid sm:grid-cols-3 gap-6">
@@ -158,14 +109,6 @@ function ArrowRightIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-    </svg>
-  );
-}
-
-function ArrowLeftIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
     </svg>
   );
 }

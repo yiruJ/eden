@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Carousel } from '../ui/Carousel';
 import entranceImg from '../../assets/facilityShots/entrance.webp';
 import bigRoomImg from '../../assets/facilityShots/bigRoom.webp';
 import livingRoomImg from '../../assets/facilityShots/livingRoom.webp';
@@ -55,14 +55,11 @@ const shots: Shot[] = [
 
 export function FacilitySection() {
   return (
-    <section className="pb-10 px-6 bg-surface">
+    <section className="pt-12 md:pt-16 pb-10 px-6 bg-surface">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="mb-8 md:mb-12 space-y-3">
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
-            Our Studio
-          </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-charcoal leading-tight">
             A space built for music
           </h2>
@@ -70,18 +67,20 @@ export function FacilitySection() {
             Our dedicated studio in Strathfield gives every student a calm, focused
             environment to learn, practise, and grow.
           </p>
-          <p className="text-charcoal/60 font-light max-w-xl">
-            Eden families also have three dedicated parking spots in the building's
-            underground car park.{' '}
-            <Link to="/parking" className="text-primary font-semibold hover:underline">
-              See how to park
-            </Link>
-            .
-          </p>
         </div>
 
         {/* Mobile: swipeable carousel. Desktop: bento grid. */}
-        <ShotCarousel shots={shots} />
+        <Carousel
+          className="md:hidden"
+          ariaLabel="Photos of the Eden Music Academy studio"
+          hint="Swipe to see more of the studio"
+          slideClassName="w-[82%] h-[300px]"
+          slides={shots.map((shot) => ({
+            key: shot.src,
+            label: shot.label,
+            content: <ShotTile shot={shot} className="w-full h-full" />,
+          }))}
+        />
         <div
           className="hidden md:grid gap-4 md:grid-cols-2 md:auto-rows-[220px]
                      lg:grid-cols-3 lg:auto-rows-[200px]"
@@ -91,30 +90,47 @@ export function FacilitySection() {
           ))}
         </div>
 
-        {/* Address + directions */}
-        <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4
-                        bg-white rounded-2xl px-7 py-5 shadow-sm border border-primary/10">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <LocationIcon className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-charcoal">Eden Music Academy</p>
-              <p className="text-xs text-muted mt-0.5">Strathfield, NSW 2135</p>
+        {/* Address + directions, centred. From sm up the big pin spans both rows (88px =
+            heading 32 + gap 12 + button 44) so it matches the block's height without adding any.
+            On mobile a smaller pin sits inline with the heading so the row can centre. */}
+        <div className="mt-8 flex justify-center">
+          <div className="w-full sm:w-auto grid items-center gap-y-4 sm:grid-cols-[auto_auto] sm:gap-x-5 sm:gap-y-3">
+            <LocationIcon className="hidden sm:block sm:row-span-2 w-[5.5rem] h-[5.5rem] text-primary" />
+            <p className="flex items-center justify-center sm:justify-start gap-2
+                          text-2xl leading-8 font-display font-bold text-charcoal">
+              <LocationIcon className="sm:hidden w-8 h-8 shrink-0 text-primary" />
+              <span>
+                Strathfield,
+                <span className="ml-2 text-base font-sans font-normal text-muted">NSW 2135</span>
+              </span>
+            </p>
+            <div className="grid grid-cols-2 sm:flex gap-3">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-3 rounded-lg
+                           whitespace-nowrap text-[13px] sm:text-sm font-semibold
+                           transition-colors focus-visible:outline-none focus-visible:ring-2
+                           focus-visible:ring-primary focus-visible:ring-offset-2
+                           bg-primary text-white hover:bg-primary/90"
+              >
+                Get Directions
+                <ArrowRightIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </a>
+              <Link
+                to="/parking"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-3 rounded-lg
+                           whitespace-nowrap text-[13px] sm:text-sm font-semibold
+                           transition-colors focus-visible:outline-none focus-visible:ring-2
+                           focus-visible:ring-primary focus-visible:ring-offset-2
+                           bg-white text-primary border border-primary hover:bg-primary/5"
+              >
+                See How to Park
+                <ArrowRightIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </Link>
             </div>
           </div>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white
-                       rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shrink-0
-                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
-                       focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-          >
-            Get Directions
-            <ArrowRightIcon className="w-4 h-4" />
-          </a>
         </div>
 
       </div>
@@ -142,100 +158,6 @@ function ShotTile({ shot, className = '' }: { shot: Shot; className?: string }) 
         </figcaption>
       </div>
     </figure>
-  );
-}
-
-function ShotCarousel({ shots }: { shots: Shot[] }) {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-
-  /**
-   * Scroll positions that put each slide at the scroller's snap edge. Slides can
-   * differ in width, so measure them instead of assuming a fixed pitch, and drop
-   * the container's left padding so slide 0 lands at scrollLeft 0.
-   */
-  const slideOffsets = (el: HTMLDivElement) => {
-    const padLeft = parseFloat(getComputedStyle(el).paddingLeft) || 0;
-    return [...el.children].map(
-      (child) => (child as HTMLElement).offsetLeft - el.offsetLeft - padLeft
-    );
-  };
-
-  const handleScroll = useCallback(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const offsets = slideOffsets(el);
-    let nearest = 0;
-    offsets.forEach((offset, i) => {
-      if (Math.abs(offset - el.scrollLeft) < Math.abs(offsets[nearest] - el.scrollLeft)) {
-        nearest = i;
-      }
-    });
-    setActive(nearest);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', handleScroll, { passive: true });
-    return () => el.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
-  const goTo = (index: number) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const left = slideOffsets(el)[index];
-    if (left === undefined) return;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollTo({ left, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    setActive(index);
-  };
-
-  return (
-    <div className="md:hidden">
-      {/* Full-bleed so tiles can peek past the section's px-6 gutter */}
-      <div
-        ref={scrollerRef}
-        className="-mx-6 px-6 flex gap-4 overflow-x-auto scrollbar-none
-                   snap-x snap-mandatory overscroll-x-contain scroll-px-6"
-        role="group"
-        aria-roledescription="carousel"
-        aria-label="Photos of the Eden Music Academy studio"
-      >
-        {shots.map((shot, i) => (
-          <div
-            key={shot.src}
-            className="snap-start shrink-0 w-[82%] h-[300px]"
-            aria-label={`${i + 1} of ${shots.length}`}
-          >
-            <ShotTile shot={shot} className="w-full h-full" />
-          </div>
-        ))}
-      </div>
-
-      {/* Dots — 44px tap targets with a smaller visible dot inside */}
-      <div className="mt-3 flex items-center justify-center gap-1">
-        {shots.map((shot, i) => (
-          <button
-            key={shot.src}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={`Show photo ${i + 1}: ${shot.label}`}
-            aria-current={i === active}
-            className="w-11 h-11 flex items-center justify-center cursor-pointer rounded-full
-                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          >
-            <span
-              className={`block h-2 rounded-full transition-all duration-200
-                          ${i === active ? 'w-6 bg-primary' : 'w-2 bg-charcoal/20'}`}
-            />
-          </button>
-        ))}
-      </div>
-      <p className="text-center text-xs text-muted -mt-1">
-        Swipe to see more of the studio
-      </p>
-    </div>
   );
 }
 

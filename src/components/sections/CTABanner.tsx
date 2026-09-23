@@ -12,9 +12,6 @@ export function CTABanner() {
         <div className="absolute bottom-12 left-20 w-4 h-4 bg-white/20 rounded-full pointer-events-none" />
 
         <div className="relative z-10 space-y-6">
-          <span className="inline-block px-4 py-1 rounded-full bg-white/15 text-white/90 font-semibold text-xs uppercase tracking-widest">
-            Enrolments Open
-          </span>
 
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
             <SplitText

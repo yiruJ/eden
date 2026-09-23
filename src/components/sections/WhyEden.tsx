@@ -32,9 +32,6 @@ export function WhyEden() {
         {/* Text side */}
         <div className="space-y-6">
           <div className="flex flex-col gap-4 items-start text-left">
-            <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest">
-              Why Eden
-            </span>
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-charcoal leading-tight">
               Why Choose Eden Music Academy?
             </h2>

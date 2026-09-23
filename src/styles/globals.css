@@ -73,6 +73,25 @@
   }
 }
 
+@keyframes moments-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Mobile only: the strip scrolls itself. Above 768px MomentsStrip drives the row
+   from scroll position instead, so the animation must stay off to avoid fighting it. */
+@media (max-width: 767px) {
+  .moments-marquee {
+    animation: moments-marquee var(--moments-duration, 40s) linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moments-marquee {
+    animation: none;
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-semibold

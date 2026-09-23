@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import heroImg from '../../assets/hero.webp';
 
-const instruments = ['Piano', 'Violin', 'Cello', 'Viola'] as const;
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background -mt-10">
+    <section className="relative overflow-hidden bg-white -mt-10 lg:pb-14">
 
       {/* ── MOBILE: full-bleed image hero ── */}
-      <div className="lg:hidden relative h-[64svh] max-h-[480px] flex flex-col justify-end">
+      <div className="lg:hidden relative h-[74svh] max-h-[600px] flex flex-col justify-end">
 
         {/* Background image */}
         <img
@@ -25,10 +24,10 @@ export function Hero() {
 
         {/* Text + credential chips + CTAs */}
         <div className="relative z-10 px-6 pb-10 space-y-6">
-          <h1 className="text-4xl font-display font-black text-white leading-[1.1]">
-            Where Young<br />
-            Musicians<br />
-            <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
+          <h1 className="text-[clamp(1.25rem,6.7vw,2.75rem)] font-display font-black leading-[1.1] text-white">
+            Helping Children Discover<br />
+            <span className="italic">Confidence</span> Through<br />
+            Music
           </h1>
 
           {/* Credential chips */}
@@ -58,19 +57,37 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ── DESKTOP: 2-column layout ── */}
-      <div className="hidden lg:block pt-44 pb-14 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      {/* ── DESKTOP: full-bleed image hero ── */}
+      {/* +2.5rem cancels the section's -mt-10, so the photo still reaches the fold. */}
+      <div className="hidden lg:block relative overflow-hidden h-[calc(100svh+2.5rem)] min-h-[560px] bg-black">
 
-          {/* Text content */}
-          <div className="relative z-10 space-y-8 -mt-4">
-            <h1 className="text-7xl font-display font-black leading-[1.08] text-charcoal">
-              Where Young{' '}
-              <span className="block">Musicians</span>
-              <span className="italic" style={{ color: '#4aaf81' }}>Find Their Voice</span><span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
+        {/* Offset right so the subject clears the headline, leaving black down the left edge.
+            That strip sits under the darkest part of the scrim, so it reads as shadow rather than a gap.
+            Offsetting beats scaling here: the 4:3 source crops vertically in this box, so any horizontal
+            shift would otherwise have to come from zooming in. */}
+        <img
+          src={heroImg}
+          alt="Student playing piano in a warm, sunlit studio"
+          className="absolute inset-y-0 left-[15%] h-full w-full object-cover object-[50%_12%]
+                     [mask-image:linear-gradient(to_right,transparent,black_18%)]
+                     [-webkit-mask-image:linear-gradient(to_right,transparent,black_18%)]"
+          loading="eager"
+          fetchPriority="high"
+        />
+
+        {/* Darkest on the left where the copy sits, so the photo still reads on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center">
+          <div className="max-w-xl space-y-8">
+            <h1 className="text-[clamp(2rem,3.4vw,2.75rem)] font-display font-black leading-[1.08] text-white">
+              Helping Children Discover
+              <span className="block"><span className="italic">Confidence</span> Through</span>
+              Music<span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
             </h1>
 
-            <p className="text-xl text-charcoal/65 max-w-lg leading-relaxed font-light">
+            <p className="text-xl text-white/75 max-w-lg leading-relaxed font-light">
               Sydney Conservatorium-trained teachers offering piano, violin, cello
               and viola lessons for children from age 4 in Strathfield.
             </p>
@@ -83,52 +100,18 @@ export function Hero() {
                 </Button>
               </Link>
               <Link to="/teachers">
-                <Button variant="ghost" size="lg">
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="!text-white !border-white/35 hover:!border-white/70 backdrop-blur-sm"
+                >
                   Explore Teachers
                 </Button>
               </Link>
             </div>
-
-            {/* Instrument pills */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              {instruments.map(i => (
-                <span key={i} className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/15">
-                  {i}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Image side */}
-          <div className="relative">
-            <div className="absolute -bottom-6 -right-6 w-full h-full bg-primary/8 rounded-3xl" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-primary/5">
-              <BotanicalDecoration className="absolute -top-8 -right-8 w-48 h-48 text-primary/15 pointer-events-none z-10" />
-              <img
-                src={heroImg}
-                alt="Student playing piano in a warm, sunlit studio"
-                className="w-full h-full object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
-              <div className="absolute inset-0 bg-primary/5 mix-blend-multiply" />
-            </div>
-
-            {/* Floating stats card */}
-            <div className="absolute -left-8 bottom-12 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-4 border border-primary/10">
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                <MusicNoteIcon className="w-5 h-5 text-accent" />
-              </div>
-              <div>
-                <p className="text-xs text-charcoal/50 font-medium">Programs available</p>
-                <p className="text-lg font-display font-bold text-charcoal">4 Instruments</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-      <BotanicalDecoration className="absolute -bottom-20 -left-20 w-80 h-80 text-primary/5 pointer-events-none hidden lg:block" />
     </section>
   );
 }
@@ -137,14 +120,6 @@ function ArrowRightIcon() {
   return (
     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-    </svg>
-  );
-}
-
-function MusicNoteIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
     </svg>
   );
 }
@@ -165,17 +140,3 @@ function PeopleIcon({ className }: { className?: string }) {
   );
 }
 
-function BotanicalDecoration({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
-      <path d="M100 10 C60 10, 10 60, 10 100 C10 140, 60 190, 100 190 C140 190, 190 140, 190 100 C190 60 140 10 100 10Z M100 30 C70 50, 50 70, 50 100 C50 130, 70 150, 100 170 C130 150, 150 130, 150 100 C150 70, 130 50, 100 30Z" opacity="0.4" />
-      <ellipse cx="100" cy="100" rx="35" ry="60" transform="rotate(-30 100 100)" opacity="0.3" />
-      <ellipse cx="100" cy="100" rx="35" ry="60" transform="rotate(30 100 100)" opacity="0.3" />
-      <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" strokeWidth="2" opacity="0.5" />
-      <line x1="30" y1="65" x2="100" y2="100" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
-      <line x1="170" y1="65" x2="100" y2="100" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
-      <line x1="30" y1="135" x2="100" y2="100" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
-      <line x1="170" y1="135" x2="100" y2="100" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
-    </svg>
-  );
-}
