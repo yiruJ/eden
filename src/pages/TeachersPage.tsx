@@ -6,15 +6,12 @@ import rachelImg from '../assets/teachers/rachel.webp';
 import aureliaImg from '../assets/teachers/aurelia.webp';
 import lucasImg from '../assets/teachers/lucas.webp';
 import erikImg from '../assets/teachers/erik.webp';
+import elijahImg from '../assets/teachers/elijah.webp';
 import { SEO } from '../components/SEO';
-
-interface Teacher {
-  name: string;
-  instruments: string[];
-  image: string | null;
-  bio: string;
-  highlights: string[];
-}
+import { TeacherCard, type Teacher } from '../components/sections/TeacherCard';
+import { CapIcon } from '../components/ui/icons/CapIcon';
+import { ShieldCheckIcon } from '../components/ui/icons/ShieldCheckIcon';
+import { MusicNoteIcon } from '../components/ui/icons/MusicNoteIcon';
 
 const teachers: Teacher[] = [
   {
@@ -67,8 +64,9 @@ const teachers: Teacher[] = [
   {
     name: 'Elijah Lee',
     instruments: ['Cello', 'Piano'],
-    image: null,
-    bio: 'A graduate of the Sydney Conservatorium of Music, Elijah brings a rare dual fluency in cello and piano. His teaching draws on a thorough classical training to help students build strong technique, expressive depth, and a genuine love of music from the very first lesson.',
+    image: elijahImg,
+    school: 'UNSW',
+    bio: 'Elijah brings a rare dual fluency in cello and piano. His teaching draws on a thorough classical training to help students build strong technique, expressive depth, and a genuine love of music from the very first lesson.',
     highlights: [],
   },
   {
@@ -122,91 +120,8 @@ export function TeachersPage() {
       {/* Teachers grid */}
       <section className="pb-24 px-6 bg-background">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {teachers.map(({ name, instruments, image, bio, highlights }) => (
-            <article
-              key={name}
-              className="group bg-white rounded-3xl overflow-hidden border border-primary/8
-                         shadow-md hover:shadow-2xl hover:-translate-y-1.5
-                         transition-all duration-300 flex flex-col"
-            >
-              {/* Photo — dominant area */}
-              <div className="relative overflow-hidden" style={{ height: '420px' }}>
-                {image ? (
-                  <img
-                    src={image}
-                    alt={`${name} — Eden Music Academy teacher`}
-                    className="w-full h-full object-cover object-top
-                               group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-primary/8 flex items-center justify-center">
-                    <span className="text-6xl font-display font-bold text-primary/30">
-                      {name.charAt(0)}
-                    </span>
-                  </div>
-                )}
-                {/* Instrument tags overlaid bottom-left */}
-                <div className="absolute bottom-4 left-4 flex gap-2">
-                  {instruments.map((inst) => (
-                    <span
-                      key={inst}
-                      className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm
-                                 text-charcoal text-xs font-semibold shadow-sm"
-                    >
-                      {inst}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Info — compact below photo */}
-              <div className="flex flex-col flex-1 px-7 pt-6 pb-7 space-y-4">
-                {/* Name */}
-                <h2 className="text-2xl font-display font-bold text-charcoal tracking-tight">
-                  {name}
-                </h2>
-
-                {/* Bio */}
-                <p className="text-sm text-charcoal/60 leading-relaxed flex-1">
-                  {bio}
-                </p>
-
-                {/* Teacher-specific highlights */}
-                {highlights.length > 0 && (
-                  <ul className="space-y-1.5">
-                    {highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2">
-                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                        <span className="text-xs text-charcoal/65 leading-snug">{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {/* Credentials */}
-                <div className="pt-2 border-t border-primary/8 space-y-2.5">
-                  {/* Sydney Conservatorium — key credential */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <CapIcon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                    <span className="text-xs font-semibold text-charcoal/75">
-                      Sydney Conservatorium of Music
-                    </span>
-                  </div>
-                  {/* WWCC */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                      <ShieldCheckIcon className="w-3.5 h-3.5 text-accent" />
-                    </div>
-                    <span className="text-xs font-semibold text-charcoal/75">
-                      Working With Children Check
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
+          {teachers.map((teacher) => (
+            <TeacherCard key={teacher.name} {...teacher} />
           ))}
         </div>
       </section>
@@ -278,29 +193,5 @@ export function TeachersPage() {
 
       <CTABanner />
     </>
-  );
-}
-
-function CapIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-    </svg>
-  );
-}
-
-function ShieldCheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-    </svg>
-  );
-}
-
-function MusicNoteIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
-    </svg>
   );
 }

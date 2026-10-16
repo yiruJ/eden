@@ -12,6 +12,7 @@ interface TeacherPreview {
   name: string;
   instruments: string;
   image: string | null;
+  school?: string;
 }
 
 const teachers: TeacherPreview[] = [
@@ -20,12 +21,12 @@ const teachers: TeacherPreview[] = [
   { name: 'Hana Lee', instruments: 'Violin', image: hanaImg },
   { name: 'Rachel Jeong', instruments: 'Cello', image: rachelImg },
   { name: 'Aurelia', instruments: 'Violin', image: aureliaImg },
-  { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null },
+  { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null, school: 'UNSW' },
   { name: 'Lucas Choi', instruments: 'Cello', image: lucasImg },
   { name: 'Erik Wild', instruments: 'Cello', image: erikImg },
 ];
 
-const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
+const TeacherCard = ({ name, instruments, image, school = 'Sydney Conservatorium' }: TeacherPreview) => (
   <Link
     to="/teachers"
     className="group relative block w-full aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm
@@ -50,7 +51,7 @@ const TeacherCard = ({ name, instruments, image }: TeacherPreview) => (
     <div className="absolute top-0 inset-x-0 px-4 py-3 bg-gradient-to-b from-black/55 to-transparent">
       <p className="font-display font-bold text-white text-sm leading-tight">{name}</p>
       <p className="text-white/80 text-xs font-semibold uppercase tracking-wider mt-0.5">{instruments}</p>
-      <p className="text-white/60 text-xs mt-0.5">Sydney Conservatorium</p>
+      <p className="text-white/60 text-xs mt-0.5">{school}</p>
     </div>
 
     {/* Bottom CTA — always visible on mobile, slides up on hover for desktop */}
