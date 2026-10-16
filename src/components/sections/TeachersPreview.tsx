@@ -7,6 +7,7 @@ import rachelImg from '../../assets/teachers/rachel.webp';
 import aureliaImg from '../../assets/teachers/aurelia.webp';
 import lucasImg from '../../assets/teachers/lucas.webp';
 import erikImg from '../../assets/teachers/erik.webp';
+import elijahImg from '../../assets/teachers/elijah.webp';
 
 interface TeacherPreview {
   name: string;
@@ -21,7 +22,7 @@ const teachers: TeacherPreview[] = [
   { name: 'Hana Lee', instruments: 'Violin', image: hanaImg },
   { name: 'Rachel Jeong', instruments: 'Cello', image: rachelImg },
   { name: 'Aurelia', instruments: 'Violin', image: aureliaImg },
-  { name: 'Elijah Lee', instruments: 'Cello & Piano', image: null, school: 'UNSW' },
+  { name: 'Elijah Lee', instruments: 'Cello & Piano', image: elijahImg, school: 'UNSW' },
   { name: 'Lucas Choi', instruments: 'Cello', image: lucasImg },
   { name: 'Erik Wild', instruments: 'Cello', image: erikImg },
 ];
