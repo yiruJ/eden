@@ -14,7 +14,8 @@ export type ConversionAction =
   | 'phoneClick'
   | 'emailClick'
   | 'enrolPageView'
-  | 'enrolFormStart';
+  | 'enrolFormStart'
+  | 'enrolStepCompleted';
 
 const CONVERSION_LABELS: Record<ConversionAction, string> = {
   // "Submit lead form": Enrol page trial request. Primary.
@@ -29,6 +30,8 @@ const CONVERSION_LABELS: Record<ConversionAction, string> = {
   enrolPageView: '',
   // "Started trial form": first field filled on the Enrol page, once per visit. Secondary.
   enrolFormStart: '',
+  // PostHog only: a step of the trial form passed, for the step-by-step funnel.
+  enrolStepCompleted: '',
 };
 
 const POSTHOG_EVENT_NAMES: Record<ConversionAction, string> = {
@@ -38,6 +41,7 @@ const POSTHOG_EVENT_NAMES: Record<ConversionAction, string> = {
   emailClick: 'email clicked',
   enrolPageView: 'enrol page viewed',
   enrolFormStart: 'enrol form started',
+  enrolStepCompleted: 'enrol step completed',
 };
 
 // Properties go to PostHog only. Never pass names, emails or phone numbers.

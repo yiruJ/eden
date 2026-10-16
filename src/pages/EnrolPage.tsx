@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import { Button } from '../components/ui/Button';
+import { Stepper, Step } from '../components/ui/Stepper';
+import { MapEmbed } from '../components/ui/MapEmbed';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 import { trackConversion } from '../lib/adsTracking';
@@ -11,7 +12,32 @@ const EMAILJS_TEMPLATE = 'template_f5dt26c';
 const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const instruments = ['Piano', 'Violin', 'Viola', 'Cello'];
-const levels = ['Beginner', 'Some experience (Grade 1–4)', 'Intermediate (Grade 5+)', 'Not sure'];
+const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
+
+const TOTAL_STEPS = 3;
+const stepNames: Record<number, string> = { 1: 'student', 2: 'lessons', 3: 'contact' };
+
+type RequiredField = 'studentName' | 'instrument' | 'level' | 'parentPhone' | 'parentEmail';
+
+// Required fields per step, in on-screen order (the first invalid one gets focus)
+const stepFields: Record<number, RequiredField[]> = {
+  1: ['studentName'],
+  2: ['instrument', 'level'],
+  3: ['parentPhone', 'parentEmail'],
+};
+
+function validate(form: FormState): Partial<Record<RequiredField, string>> {
+  const errors: Partial<Record<RequiredField, string>> = {};
+  const phoneDigits = form.parentPhone.replace(/\D/g, '');
+  if (!form.studentName.trim()) errors.studentName = "Please enter the student's name.";
+  if (!form.instrument) errors.instrument = 'Please choose an instrument.';
+  if (!form.level) errors.level = 'Please choose an experience level.';
+  if (!phoneDigits) errors.parentPhone = 'Please enter a phone number.';
+  else if (phoneDigits.length < 8) errors.parentPhone = 'Please check the phone number.';
+  if (!form.parentEmail.trim()) errors.parentEmail = 'Please enter an email address.';
+  else if (!/^\S+@\S+\.\S+$/.test(form.parentEmail.trim())) errors.parentEmail = 'Please check the email address.';
+  return errors;
+}
 
 interface FormState {
   studentName: string;
@@ -36,9 +62,13 @@ const initialForm: FormState = {
 export function EnrolPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState<FormState>(initialForm);
+  const [step, setStep] = useState(1);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const [touched, setTouched] = useState<Partial<Record<RequiredField, boolean>>>({});
   const formStarted = useRef(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     trackConversion('enrolPageView');
@@ -52,16 +82,62 @@ export function EnrolPage() {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  const canSubmit =
-    form.studentName.trim() &&
-    form.instrument &&
-    form.level &&
-    form.parentPhone.trim() &&
-    form.parentEmail.trim();
+  const errors = validate(form);
+  const stepValid = (n: number) => stepFields[n].every((f) => !errors[f]);
+  const canSubmit = [1, 2, 3].every(stepValid);
+  const errorFor = (field: RequiredField) => (touched[field] ? errors[field] : undefined);
+  const touch = (field: RequiredField) => setTouched((prev) => ({ ...prev, [field]: true }));
 
-  async function handleSubmit(e: React.FormEvent) {
+  // The Stepper briefly keeps a hidden copy of the previous step, so skip aria-hidden matches
+  function focusField(field: string) {
+    const matches = formRef.current?.querySelectorAll<HTMLElement>(`[data-field="${field}"]`) ?? [];
+    const target = Array.from(matches).find((el) => !el.closest('[aria-hidden="true"]'));
+    const focusable = target?.matches('input, textarea') ? target : target?.querySelector<HTMLElement>('button');
+    focusable?.focus();
+  }
+
+  // Moving to Contact: put the cursor in the phone field so the keyboard is ready
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (step === 3) focusField('parentPhone');
+  }, [step]);
+
+  function handleStepChange(next: number) {
+    if (next > step) {
+      trackConversion('enrolStepCompleted', { step: String(step), step_name: stepNames[step] });
+    }
+    setStep(next);
+  }
+
+  // Continue / Request: show what's missing instead of silently refusing
+  function advance() {
+    if (sending) return;
+    const invalid = stepFields[step].filter((f) => errors[f]);
+    if (invalid.length > 0) {
+      setTouched((prev) => ({ ...prev, ...Object.fromEntries(invalid.map((f) => [f, true])) }));
+      focusField(invalid[0]);
+      return;
+    }
+    if (step < TOTAL_STEPS) handleStepChange(step + 1);
+    else void submit();
+  }
+
+  // Enter in a text field: jump to the next empty field, or advance when the step is complete
+  function handleKeyDown(e: React.KeyboardEvent<HTMLFormElement>) {
+    if (e.key !== 'Enter' || !(e.target instanceof HTMLInputElement)) return;
     e.preventDefault();
-    if (!canSubmit) return;
+    const current = e.target.dataset.field;
+    const nextEmpty = stepFields[step].find((f) => errors[f] && f !== current);
+    if (current && errors[current as RequiredField]) touch(current as RequiredField);
+    if (nextEmpty && !(current && errors[current as RequiredField])) focusField(nextEmpty);
+    else advance();
+  }
+
+  async function submit() {
+    if (!canSubmit || sending) return;
     setSending(true);
     setError('');
     try {
@@ -114,146 +190,169 @@ export function EnrolPage() {
         </section>
       </FadeIn>
 
-      {/* Map */}
+      {/* Form */}
       <FadeIn direction="up" delay={100}>
-        <section className="px-6 pb-10 bg-background">
+        <section className="pt-10 pb-16 px-4 sm:px-6 bg-white">
           <div className="max-w-2xl mx-auto">
-            <div className="rounded-3xl overflow-hidden border border-primary/10 shadow-sm h-64">
-              <iframe
-                title="Eden Music Academy location"
-                src="https://maps.google.com/maps?q=Shop+24%2F48+Cooper+Street%2C+Strathfield+NSW+2135&output=embed"
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown} noValidate>
+              <Stepper
+                step={step}
+                onStepChange={handleStepChange}
+                linear
+                theme="eden"
                 width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            <p className="text-xs text-charcoal/45 text-center mt-3">Shop 24/48 Cooper Street, Strathfield NSW 2135</p>
+                radius={24}
+                nextButtonText="Continue"
+                completeButtonText={sending ? 'Sending…' : 'Request My Free Trial Lesson'}
+                backButtonProps={{ disabled: sending }}
+                nextButtonProps={{
+                  disabled: sending,
+                  'aria-busy': sending,
+                  onClick: (e) => {
+                    // Validation and submit are handled here; the Stepper only moves on via onStepChange
+                    e.preventDefault();
+                    advance();
+                  },
+                }}
+              >
+                <Step title="Student">
+                  <div className="space-y-5">
+                    <Field label="Student's name" htmlFor="studentName" error={errorFor('studentName')} required>
+                      <input
+                        id="studentName"
+                        data-field="studentName"
+                        type="text"
+                        required
+                        autoComplete="off"
+                        autoCapitalize="words"
+                        enterKeyHint="next"
+                        aria-invalid={Boolean(errorFor('studentName'))}
+                        aria-describedby={errorFor('studentName') ? 'studentName-error' : undefined}
+                        value={form.studentName}
+                        onChange={(e) => set('studentName', e.target.value)}
+                        className={inputClassFor(errorFor('studentName'))}
+                      />
+                    </Field>
+                    <Field label="Student's age (optional)" htmlFor="studentAge">
+                      <input
+                        id="studentAge"
+                        data-field="studentAge"
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        maxLength={2}
+                        enterKeyHint="next"
+                        value={form.studentAge}
+                        onChange={(e) => set('studentAge', e.target.value.replace(/\D/g, ''))}
+                        className={inputClassFor()}
+                      />
+                    </Field>
+                  </div>
+                </Step>
+
+                <Step title="Lessons">
+                  <div className="space-y-6">
+                    <Field label="Instrument" field="instrument" error={errorFor('instrument')} required>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        {instruments.map((inst) => (
+                          <ChoiceButton
+                            key={inst}
+                            selected={form.instrument === inst}
+                            onClick={() => set('instrument', inst)}
+                            className="min-h-14 text-[15px]"
+                          >
+                            {inst}
+                          </ChoiceButton>
+                        ))}
+                      </div>
+                    </Field>
+                    <Field label="Experience level" field="level" error={errorFor('level')} required>
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {levels.map((lvl) => (
+                          <ChoiceButton
+                            key={lvl}
+                            selected={form.level === lvl}
+                            onClick={() => set('level', lvl)}
+                            className="min-h-14 py-2.5 text-sm leading-snug"
+                          >
+                            {lvl}
+                          </ChoiceButton>
+                        ))}
+                      </div>
+                    </Field>
+                  </div>
+                </Step>
+
+                <Step title="Contact">
+                  <div className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <Field label="Phone number" htmlFor="parentPhone" error={errorFor('parentPhone')} required>
+                        <input
+                          id="parentPhone"
+                          data-field="parentPhone"
+                          type="tel"
+                          required
+                          autoComplete="tel"
+                          enterKeyHint="next"
+                          aria-invalid={Boolean(errorFor('parentPhone'))}
+                          aria-describedby={errorFor('parentPhone') ? 'parentPhone-error' : undefined}
+                          value={form.parentPhone}
+                          onChange={(e) => set('parentPhone', e.target.value)}
+                          onBlur={() => form.parentPhone.trim() && touch('parentPhone')}
+                          className={inputClassFor(errorFor('parentPhone'))}
+                        />
+                      </Field>
+                      <Field label="Email address" htmlFor="parentEmail" error={errorFor('parentEmail')} required>
+                        <input
+                          id="parentEmail"
+                          data-field="parentEmail"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          autoCapitalize="off"
+                          autoCorrect="off"
+                          spellCheck={false}
+                          enterKeyHint="send"
+                          aria-invalid={Boolean(errorFor('parentEmail'))}
+                          aria-describedby={errorFor('parentEmail') ? 'parentEmail-error' : undefined}
+                          value={form.parentEmail}
+                          onChange={(e) => set('parentEmail', e.target.value)}
+                          onBlur={() => form.parentEmail.trim() && touch('parentEmail')}
+                          className={inputClassFor(errorFor('parentEmail'))}
+                        />
+                      </Field>
+                    </div>
+                    <Field label="Notes (optional)" htmlFor="notes">
+                      <textarea
+                        id="notes"
+                        data-field="notes"
+                        rows={3}
+                        value={form.notes}
+                        onChange={(e) => set('notes', e.target.value)}
+                        className={`${inputClassFor()} resize-none`}
+                      />
+                    </Field>
+                  </div>
+                </Step>
+              </Stepper>
+            </form>
+
+            {error && (
+              <p role="alert" className="text-sm text-red-600 text-center mt-5">{error}</p>
+            )}
+            <p className="text-xs text-charcoal/55 text-center mt-10">
+              We'll call or email you within 24 hours.
+            </p>
           </div>
         </section>
       </FadeIn>
 
-      {/* Form */}
-      <FadeIn direction="up" delay={150}>
-        <section className="py-10 px-6 pb-24 bg-white">
+      {/* Map */}
+      <FadeIn direction="up">
+        <section className="px-6 pt-16 pb-24 bg-background">
           <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSubmit} noValidate className="space-y-5">
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Student's name" required>
-                  <input
-                    type="text"
-                    required
-                    value={form.studentName}
-                    onChange={(e) => set('studentName', e.target.value)}
-                    className={inputClass}
-                    placeholder="e.g. Alex Johnson"
-                  />
-                </Field>
-                <Field label="Student's age">
-                  <input
-                    type="number"
-                    min={3}
-                    max={99}
-                    value={form.studentAge}
-                    onChange={(e) => set('studentAge', e.target.value)}
-                    className={inputClass}
-                    placeholder="e.g. 8"
-                  />
-                </Field>
-              </div>
-
-              <Field label="Instrument" required>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {instruments.map((inst) => (
-                    <button
-                      key={inst}
-                      type="button"
-                      onClick={() => set('instrument', inst)}
-                      className={`py-4 px-2 rounded-xl border-2 text-sm font-semibold transition-all cursor-pointer text-center
-                        ${form.instrument === inst
-                          ? 'border-primary bg-primary text-white'
-                          : 'border-primary/15 text-charcoal/60 hover:bg-primary hover:border-primary hover:text-white'}`}
-                    >
-                      {inst}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
-              <Field label="Experience level" required>
-                <div className="grid grid-cols-2 gap-2">
-                  {levels.map((lvl) => (
-                    <button
-                      key={lvl}
-                      type="button"
-                      onClick={() => set('level', lvl)}
-                      className={`py-3.5 px-3 rounded-xl border-2 text-xs font-semibold transition-all cursor-pointer text-center leading-snug
-                        ${form.level === lvl
-                          ? 'border-primary bg-primary text-white'
-                          : 'border-primary/15 text-charcoal/60 hover:bg-primary hover:border-primary hover:text-white'}`}
-                    >
-                      {lvl}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Your phone number" required>
-                  <input
-                    type="tel"
-                    required
-                    value={form.parentPhone}
-                    onChange={(e) => set('parentPhone', e.target.value)}
-                    className={inputClass}
-                    placeholder="(04) 0000 0000"
-                  />
-                </Field>
-                <Field label="Your email address" required>
-                  <input
-                    type="email"
-                    required
-                    value={form.parentEmail}
-                    onChange={(e) => set('parentEmail', e.target.value)}
-                    className={inputClass}
-                    placeholder="your@email.com"
-                  />
-                </Field>
-              </div>
-
-              <Field label="Anything we should know (optional)">
-                <textarea
-                  rows={3}
-                  value={form.notes}
-                  onChange={(e) => set('notes', e.target.value)}
-                  className={`${inputClass} resize-none`}
-                  placeholder="e.g. My daughter loves Taylor Swift and wants to learn her songs..."
-                />
-              </Field>
-
-              {error && (
-                <p className="text-sm text-red-500 text-center">{error}</p>
-              )}
-
-              <div className="pt-2">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  className="w-full justify-center"
-                  disabled={!canSubmit || sending}
-                >
-                  {sending ? 'Sending…' : 'Request My Free Trial Lesson'}
-                </Button>
-                <p className="text-xs text-charcoal/40 text-center mt-3">
-                  We'll call or email you within 24 hours to confirm a time that suits your family.
-                </p>
-              </div>
-
-            </form>
+            <MapEmbed className="h-64" />
+            <p className="text-xs text-charcoal/45 text-center mt-3">Shop 24/48 Cooper Street, Strathfield NSW 2135</p>
           </div>
         </section>
       </FadeIn>
@@ -261,16 +360,115 @@ export function EnrolPage() {
   );
 }
 
-const inputClass =
-  'w-full px-4 py-3 rounded-xl border border-primary/15 bg-background text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all';
+const inputBase =
+  'w-full min-h-12 px-4 py-3 rounded-xl border-2 bg-background text-charcoal text-base sm:text-sm focus:outline-none focus:ring-4 transition-colors';
 
-function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function inputClassFor(error?: string) {
+  return `${inputBase} ${
+    error
+      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/15'
+      : 'border-primary/15 focus:border-primary focus:ring-primary/15'
+  }`;
+}
+
+const labelClass = 'block text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-2';
+
+function Field({
+  label,
+  htmlFor,
+  field,
+  error,
+  required,
+  children,
+}: {
+  label: string;
+  htmlFor?: string;
+  field?: string;
+  error?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  const groupId = useId();
+  const errorId = `${htmlFor ?? field ?? groupId}-error`;
+  const labelContent = (
+    <>
+      {label}
+      {required && <span className="text-accent ml-1" aria-hidden="true">*</span>}
+    </>
+  );
+  const errorMessage = error && (
+    <p id={errorId} className="mt-2 flex items-center gap-1.5 text-sm text-red-600">
+      <AlertIcon className="w-4 h-4 shrink-0" />
+      {error}
+    </p>
+  );
+
+  // Text inputs get a real <label>; button groups get a labelled group
+  if (htmlFor) {
+    return (
+      <div>
+        <label htmlFor={htmlFor} className={labelClass}>{labelContent}</label>
+        {children}
+        {errorMessage}
+      </div>
+    );
+  }
   return (
-    <div>
-      <label className="block text-xs font-semibold text-charcoal/55 uppercase tracking-wider mb-2">
-        {label}{required && <span className="text-accent ml-1">*</span>}
-      </label>
+    <div
+      role="group"
+      aria-labelledby={groupId}
+      aria-describedby={error ? errorId : undefined}
+      data-field={field}
+    >
+      <p id={groupId} className={labelClass}>{labelContent}</p>
       {children}
+      {errorMessage}
     </div>
+  );
+}
+
+function ChoiceButton({
+  selected,
+  onClick,
+  className = '',
+  children,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={`relative flex items-center justify-center gap-1.5 px-3 rounded-xl border-2 font-semibold text-center
+        cursor-pointer [touch-action:manipulation] transition-colors duration-200
+        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25 ${className}
+        ${selected
+          ? 'border-primary bg-primary text-white'
+          : 'border-primary/15 bg-white text-charcoal/75 [@media(hover:hover)]:hover:border-primary/50 [@media(hover:hover)]:hover:bg-primary/5'}`}
+    >
+      {selected && <CheckIcon className="w-4 h-4 shrink-0" />}
+      {children}
+    </button>
+  );
+}
+
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
+function AlertIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+    </svg>
   );
 }
