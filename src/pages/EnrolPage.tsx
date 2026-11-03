@@ -28,18 +28,19 @@ const heardFromOptions = [
 const TOTAL_STEPS = 3;
 const stepNames: Record<number, string> = { 1: 'student', 2: 'lessons', 3: 'contact' };
 
-type RequiredField = 'studentName' | 'instrument' | 'level' | 'parentPhone' | 'parentEmail';
+type RequiredField = 'studentName' | 'instrument' | 'level' | 'parentName' | 'parentPhone' | 'parentEmail';
 
 // Required fields per step, in on-screen order (the first invalid one gets focus)
 const stepFields: Record<number, RequiredField[]> = {
   1: ['studentName'],
   2: ['instrument', 'level'],
-  3: ['parentPhone', 'parentEmail'],
+  3: ['parentName', 'parentPhone', 'parentEmail'],
 };
 
 function validate(form: FormState): Partial<Record<RequiredField, string>> {
   const errors: Partial<Record<RequiredField, string>> = {};
   const phoneDigits = form.parentPhone.replace(/\D/g, '');
+  if (!form.parentName.trim()) errors.parentName = 'Please enter your name.';
   if (!form.studentName.trim()) errors.studentName = "Please enter the student's name.";
   if (!form.instrument) errors.instrument = 'Please choose an instrument.';
   if (!form.level) errors.level = 'Please choose an experience level.';
@@ -55,6 +56,7 @@ interface FormState {
   studentAge: string;
   instrument: string;
   level: string;
+  parentName: string;
   parentPhone: string;
   parentEmail: string;
   heardFrom: string;
@@ -67,6 +69,7 @@ const initialForm: FormState = {
   studentAge: '',
   instrument: '',
   level: '',
+  parentName: '',
   parentPhone: '',
   parentEmail: '',
   heardFrom: '',
@@ -111,13 +114,13 @@ export function EnrolPage() {
     focusable?.focus();
   }
 
-  // Moving to Contact: put the cursor in the phone field so the keyboard is ready
+  // Moving to Contact: put the cursor in the first field so the keyboard is ready
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-    if (step === 3) focusField('parentPhone');
+    if (step === 3) focusField('parentName');
   }, [step]);
 
   function handleStepChange(next: number) {
@@ -170,6 +173,7 @@ export function EnrolPage() {
           reply_email: form.parentEmail,
           phone: form.parentPhone,
           details:
+            `Parent: ${form.parentName.trim()}\n` +
             `Student: ${form.studentName}${form.studentAge ? `, age ${form.studentAge}` : ''}\n` +
             `Instrument: ${form.instrument}\n` +
             `Level: ${form.level}\n` +
@@ -257,7 +261,7 @@ export function EnrolPage() {
                         className={inputClassFor(errorFor('studentName'))}
                       />
                     </Field>
-                    <Field label="Student's age (optional)" htmlFor="studentAge">
+                    <Field label="Student's age" htmlFor="studentAge">
                       <input
                         id="studentAge"
                         data-field="studentAge"
@@ -277,30 +281,28 @@ export function EnrolPage() {
                 <Step title="Lessons">
                   <div className="space-y-6">
                     <Field label="Instrument" field="instrument" error={errorFor('instrument')} required>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                      <div className="space-y-2">
                         {instruments.map((inst) => (
-                          <ChoiceButton
+                          <ChoiceRow
                             key={inst}
                             selected={form.instrument === inst}
                             onClick={() => set('instrument', inst)}
-                            className="min-h-14 text-[15px]"
                           >
                             {inst}
-                          </ChoiceButton>
+                          </ChoiceRow>
                         ))}
                       </div>
                     </Field>
                     <Field label="Experience level" field="level" error={errorFor('level')} required>
-                      <div className="grid grid-cols-2 gap-2.5">
+                      <div className="space-y-2">
                         {levels.map((lvl) => (
-                          <ChoiceButton
+                          <ChoiceRow
                             key={lvl}
                             selected={form.level === lvl}
                             onClick={() => set('level', lvl)}
-                            className="min-h-14 py-2.5 text-sm leading-snug"
                           >
                             {lvl}
-                          </ChoiceButton>
+                          </ChoiceRow>
                         ))}
                       </div>
                     </Field>
@@ -309,6 +311,23 @@ export function EnrolPage() {
 
                 <Step title="Contact">
                   <div className="space-y-5">
+                    <Field label="Your name" htmlFor="parentName" error={errorFor('parentName')} required>
+                      <input
+                        id="parentName"
+                        data-field="parentName"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        autoCapitalize="words"
+                        enterKeyHint="next"
+                        aria-invalid={Boolean(errorFor('parentName'))}
+                        aria-describedby={errorFor('parentName') ? 'parentName-error' : undefined}
+                        value={form.parentName}
+                        onChange={(e) => set('parentName', e.target.value)}
+                        onBlur={() => form.parentName.trim() && touch('parentName')}
+                        className={inputClassFor(errorFor('parentName'))}
+                      />
+                    </Field>
                     <div className="grid sm:grid-cols-2 gap-5">
                       <Field label="Phone number" htmlFor="parentPhone" error={errorFor('parentPhone')} required>
                         <input
@@ -346,17 +365,16 @@ export function EnrolPage() {
                         />
                       </Field>
                     </div>
-                    <Field label="How did you hear about us? (optional)" field="heardFrom">
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <Field label="How did you hear about us?" field="heardFrom">
+                      <div className="space-y-2">
                         {heardFromOptions.map((opt) => (
-                          <ChoiceButton
+                          <ChoiceRow
                             key={opt}
                             selected={form.heardFrom === opt}
                             onClick={() => set('heardFrom', form.heardFrom === opt ? '' : opt)}
-                            className="min-h-12 py-2 text-sm leading-snug"
                           >
                             {opt}
-                          </ChoiceButton>
+                          </ChoiceRow>
                         ))}
                       </div>
                       {form.heardFrom === 'Other' && (
@@ -374,7 +392,7 @@ export function EnrolPage() {
                         />
                       )}
                     </Field>
-                    <Field label="Notes (optional)" htmlFor="notes">
+                    <Field label="Notes" htmlFor="notes">
                       <textarea
                         id="notes"
                         data-field="notes"
@@ -479,15 +497,13 @@ function Field({
   );
 }
 
-function ChoiceButton({
+function ChoiceRow({
   selected,
   onClick,
-  className = '',
   children,
 }: {
   selected: boolean;
   onClick: () => void;
-  className?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -495,13 +511,20 @@ function ChoiceButton({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`relative flex items-center justify-center gap-1.5 px-3 rounded-xl border-2 font-semibold text-center
+      className={`flex w-full items-center gap-3 min-h-12 px-4 py-2.5 rounded-xl border-2 text-left text-[15px] font-medium
         cursor-pointer [touch-action:manipulation] transition-colors duration-200
-        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25 ${className}
+        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25
         ${selected
-          ? 'border-primary bg-primary text-white'
+          ? 'border-primary bg-primary/5 text-charcoal'
           : 'border-primary/15 bg-white text-charcoal/75 [@media(hover:hover)]:hover:border-primary/50 [@media(hover:hover)]:hover:bg-primary/5'}`}
     >
+      <span
+        aria-hidden="true"
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-200
+          ${selected ? 'border-primary' : 'border-charcoal/25'}`}
+      >
+        {selected && <span className="h-2.5 w-2.5 rounded-full bg-primary" />}
+      </span>
       {children}
     </button>
   );
