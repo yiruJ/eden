@@ -13,6 +13,17 @@ const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const instruments = ['Piano', 'Violin', 'Viola', 'Cello'];
 const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
+// Options follow Eden's marketing channels so answers can be compared against them
+const heardFromOptions = [
+  'Google search',
+  'Google Maps',
+  'Instagram',
+  'Facebook',
+  'Friend or family',
+  'School newsletter',
+  'Walked past',
+  'Other',
+];
 
 const TOTAL_STEPS = 3;
 const stepNames: Record<number, string> = { 1: 'student', 2: 'lessons', 3: 'contact' };
@@ -46,6 +57,8 @@ interface FormState {
   level: string;
   parentPhone: string;
   parentEmail: string;
+  heardFrom: string;
+  heardFromOther: string;
   notes: string;
 }
 
@@ -56,6 +69,8 @@ const initialForm: FormState = {
   level: '',
   parentPhone: '',
   parentEmail: '',
+  heardFrom: '',
+  heardFromOther: '',
   notes: '',
 };
 
@@ -141,6 +156,10 @@ export function EnrolPage() {
     setSending(true);
     setError('');
     try {
+      const heardFrom =
+        form.heardFrom === 'Other' && form.heardFromOther.trim()
+          ? `Other: ${form.heardFromOther.trim()}`
+          : form.heardFrom;
       await emailjs.send(
         EMAILJS_SERVICE,
         EMAILJS_TEMPLATE,
@@ -153,12 +172,17 @@ export function EnrolPage() {
           details:
             `Student: ${form.studentName}${form.studentAge ? `, age ${form.studentAge}` : ''}\n` +
             `Instrument: ${form.instrument}\n` +
-            `Level: ${form.level}\n\n` +
+            `Level: ${form.level}\n` +
+            `Heard about us: ${heardFrom || '—'}\n\n` +
             `Notes:\n${form.notes || '—'}`,
         },
         EMAILJS_PUBLIC
       );
-      trackConversion('trialRequest', { instrument: form.instrument, level: form.level });
+      trackConversion('trialRequest', {
+        instrument: form.instrument,
+        level: form.level,
+        heard_from: form.heardFrom || 'not answered',
+      });
       navigate('/thank-you');
     } catch {
       setError('Something went wrong. Please try again or call us on +61 434 144 955.');
@@ -322,6 +346,34 @@ export function EnrolPage() {
                         />
                       </Field>
                     </div>
+                    <Field label="How did you hear about us? (optional)" field="heardFrom">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        {heardFromOptions.map((opt) => (
+                          <ChoiceButton
+                            key={opt}
+                            selected={form.heardFrom === opt}
+                            onClick={() => set('heardFrom', form.heardFrom === opt ? '' : opt)}
+                            className="min-h-12 py-2 text-sm leading-snug"
+                          >
+                            {opt}
+                          </ChoiceButton>
+                        ))}
+                      </div>
+                      {form.heardFrom === 'Other' && (
+                        <input
+                          id="heardFromOther"
+                          data-field="heardFromOther"
+                          type="text"
+                          maxLength={100}
+                          autoComplete="off"
+                          aria-label="Where did you hear about us?"
+                          placeholder="Where did you hear about us?"
+                          value={form.heardFromOther}
+                          onChange={(e) => set('heardFromOther', e.target.value)}
+                          className={`${inputClassFor()} mt-2.5`}
+                        />
+                      )}
+                    </Field>
                     <Field label="Notes (optional)" htmlFor="notes">
                       <textarea
                         id="notes"
