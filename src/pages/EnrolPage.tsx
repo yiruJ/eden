@@ -110,7 +110,7 @@ export function EnrolPage() {
   function focusField(field: string) {
     const matches = formRef.current?.querySelectorAll<HTMLElement>(`[data-field="${field}"]`) ?? [];
     const target = Array.from(matches).find((el) => !el.closest('[aria-hidden="true"]'));
-    const focusable = target?.matches('input, textarea') ? target : target?.querySelector<HTMLElement>('button');
+    const focusable = target?.matches('input, textarea, select') ? target : target?.querySelector<HTMLElement>('button');
     focusable?.focus();
   }
 
@@ -280,31 +280,25 @@ export function EnrolPage() {
 
                 <Step title="Lessons">
                   <div className="space-y-6">
-                    <Field label="Instrument" field="instrument" error={errorFor('instrument')} required>
-                      <div className="space-y-2">
-                        {instruments.map((inst) => (
-                          <ChoiceRow
-                            key={inst}
-                            selected={form.instrument === inst}
-                            onClick={() => set('instrument', inst)}
-                          >
-                            {inst}
-                          </ChoiceRow>
-                        ))}
-                      </div>
+                    <Field label="Instrument" htmlFor="instrument" error={errorFor('instrument')} required>
+                      <SelectInput
+                        id="instrument"
+                        value={form.instrument}
+                        onChange={(v) => set('instrument', v)}
+                        options={instruments}
+                        placeholder="Select an instrument"
+                        error={errorFor('instrument')}
+                      />
                     </Field>
-                    <Field label="Experience level" field="level" error={errorFor('level')} required>
-                      <div className="space-y-2">
-                        {levels.map((lvl) => (
-                          <ChoiceRow
-                            key={lvl}
-                            selected={form.level === lvl}
-                            onClick={() => set('level', lvl)}
-                          >
-                            {lvl}
-                          </ChoiceRow>
-                        ))}
-                      </div>
+                    <Field label="Experience level" htmlFor="level" error={errorFor('level')} required>
+                      <SelectInput
+                        id="level"
+                        value={form.level}
+                        onChange={(v) => set('level', v)}
+                        options={levels}
+                        placeholder="Select a level"
+                        error={errorFor('level')}
+                      />
                     </Field>
                   </div>
                 </Step>
@@ -365,18 +359,14 @@ export function EnrolPage() {
                         />
                       </Field>
                     </div>
-                    <Field label="How did you hear about us?" field="heardFrom">
-                      <div className="space-y-2">
-                        {heardFromOptions.map((opt) => (
-                          <ChoiceRow
-                            key={opt}
-                            selected={form.heardFrom === opt}
-                            onClick={() => set('heardFrom', form.heardFrom === opt ? '' : opt)}
-                          >
-                            {opt}
-                          </ChoiceRow>
-                        ))}
-                      </div>
+                    <Field label="How did you hear about us?" htmlFor="heardFrom">
+                      <SelectInput
+                        id="heardFrom"
+                        value={form.heardFrom}
+                        onChange={(v) => set('heardFrom', v)}
+                        options={heardFromOptions}
+                        placeholder="Select an option"
+                      />
                       {form.heardFrom === 'Other' && (
                         <input
                           id="heardFromOther"
@@ -497,36 +487,48 @@ function Field({
   );
 }
 
-function ChoiceRow({
-  selected,
-  onClick,
-  children,
+function SelectInput({
+  id,
+  value,
+  onChange,
+  options,
+  placeholder,
+  error,
 }: {
-  selected: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+  placeholder: string;
+  error?: string;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={selected}
-      className={`flex w-full items-center gap-3 min-h-12 px-4 py-2.5 rounded-xl border-2 text-left text-[15px] font-medium
-        cursor-pointer [touch-action:manipulation] transition-colors duration-200
-        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25
-        ${selected
-          ? 'border-primary bg-primary/5 text-charcoal'
-          : 'border-primary/15 bg-white text-charcoal/75 [@media(hover:hover)]:hover:border-primary/50 [@media(hover:hover)]:hover:bg-primary/5'}`}
-    >
-      <span
-        aria-hidden="true"
-        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-200
-          ${selected ? 'border-primary' : 'border-charcoal/25'}`}
+    <div className="relative">
+      <select
+        id={id}
+        data-field={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={`${inputClassFor(error)} appearance-none pr-11 cursor-pointer ${value ? '' : 'text-charcoal/45'}`}
       >
-        {selected && <span className="h-2.5 w-2.5 rounded-full bg-primary" />}
-      </span>
-      {children}
-    </button>
+        <option value="" className="text-charcoal/45">{placeholder}</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt} className="text-charcoal">{opt}</option>
+        ))}
+      </select>
+      <svg
+        className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-charcoal/50"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        aria-hidden="true"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
   );
 }
 
