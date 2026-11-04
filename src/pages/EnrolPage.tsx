@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Stepper, Step } from '../components/ui/Stepper';
 import { MapEmbed } from '../components/ui/MapEmbed';
+import { FirstLessonSection } from '../components/sections/FirstLessonSection';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 import { trackConversion } from '../lib/adsTracking';
@@ -402,6 +403,10 @@ export function EnrolPage() {
             </p>
           </div>
         </section>
+      </FadeIn>
+
+      <FadeIn direction="up">
+        <FirstLessonSection />
       </FadeIn>
 
       {/* Map */}

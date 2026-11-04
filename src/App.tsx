@@ -29,8 +29,21 @@ const AdminInviteUserPage    = lazy(() => import('./pages/admin/InviteUserPage')
 const ResetPasswordPage      = lazy(() => import('./pages/ResetPasswordPage').then(m => ({ default: m.ResetPasswordPage })));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Pages are lazy loaded, so the target may not exist yet
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      const target = document.getElementById(hash.slice(1));
+      if (target) target.scrollIntoView();
+      if (target || ++attempts >= 30) window.clearInterval(timer);
+    }, 100);
+    return () => window.clearInterval(timer);
+  }, [pathname, hash]);
   return null;
 }
 

@@ -38,12 +38,7 @@ export function Hero() {
               </div>
               <span className="text-white/90 text-sm font-medium">Sydney Conservatorium-trained teachers</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-primary/80 backdrop-blur-sm flex items-center justify-center shrink-0">
-                <PeopleIcon className="w-3.5 h-3.5 text-white" />
-              </div>
-              <span className="text-white/90 text-sm font-medium">All ages & levels welcome</span>
-            </div>
+            <Reassurances />
           </div>
 
           <div className="pt-1">
@@ -93,6 +88,10 @@ export function Hero() {
               told to.
             </p>
 
+            <div className="flex flex-col gap-2">
+              <Reassurances />
+            </div>
+
             <div className="flex flex-wrap gap-4 pt-2">
               <Link to="/enrol">
                 <Button variant="primary" size="lg">
@@ -114,6 +113,17 @@ export function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function Reassurances() {
+  return (
+    <div className="flex items-center gap-2.5">
+      <div className="w-7 h-7 rounded-lg bg-primary/80 backdrop-blur-sm flex items-center justify-center shrink-0">
+        <PeopleIcon className="w-3.5 h-3.5 text-white" />
+      </div>
+      <span className="text-white/90 text-sm font-medium">Ages 4+, beginners welcome</span>
+    </div>
   );
 }
 

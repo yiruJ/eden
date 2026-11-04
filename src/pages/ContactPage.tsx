@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
+import { parentQuestions } from '../data/parentQuestions';
 import { trackConversion } from '../lib/adsTracking';
 
 const EMAILJS_SERVICE  = 'service_4hf3y5e';
@@ -10,10 +11,7 @@ const EMAILJS_TEMPLATE = 'template_f5dt26c';
 const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const faqs = [
-  {
-    q: 'What age can my child start lessons?',
-    a: 'We welcome students from age 4. For very young children we recommend piano or violin as starting instruments. Our teachers are experienced in age-appropriate teaching methods.',
-  },
+  ...parentQuestions,
   {
     q: 'How long are lessons?',
     a: 'Lessons are available in 30-minute, 45-minute, and 60-minute sessions. For beginners and younger students, 30 minutes is usually ideal. As students progress, 60-minute lessons allow for deeper work.',

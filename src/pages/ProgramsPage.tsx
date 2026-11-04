@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '../components/ui/SectionHeading';
 import { CTABanner } from '../components/sections/CTABanner';
+import { PrivateLessonPricing } from '../components/sections/PrivateLessonPricing';
 import { FadeIn } from '../components/ui/FadeIn';
 import { SEO } from '../components/SEO';
 import privateLessonImg from '../assets/moments/Img3.webp';
@@ -128,6 +129,10 @@ export function ProgramsPage() {
           ))}
         </div>
       </section>
+      </FadeIn>
+
+      <FadeIn direction="up" delay={100}>
+        <PrivateLessonPricing />
       </FadeIn>
 
       {/* Community section */}

@@ -1,10 +1,12 @@
 import { Hero } from '../components/sections/Hero';
 import { MomentsStrip } from '../components/sections/MomentsStrip';
+import { FirstLessonSection } from '../components/sections/FirstLessonSection';
 import { Testimonials } from '../components/sections/Testimonials';
 import { ProgramsStrip } from '../components/sections/ProgramsStrip';
 import { TeachersPreview } from '../components/sections/TeachersPreview';
 import { CTABanner } from '../components/sections/CTABanner';
 import { FacilitySection } from '../components/sections/FacilitySection';
+import { ParentQuestions } from '../components/sections/ParentQuestions';
 import { SEO } from '../components/SEO';
 import { FadeIn } from '../components/ui/FadeIn';
 
@@ -23,6 +25,9 @@ export function HomePage() {
         <MomentsStrip />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
+        <FirstLessonSection />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
         <Testimonials />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
@@ -33,6 +38,9 @@ export function HomePage() {
       </FadeIn>
       <FadeIn direction="up" delay={100}>
         <FacilitySection />
+      </FadeIn>
+      <FadeIn direction="up" delay={100}>
+        <ParentQuestions />
       </FadeIn>
       <FadeIn direction="up" delay={100}>
         <CTABanner />
