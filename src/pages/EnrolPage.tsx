@@ -15,13 +15,11 @@ const instruments = ['Piano', 'Violin', 'Viola', 'Cello'];
 const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
 // Options follow Eden's marketing channels so answers can be compared against them
 const heardFromOptions = [
-  'Google search',
-  'Google Maps',
+  'Google',
   'Instagram',
   'Facebook',
   'Friend or family',
   'School newsletter',
-  'Walked past',
   'Other',
 ];
 
