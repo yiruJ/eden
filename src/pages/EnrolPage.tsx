@@ -305,7 +305,7 @@ export function EnrolPage() {
 
                 <Step title="Contact">
                   <div className="space-y-5">
-                    <Field label="Your name" htmlFor="parentName" error={errorFor('parentName')} required>
+                    <Field label="Your name (parent)" htmlFor="parentName" error={errorFor('parentName')} required>
                       <input
                         id="parentName"
                         data-field="parentName"
