@@ -8,6 +8,7 @@ const mobileNavItems = [
     textColor: '#ffffff',
     links: [
       { label: 'Contact', to: '/contact' },
+      { label: 'Parking', to: '/parking' },
       { label: 'Book a Free Trial', to: '/enrol', variant: 'button' as const },
     ],
   },
@@ -16,7 +17,7 @@ const mobileNavItems = [
     bgColor: '#2C2C2A',
     textColor: '#ffffff',
     links: [
-      { label: 'All Programs', to: '/programs' },
+      { label: 'Programs', to: '/programs' },
       { label: 'Instruments', to: '/instruments' },
     ],
   },
@@ -26,7 +27,7 @@ const mobileNavItems = [
     textColor: '#1a1a1a',
     links: [
       { label: 'About Us', to: '/about' },
-      { label: 'Our Teachers', to: '/teachers' },
+      { label: 'Teachers', to: '/teachers' },
       { label: 'Policies & Terms', to: '/privacy' },
     ],
   },
