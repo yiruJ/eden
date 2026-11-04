@@ -19,7 +19,6 @@ const heardFromOptions = [
   'Instagram',
   'Facebook',
   'Friend or family',
-  'School newsletter',
   'Other',
 ];
 
