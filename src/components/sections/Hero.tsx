@@ -25,9 +25,9 @@ export function Hero() {
         {/* Text + credential chips + CTAs */}
         <div className="relative z-10 px-6 pb-10 space-y-6">
           <h1 className="text-[clamp(1.25rem,6.7vw,2.75rem)] font-display font-black leading-[1.1] text-white">
-            Helping Children Discover<br />
-            <span className="italic">Confidence</span> Through<br />
-            Music
+            <span className="block text-[0.78em]">Helping Children Discover</span>
+            <span className="block"><span className="italic">Confidence</span> <span className="text-[0.78em]">Through</span></span>
+            <span className="block text-[0.78em]">Music</span>
           </h1>
 
           {/* Credential chips */}
@@ -82,9 +82,9 @@ export function Hero() {
         <div className="relative z-10 h-full max-w-7xl mx-auto px-6 pb-24 flex items-end">
           <div className="max-w-xl space-y-8">
             <h1 className="text-[clamp(2rem,3.4vw,2.75rem)] font-display font-black leading-[1.08] text-white">
-              Helping Children Discover
-              <span className="block"><span className="italic">Confidence</span> Through</span>
-              Music<span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" />
+              <span className="block text-[0.78em]">Helping Children Discover</span>
+              <span className="block"><span className="italic">Confidence</span> <span className="text-[0.78em]">Through</span></span>
+              <span className="block text-[0.78em]">Music<span className="inline-block w-2.5 h-2.5 rounded-full align-baseline ml-1" style={{ backgroundColor: '#ed3144' }} aria-hidden="true" /></span>
             </h1>
 
             <p className="text-xl text-white/85 max-w-lg leading-relaxed font-light">
