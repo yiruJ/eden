@@ -382,7 +382,7 @@ export function EnrolPage() {
                         />
                       )}
                     </Field>
-                    <Field label="Notes" htmlFor="notes">
+                    <Field label="Optional Notes" htmlFor="notes">
                       <textarea
                         id="notes"
                         data-field="notes"
