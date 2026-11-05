@@ -9,7 +9,7 @@ const mobileNavItems = [
     links: [
       { label: 'Contact', to: '/contact' },
       { label: 'Parking', to: '/parking' },
-      { label: 'Book a Free Trial', to: '/enrol', variant: 'button' as const },
+      { label: 'Book a Trial', to: '/enrol', variant: 'button' as const },
     ],
   },
   {

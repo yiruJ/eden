@@ -125,7 +125,7 @@ These are the words and phrases the audience uses (not company jargon):
 
 **Authority:** Teachers' credentials and years of experience build trust. Mention classical training background without being stuffy.
 
-**Reciprocity:** A free trial creates obligation. Name it clearly: "Book a free trial — no payment, no obligation."
+**Reciprocity:** A trial lets families experience a real lesson first. Never call it free: it takes a $30 deposit, credited if the family continues. Do not state the amount on the website.
 
 **Scarcity/Commitment:** Limited spots per teacher. "Enrolments are limited" is real — use it without fabricating urgency.
 
