@@ -14,32 +14,26 @@ const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const instruments = ['Piano', 'Violin', 'Viola', 'Cello'];
 const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
-// Options follow Eden's marketing channels so answers can be compared against them
-const heardFromOptions = [
-  'Google',
-  'Instagram',
-  'Facebook',
-  'Friend or family',
-  'Other',
-];
 
-const TOTAL_STEPS = 3;
-const stepNames: Record<number, string> = { 1: 'student', 2: 'lessons', 3: 'contact' };
+// Parent name and "how did you hear about us" are collected on a paper form at the trial.
+// Step names differ from the old 3-step form ('student', 'lessons', 'contact') so PostHog data stays comparable.
+const TOTAL_STEPS = 2;
+const stepNames: Record<number, string> = { 1: 'student and lessons', 2: 'contact details' };
 
-type RequiredField = 'studentName' | 'instrument' | 'level' | 'parentName' | 'parentPhone' | 'parentEmail';
+type RequiredField = 'studentName' | 'studentAge' | 'instrument' | 'level' | 'parentPhone' | 'parentEmail';
 
 // Required fields per step, in on-screen order (the first invalid one gets focus)
 const stepFields: Record<number, RequiredField[]> = {
-  1: ['studentName'],
-  2: ['instrument', 'level'],
-  3: ['parentName', 'parentPhone', 'parentEmail'],
+  1: ['studentName', 'studentAge', 'instrument', 'level'],
+  2: ['parentPhone', 'parentEmail'],
 };
 
 function validate(form: FormState): Partial<Record<RequiredField, string>> {
   const errors: Partial<Record<RequiredField, string>> = {};
   const phoneDigits = form.parentPhone.replace(/\D/g, '');
-  if (!form.parentName.trim()) errors.parentName = 'Please enter your name.';
   if (!form.studentName.trim()) errors.studentName = "Please enter the student's name.";
+  if (!form.studentAge) errors.studentAge = "Please enter the student's age.";
+  else if (Number(form.studentAge) < 1) errors.studentAge = 'Please check the age.';
   if (!form.instrument) errors.instrument = 'Please choose an instrument.';
   if (!form.level) errors.level = 'Please choose an experience level.';
   if (!phoneDigits) errors.parentPhone = 'Please enter a phone number.';
@@ -54,11 +48,8 @@ interface FormState {
   studentAge: string;
   instrument: string;
   level: string;
-  parentName: string;
   parentPhone: string;
   parentEmail: string;
-  heardFrom: string;
-  heardFromOther: string;
   notes: string;
 }
 
@@ -67,11 +58,8 @@ const initialForm: FormState = {
   studentAge: '',
   instrument: '',
   level: '',
-  parentName: '',
   parentPhone: '',
   parentEmail: '',
-  heardFrom: '',
-  heardFromOther: '',
   notes: '',
 };
 
@@ -100,7 +88,7 @@ export function EnrolPage() {
 
   const errors = validate(form);
   const stepValid = (n: number) => stepFields[n].every((f) => !errors[f]);
-  const canSubmit = [1, 2, 3].every(stepValid);
+  const canSubmit = [1, 2].every(stepValid);
   const errorFor = (field: RequiredField) => (touched[field] ? errors[field] : undefined);
   const touch = (field: RequiredField) => setTouched((prev) => ({ ...prev, [field]: true }));
 
@@ -118,7 +106,7 @@ export function EnrolPage() {
       isFirstRender.current = false;
       return;
     }
-    if (step === 3) focusField('parentName');
+    if (step === 2) focusField('parentPhone');
   }, [step]);
 
   function handleStepChange(next: number) {
@@ -157,10 +145,6 @@ export function EnrolPage() {
     setSending(true);
     setError('');
     try {
-      const heardFrom =
-        form.heardFrom === 'Other' && form.heardFromOther.trim()
-          ? `Other: ${form.heardFromOther.trim()}`
-          : form.heardFrom;
       await emailjs.send(
         EMAILJS_SERVICE,
         EMAILJS_TEMPLATE,
@@ -171,11 +155,9 @@ export function EnrolPage() {
           reply_email: form.parentEmail,
           phone: form.parentPhone,
           details:
-            `Parent: ${form.parentName.trim()}\n` +
             `Student: ${form.studentName}${form.studentAge ? `, age ${form.studentAge}` : ''}\n` +
             `Instrument: ${form.instrument}\n` +
-            `Level: ${form.level}\n` +
-            `Heard about us: ${heardFrom || '—'}\n\n` +
+            `Level: ${form.level}\n\n` +
             `Notes:\n${form.notes || '—'}`,
         },
         EMAILJS_PUBLIC
@@ -183,7 +165,6 @@ export function EnrolPage() {
       trackConversion('trialRequest', {
         instrument: form.instrument,
         level: form.level,
-        heard_from: form.heardFrom || 'not answered',
       });
       navigate('/thank-you');
     } catch {
@@ -259,7 +240,7 @@ export function EnrolPage() {
                         className={inputClassFor(errorFor('studentName'))}
                       />
                     </Field>
-                    <Field label="Student's age" htmlFor="studentAge">
+                    <Field label="Student's age" htmlFor="studentAge" error={errorFor('studentAge')} required>
                       <input
                         id="studentAge"
                         data-field="studentAge"
@@ -267,17 +248,16 @@ export function EnrolPage() {
                         inputMode="numeric"
                         pattern="[0-9]*"
                         maxLength={2}
+                        required
                         enterKeyHint="next"
+                        aria-invalid={Boolean(errorFor('studentAge'))}
+                        aria-describedby={errorFor('studentAge') ? 'studentAge-error' : undefined}
                         value={form.studentAge}
                         onChange={(e) => set('studentAge', e.target.value.replace(/\D/g, ''))}
-                        className={inputClassFor()}
+                        onBlur={() => form.studentAge && touch('studentAge')}
+                        className={inputClassFor(errorFor('studentAge'))}
                       />
                     </Field>
-                  </div>
-                </Step>
-
-                <Step title="Lessons">
-                  <div className="space-y-6">
                     <Field label="Instrument" htmlFor="instrument" error={errorFor('instrument')} required>
                       <SelectInput
                         id="instrument"
@@ -303,23 +283,6 @@ export function EnrolPage() {
 
                 <Step title="Contact">
                   <div className="space-y-5">
-                    <Field label="Parent name" htmlFor="parentName" error={errorFor('parentName')} required>
-                      <input
-                        id="parentName"
-                        data-field="parentName"
-                        type="text"
-                        required
-                        autoComplete="name"
-                        autoCapitalize="words"
-                        enterKeyHint="next"
-                        aria-invalid={Boolean(errorFor('parentName'))}
-                        aria-describedby={errorFor('parentName') ? 'parentName-error' : undefined}
-                        value={form.parentName}
-                        onChange={(e) => set('parentName', e.target.value)}
-                        onBlur={() => form.parentName.trim() && touch('parentName')}
-                        className={inputClassFor(errorFor('parentName'))}
-                      />
-                    </Field>
                     <div className="grid sm:grid-cols-2 gap-5">
                       <Field label="Phone number" htmlFor="parentPhone" error={errorFor('parentPhone')} required>
                         <input
@@ -357,29 +320,6 @@ export function EnrolPage() {
                         />
                       </Field>
                     </div>
-                    <Field label="How did you hear about us?" htmlFor="heardFrom">
-                      <SelectInput
-                        id="heardFrom"
-                        value={form.heardFrom}
-                        onChange={(v) => set('heardFrom', v)}
-                        options={heardFromOptions}
-                        placeholder="Select an option"
-                      />
-                      {form.heardFrom === 'Other' && (
-                        <input
-                          id="heardFromOther"
-                          data-field="heardFromOther"
-                          type="text"
-                          maxLength={100}
-                          autoComplete="off"
-                          aria-label="Where did you hear about us?"
-                          placeholder="Where did you hear about us?"
-                          value={form.heardFromOther}
-                          onChange={(e) => set('heardFromOther', e.target.value)}
-                          className={`${inputClassFor()} mt-2.5`}
-                        />
-                      )}
-                    </Field>
                     <Field label="Optional Notes" htmlFor="notes">
                       <textarea
                         id="notes"
