@@ -25,3 +25,7 @@ fallback.
 - Arrivals depend on an operational step outside this repo. If the confirmation email stops carrying the passcode, the page silently stops working and nothing in the codebase will reveal it.
 - If the building ever changes the passcode, every family needs a fresh email. There is no way to update it centrally, because the website never holds it.
 - Every arrival costs a staff interruption, since the gate never opens without someone answering. Three spots is also three interruptions per lesson changeover.
+
+## Update, Nov 2026
+
+Online trial booking now sends the **Confirmation Email** automatically once the deposit is paid. The passcode therefore lives in one private server setting used to write that email. It is still never on a public page or in the website's own code, so the decision stands. Two consequences above change: an online booking no longer depends on someone remembering to send the email, and a new passcode is updated in that one setting for future bookings (current families still need a fresh email).

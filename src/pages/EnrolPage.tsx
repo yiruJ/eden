@@ -13,6 +13,7 @@ const EMAILJS_TEMPLATE = 'template_f5dt26c';
 const EMAILJS_PUBLIC   = 'oD-S9wI7AeqB6epnS';
 
 const instruments = ['Piano', 'Violin', 'Viola', 'Cello'];
+const stringInstruments = ['Violin', 'Viola', 'Cello'];
 const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
 
 // Parent name and "how did you hear about us" are collected on a paper form at the trial.
@@ -20,11 +21,11 @@ const levels = ['Beginner', 'Grade 1–4', 'Grade 5+', 'Not sure'];
 const TOTAL_STEPS = 2;
 const stepNames: Record<number, string> = { 1: 'student and lessons', 2: 'contact details' };
 
-type RequiredField = 'studentName' | 'studentAge' | 'instrument' | 'level' | 'parentPhone' | 'parentEmail';
+type RequiredField = 'studentName' | 'studentAge' | 'instrument' | 'level' | 'parentPhone' | 'parentEmail' | 'hasOwnInstrument';
 
 // Required fields per step, in on-screen order (the first invalid one gets focus)
 const stepFields: Record<number, RequiredField[]> = {
-  1: ['studentName', 'studentAge', 'instrument', 'level'],
+  1: ['studentName', 'studentAge', 'instrument', 'level', 'hasOwnInstrument'],
   2: ['parentPhone', 'parentEmail'],
 };
 
@@ -40,6 +41,7 @@ function validate(form: FormState): Partial<Record<RequiredField, string>> {
   else if (phoneDigits.length < 8) errors.parentPhone = 'Please check the phone number.';
   if (!form.parentEmail.trim()) errors.parentEmail = 'Please enter an email address.';
   else if (!/^\S+@\S+\.\S+$/.test(form.parentEmail.trim())) errors.parentEmail = 'Please check the email address.';
+  if (!form.hasOwnInstrument && stringInstruments.includes(form.instrument)) errors.hasOwnInstrument = 'Please indicate whether the student has their own instrument.';
   return errors;
 }
 
@@ -51,6 +53,7 @@ interface FormState {
   parentPhone: string;
   parentEmail: string;
   notes: string;
+  hasOwnInstrument: '' | 'yes' | 'no';
 }
 
 const initialForm: FormState = {
@@ -61,6 +64,7 @@ const initialForm: FormState = {
   parentPhone: '',
   parentEmail: '',
   notes: '',
+  hasOwnInstrument: ''
 };
 
 export function EnrolPage() {
@@ -157,6 +161,7 @@ export function EnrolPage() {
           details:
             `Student: ${form.studentName}${form.studentAge ? `, age ${form.studentAge}` : ''}\n` +
             `Instrument: ${form.instrument}\n` +
+            (stringInstruments.includes(form.instrument) ? `Has own instrument: ${form.hasOwnInstrument === 'yes' ? 'Yes' : 'No'}\n` : '') +
             `Level: ${form.level}\n\n` +
             `Notes:\n${form.notes || '—'}`,
         },
@@ -268,6 +273,38 @@ export function EnrolPage() {
                         error={errorFor('instrument')}
                       />
                     </Field>
+                    {stringInstruments.includes(form.instrument) && (
+                      <Field label="Does the student have their own instrument?" field="hasOwnInstrument" error={errorFor('hasOwnInstrument')} required>
+                        <div className="flex gap-4">
+                          <button
+                            type="button"
+                            data-field="hasOwnInstrument"
+                            aria-pressed={form.hasOwnInstrument === 'yes'}
+                            onClick={() => set('hasOwnInstrument', 'yes')}
+                            className={`px-4 py-3 rounded-xl border-2 text-charcoal text-base sm:text-sm focus:outline-none focus:ring-4 transition-colors ${
+                              form.hasOwnInstrument === 'yes'
+                                ? 'bg-primary/10 border-primary focus:border-primary focus:ring-primary/15'
+                                : 'bg-background border-primary/15 focus:border-primary focus:ring-primary/15'
+                            }`}
+                          >
+                            Yes
+                          </button>
+                          <button
+                            type="button"
+                            data-field="hasOwnInstrument"
+                            aria-pressed={form.hasOwnInstrument === 'no'}
+                            onClick={() => set('hasOwnInstrument', 'no')}
+                            className={`px-4 py-3 rounded-xl border-2 text-charcoal text-base sm:text-sm focus:outline-none focus:ring-4 transition-colors ${
+                              form.hasOwnInstrument === 'no'
+                                ? 'bg-primary/10 border-primary focus:border-primary focus:ring-primary/15'
+                                : 'bg-background border-primary/15 focus:border-primary focus:ring-primary/15'
+                            }`}
+                          >
+                            No
+                          </button>
+                        </div>
+                      </Field>
+                    )}
                     <Field label="Experience level" htmlFor="level" error={errorFor('level')} required>
                       <SelectInput
                         id="level"
